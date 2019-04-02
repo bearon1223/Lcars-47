@@ -16,6 +16,7 @@ void Time(float x, float y, boolean twentyfourhr) {
     hour = str(hour());
   }
   if(twentyfourhr){
+    textSize(HYPOTNUCE / 25);
     text(hour+":"+minute+":"+second, x, y);
   }
 }
