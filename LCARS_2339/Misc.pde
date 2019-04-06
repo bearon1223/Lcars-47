@@ -1,6 +1,6 @@
 boolean ggfdsakfj = false, ggfdsakfjd = false;
 
-void Time(float x, float y, boolean twentyfourhr) {
+void Time(float x, float y, float w, float h, boolean twentyfourhr) {
   String minute = str(minute()), hour = str(hour()), second;
   if (minute() < 10) {
     minute = "0"+floor(minute());
@@ -18,15 +18,18 @@ void Time(float x, float y, boolean twentyfourhr) {
     hour = str(hour());
   }
   if (twentyfourhr) {
+    textAlign(CENTER, CENTER);
+    fill(255);
     textSize(HYPOTNUCE / 25);
-    text(hour+":"+minute+":"+second, x, y);
+    text(hour+":"+minute+":"+second, x, y, w, h);
+    textAlign(CORNER, CORNER);
   }
 }
 
 boolean Button(String stringtext, float x, float y, float w, float h) {
   boolean t = false;
   fill(255);
-  textSize(HYPOTNUCE / 25);
+  textSize((sqrt((w * w) + (h * h))) / 25);
   rect(x, y, w, h, 5);
   fill(0);
   text(stringtext, x, y, w, h);

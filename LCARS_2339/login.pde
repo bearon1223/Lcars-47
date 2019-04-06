@@ -19,8 +19,10 @@ class Login {
   void compare() {
     if (((typed.equals(p) == true) || (typed.equals("cfopi"))) && key == ENTER && keyPressed) {
       scene = wc;
+      println(wc);
     } else if(typed.equals("debug") && key == ENTER && keyPressed) {
       scene = 400;
+      println("debug");
     }
   }
 
