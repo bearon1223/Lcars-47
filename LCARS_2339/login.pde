@@ -1,21 +1,26 @@
 class Login {
-  float x, y;
+  float x, y, wc;
   String p;
   String typed = "";
   boolean pressedT = false;
-  Login (float authority, float xb, float yb) {
+  Login (float authority, float xb, float yb, float wantedScene) {
     if (authority == 0) {
       p = "omega-alpha-nine";
     } else if (authority == 1) {
       p = "omega-beta-two";
+    } else if (authority == 50){
+      p = "debug";
     }
     x = xb;
     y = yb;
+    wc = wantedScene;
   }
 
   void compare() {
-    if (((typed.equals(p) == true) || typed.equals("cfopi")) && key == ENTER && keyPressed) {
-      scene = 1;
+    if (((typed.equals(p) == true) || (typed.equals("cfopi"))) && key == ENTER && keyPressed) {
+      scene = wc;
+    } else if(typed.equals("debug") && key == ENTER && keyPressed) {
+      scene = 400;
     }
   }
 

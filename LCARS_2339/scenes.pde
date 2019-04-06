@@ -13,5 +13,14 @@ void scenes() {
     image(imgsur, width / 213, height / 142, width / 5.5, height / 4.1);
     image(logo, width / 56, height / 29, width / 6.4, height / 5.6);
     Time(width / 74, height / 1.6, true);
+  } else if (scene == 400){
+    background(255);
+    d.render();
+    fill(0);
+    textFont(og);
+    textSize(15);
+    text(frameRate, 10, 15);
+    text(width + ", " + height, 10, 30);
+    text("debug accessed", 10, 45);
   }
 }
