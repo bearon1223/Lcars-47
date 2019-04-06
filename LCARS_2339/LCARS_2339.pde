@@ -36,9 +36,13 @@ void draw() {
   mSP.x = width / 5.2;
   mSP.h = height;
   mSP.w = width / 11.4;
-  sSP.x = width / 3.8;
-  sSP.y = height / 5;
+  sSP.x = width / 3.488372093023256;
+  sSP.y = height / 2.2641509243396226;
   sSP.h = height - sSP.y;
-  sSP.w = width / 11.4;
+  sSP.w = width / 11.25;
   scenes();
+  //textSize(20);
+  //fill(100);
+  //text(mouseX, 10, 20);
+  //text(mouseY, 10, 40);
 }

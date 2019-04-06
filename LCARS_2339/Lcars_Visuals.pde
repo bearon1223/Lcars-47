@@ -1,7 +1,7 @@
 class panel {
   float x, y, w, h, pc;
   color[] colors = new color[100];
-  String[] texts;
+  String[] texts = new String[1000];
   panel(float xb, float yb, float wb, float hb, float panelcount, String[] textsb) {
     x = xb;
     y = yb;
@@ -19,14 +19,15 @@ class panel {
     w = wb;
     h = hb;
     pc = panelcount;
-    texts = new String[100];
-    for(int i = 0; i <= panelcount - 1; i++) {
+    texts = new String[1000];
+    for (int i = 0; i <= panelcount - 1; i++) {
       texts[i] = floor(random(50, 99)) + "-" + floor(random(200000, 999999));
     }
     for (int i = 0; i <= panelcount - 1; i++) {
       colors[i] = color(random(100, 150), random(100, 150), random(200, 255));
     }
   }
+
   void render() {
     fill(255);
     //rect(x, y, w, h);
@@ -36,9 +37,7 @@ class panel {
       fill(colors[i]);
       rect(x, y+((h / pc) * i), w, h / pc - (height / 300));
       fill(0);
-      if (texts[i] != null) {
-        text(texts[i], x, y + (h / pc) * i, w, h / pc - (height / 300));
-      }
+      text(texts[i], x, y + (h / pc) * i, w, h / pc - (height / 300));
       textAlign(CORNER, CORNER);
     }
   }

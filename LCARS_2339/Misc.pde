@@ -29,7 +29,8 @@ void Time(float x, float y, float w, float h, boolean twentyfourhr) {
 boolean Button(String stringtext, float x, float y, float w, float h) {
   boolean t = false;
   fill(255);
-  textSize((sqrt((w * w) + (h * h))) / 2);
+  textAlign(CENTER, CENTER);
+  textSize(HYPOTNUCE / 50);
   rect(x, y, w, h, 5);
   fill(0);
   text(stringtext, x, y, w, h);

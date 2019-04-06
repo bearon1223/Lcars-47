@@ -15,7 +15,7 @@ void scenes() {
     Time(width / 254, height / 2.0, width / 5.4, height / 5.5, true);
     mSP.render();
     sSP.render();
-  } else if (scene == 400){
+  } else if (scene == 400) {
     background(255);
     d.render();
     d.InteractiveS(PanelDebugfloat);
@@ -25,7 +25,7 @@ void scenes() {
     text(frameRate, 10, 15);
     text(width + ", " + height, 10, 30);
     text("debug accessed", 10, 45);
-    if(Button("Return to Login", 10, 60, 100, 50)){
+    if (Button("Return to Login", 10, 60, 100, 50)) {
       scene = 0;
       l.typed = "";
     }
