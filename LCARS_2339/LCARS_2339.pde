@@ -1,4 +1,4 @@
-PImage logo, icon, temp, cornerthing, cornerthing2, imgsur;
+PImage logo, icon, temp, imgsur;
 PFont f, og;
 float RATIOWH = 100, HYPOTNUCE = 100;
 String[] PanelDebug = {"test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"};
