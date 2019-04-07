@@ -3,6 +3,7 @@ PFont f, og;
 float RATIOWH = 100, HYPOTNUCE = 100;
 String[] PanelDebug = {"test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"};
 String[] mSPText = {"SYS DIRECTORY", "AUX DIRECTORY", "MED DIRECTORY", "COMMUNICATIONS", "STELLAR CHART", "MISSION OPS", "DATABASE"};
+float[] mSPView = {3, 4, 5, 6, 7, 8, 9};
 float[] mSPScene = {2, 3, 4, 5, 6, 7, 8};
 float[] PanelDebugfloat = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
 
@@ -43,6 +44,7 @@ void draw() {
   scenes();
   textSize(20);
   fill(100);
-  text(mouseX, 10, 20);
-  text(mouseY, 10, 40);
+  text(frameRate, 10, 20);
+  //text(mouseX, 10, 20);
+  //text(mouseY, 10, 40);
 }

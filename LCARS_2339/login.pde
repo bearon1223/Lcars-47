@@ -8,7 +8,7 @@ class Login {
       p = "omega-alpha-nine";
     } else if (authority == 1) {
       p = "omega-beta-two";
-    } else if (authority == 50){
+    } else if (authority == 50) {
       p = "debug";
     }
     x = xb;
@@ -20,7 +20,7 @@ class Login {
     if (((typed.equals(p) == true) || (typed.equals("cfopi"))) && key == ENTER && keyPressed) {
       scene = wc;
       println(wc);
-    } else if(typed.equals("debug") && key == ENTER && keyPressed) {
+    } else if (typed.equals("debug") && key == ENTER && keyPressed) {
       scene = 400;
       println("debug");
     }

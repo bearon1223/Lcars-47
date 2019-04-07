@@ -32,12 +32,13 @@ void Time(float x, float y, float w, float h, boolean twentyfourhr) {
   }
 }
 
-boolean Button(String stringtext, float x, float y, float w, float h) {
+boolean Button(String stringtext, float x, float y, float w, float h, color c) {
   boolean t = false;
-  fill(255);
+  noStroke();
+  fill(c);
   textAlign(CENTER, CENTER);
-  textSize(HYPOTNUCE / 50);
-  rect(x, y, w, h, 5);
+  textSize(HYPOTNUCE / 66);
+  rect(x, y, w, h);
   fill(0);
   text(stringtext, x, y, w, h);
   if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && !ggfdsakfj && mousePressed) {
@@ -46,6 +47,26 @@ boolean Button(String stringtext, float x, float y, float w, float h) {
     ggfdsakfj = false;
     t = true;
   }
+  stroke(0);
+  return t;
+}
+
+boolean Button(String stringtext, float x, float y, float wp, float hp, float w, float h, color c) {
+  boolean t = false;
+  noStroke();
+  fill(c);
+  textAlign(CENTER, CENTER);
+  textSize(HYPOTNUCE / 66);
+  OneCircleButton(x, y, wp, hp);
+  fill(0);
+  text(stringtext, x, y, w, h);
+  if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && !ggfdsakfj && mousePressed) {
+    ggfdsakfj = true;
+  } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfj && !mousePressed) {
+    ggfdsakfj = false;
+    t = true;
+  }
+  stroke(0);
   return t;
 }
 
