@@ -1,5 +1,6 @@
 void viewScreen() {
   if (veiwScreen == 0) {
+    image(standby, width / 3.488372093023256 + width / 11.25, height / 2.2641509243396226, width - width / 3.488372093023256 - width / 11.25, height - height / 2.264150924339622);
   }
   if (veiwScreen == 1) {
   }

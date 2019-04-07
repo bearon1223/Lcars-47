@@ -1,4 +1,4 @@
-PImage logo, icon, temp, imgsur;
+PImage logo, icon, temp, imgsur, standby;
 PFont f, og;
 float RATIOWH = 100, HYPOTNUCE = 100;
 String[] PanelDebug = {"test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"};
@@ -16,10 +16,12 @@ void setup() {
   size(900, 600);
   surface.setResizable(true);
   surface.setTitle("Lcars: "+ (year() + 320));
+  smooth(2);
   logo = loadImage("Federation Logo.jpg");
   icon = loadImage("starfleet logo.jpg");
   temp = loadImage("template.png");
   imgsur = loadImage("Image Surroundings.png");
+  standby = loadImage("Federation Standby.jpg");
   f = loadFont("Lcars 47.vlw");
   og = loadFont("InaiMathi-48.vlw");
   surface.setIcon(icon);
@@ -42,9 +44,4 @@ void draw() {
   sSP.h = height - sSP.y;
   sSP.w = width / 11.25;
   scenes();
-  textSize(20);
-  fill(100);
-  text(frameRate, 10, 20);
-  //text(mouseX, 10, 20);
-  //text(mouseY, 10, 40);
 }
