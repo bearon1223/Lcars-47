@@ -8,8 +8,8 @@ float[] PanelDebugfloat = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
 
 Login l = new Login(0, width / 2, height / 2, 1);
 panel d = new panel(200, 100, 100, height - 100, 10, PanelDebug);
-panel mSP = new panel(0, 0, 0, 0, 7, mSPText);
-panel sSP = new panel(0, 0, 0, 0, 8);
+panel mSP = new panel(10, 10, 10, 10, 7, mSPText);
+panel sSP = new panel(10, 10, 10, 10, 8);
 
 void setup() {
   size(900, 600);
@@ -41,8 +41,8 @@ void draw() {
   sSP.h = height - sSP.y;
   sSP.w = width / 11.25;
   scenes();
-  //textSize(20);
-  //fill(100);
-  //text(mouseX, 10, 20);
-  //text(mouseY, 10, 40);
+  textSize(20);
+  fill(100);
+  text(mouseX, 10, 20);
+  text(mouseY, 10, 40);
 }

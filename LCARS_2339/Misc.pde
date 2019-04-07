@@ -1,5 +1,11 @@
 boolean ggfdsakfj = false, ggfdsakfjd = false;
 
+void OneCircleButton(float x, float y, float widthb, float heightb) {
+  float w = widthb / 4, h = heightb / 4;
+  rect(x + (75) * w, y + (0) * h, w * 360, h * 165);
+  ellipse(x + (82) * w, y + (82) * h, w * 165, h * 165);
+}
+
 void Time(float x, float y, float w, float h, boolean twentyfourhr) {
   String minute = str(minute()), hour = str(hour()), second;
   if (minute() < 10) {

@@ -10,7 +10,7 @@ class panel {
     pc = panelcount;
     texts = textsb;
     for (int i = 0; i <= panelcount - 1; i++) {
-      colors[i] = color(random(50, 150), random(50, 150), random(200, 255));
+      colors[i] = color(random(20, 70), random(100, 200), random(200, 255));
     }
   }
   panel(float xb, float yb, float wb, float hb, float panelcount) {
@@ -24,7 +24,7 @@ class panel {
       texts[i] = floor(random(50, 99)) + "-" + floor(random(200000, 999999));
     }
     for (int i = 0; i <= panelcount - 1; i++) {
-      colors[i] = color(random(100, 150), random(100, 150), random(200, 255));
+      colors[i] = color(random(20, 70), random(100, 200), random(200, 255));
     }
   }
 
