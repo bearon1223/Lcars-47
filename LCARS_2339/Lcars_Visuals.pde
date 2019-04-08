@@ -1,3 +1,47 @@
+void CornerPeice(float x, float y, float widthb, float heightb) {
+  float w = widthb / 4, h = heightb / 4;
+  rect(x + (0) * w, y + (0) * h, w * 0, h * 0);
+  rect(x + (0) * w, y + (0) * h, w * 0, h * 0);
+  rect(x + (0) * w, y + (0) * h, w * 0, h * 0);
+  rect(x + (0) * w, y + (0) * h, w * 0, h * 0);
+  rect(x + (0) * w, y + (585) * h, w * 315, h * -270);
+  rect(x + (0) * w, y + (570) * h, w * 315, h * 30);
+  rect(x + (330) * w, y + (60) * h, w * 270, h * 255);
+  rect(x + (330) * w, y + (0) * h, w * 270, h * 60);
+  rect(x + (315) * w, y + (315) * h, w * 15, h * 90);
+  rect(x + (330) * w, y + (315) * h, w * 15, h * 60);
+  rect(x + (345) * w, y + (315) * h, w * 15, h * 30);
+  rect(x + (360) * w, y + (315) * h, w * 30, h * 15);
+  rect(x + (390) * w, y + (315) * h, w * 30, h * 15);
+  rect(x + (375) * w, y + (330) * h, w * -15, h * 15);
+  rect(x + (375) * w, y + (330) * h, w * 15, h * 15);
+  rect(x + (345) * w, y + (345) * h, w * 15, h * 0);
+  rect(x + (345) * w, y + (345) * h, w * 15, h * 15);
+  rect(x + (330) * w, y + (375) * h, w * 15, h * 15);
+  rect(x + (315) * w, y + (405) * h, w * 15, h * 15);
+  rect(x + (105) * w, y + (0) * h, w * 225, h * 315);
+  rect(x + (0) * w, y + (120) * h, w * 120, h * 195);
+  rect(x + (15) * w, y + (90) * h, w * 15, h * 30);
+  rect(x + (30) * w, y + (60) * h, w * 15, h * 30);
+  rect(x + (45) * w, y + (45) * h, w * 15, h * 15);
+  rect(x + (60) * w, y + (30) * h, w * 30, h * 15);
+  rect(x + (90) * w, y + (15) * h, w * 15, h * 15);
+  rect(x + (60) * w, y + (30) * h, w * 45, h * 90);
+  rect(x + (30) * w, y + (60) * h, w * 30, h * 60);
+  rect(x + (90) * w, y + (0) * h, w * 15, h * 15);
+  rect(x + (75) * w, y + (0) * h, w * 15, h * 15);
+  rect(x + (60) * w, y + (15) * h, w * 15, h * 15);
+  rect(x + (45) * w, y + (15) * h, w * 15, h * 15);
+  rect(x + (30) * w, y + (30) * h, w * 15, h * 15);
+  rect(x + (15) * w, y + (45) * h, w * 15, h * 30);
+  rect(x + (0) * w, y + (75) * h, w * 15, h * 45);
+  rect(x + (15) * w, y + (75) * h, w * 15, h * 15);
+  rect(x + (30) * w, y + (45) * h, w * 15, h * 15);
+  rect(x + (45) * w, y + (30) * h, w * 15, h * 15);
+  rect(x + (75) * w, y + (15) * h, w * 15, h * 15);
+}
+
+
 class panel {
   float x, y, w, h, pc;
   color[] colors = new color[100];

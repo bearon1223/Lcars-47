@@ -1,5 +1,6 @@
 boolean ggfdsakfj = false, ggfdsakfjd = false;
 
+
 void OneCircleButton(float x, float y, float widthb, float heightb) {
   float w = widthb / 4, h = heightb / 4;
   rect(x + (75) * w, y + (0) * h, w * 360, h * 165);
@@ -46,6 +47,7 @@ boolean Button(String stringtext, float x, float y, float w, float h, color c) {
   } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfj && !mousePressed) {
     ggfdsakfj = false;
     t = true;
+    click.play();
   }
   stroke(0);
   return t;
@@ -69,6 +71,7 @@ boolean Button(String stringtext, float x, float y, float wp, float hp, float w,
   } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfj && !mousePressed) {
     ggfdsakfj = false;
     t = true;
+    click.play();
   }
   stroke(0);
   return t;
@@ -81,6 +84,7 @@ boolean Button(float x, float y, float w, float h) {
   } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfjd && !mousePressed) {
     ggfdsakfjd = false;
     t = true;
+    click.play();
   }
   return t;
 }

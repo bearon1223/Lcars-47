@@ -20,6 +20,7 @@ class Login {
     if (((typed.equals(p) == true) || (typed.equals("cfopi"))) && key == ENTER && keyPressed) {
       scene = wc;
       println(wc);
+      click.play();
     } else if (typed.equals("debug") && key == ENTER && keyPressed) {
       scene = 400;
       println("debug");
