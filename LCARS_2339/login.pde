@@ -17,12 +17,13 @@ class Login {
   }
 
   void compare() {
-    if (((typed.equals(p) == true) || (typed.equals("cfopi"))) && key == ENTER && keyPressed) {
+    if (((typed.equals(p) == true) || (typed.equals("cfopi")||typed.equals("command function override pi"))) && key == ENTER && keyPressed) {
       scene = wc;
       println(wc);
-      click.play();
+      click.play(); 
     } else if (typed.equals("debug") && key == ENTER && keyPressed) {
       scene = 400;
+      click.play();
       println("debug");
     }
   }

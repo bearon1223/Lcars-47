@@ -10,14 +10,15 @@ float[] mSPScene = {2, 3, 4, 5, 6, 7, 8};
 float[] PanelDebugfloat = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
 SoundFile click;
 
-Login l = new Login(0, width / 2, height / 2, 1);
-panel d = new panel(200, 100, 100, height - 100, 10, PanelDebug);
-panel mSP = new panel(0, 0, 0, 0, 7, mSPText);
-panel sSP = new panel(0, 0, 0, 0, 8);
-panel tSP = new panel(0, 0, 0, 0, 2);
+Login  l = new Login(0, width / 2, height / 2, 1);
+panel  d = new panel(200, 100, 100, height - 100, 10, PanelDebug);
+panel  mSP = new panel(0, 0, 0, 0, 7, mSPText);
+panel  sSP = new panel(0, 0, 0, 0, 8);
+panel  tSP = new panel(0, 0, 0, 0, floor(random(2, 3)));
+panelS mSSP  = new panelS(0, 0, 0, 0, floor(random(5, 10)));
 
 void setup() {
-  size(900, 600);
+  size(1000, 500);
   surface.setResizable(true);
   surface.setTitle("Lcars: "+ (year() + 320));
   smooth(2);
@@ -44,15 +45,21 @@ void draw() {
   mSP.x = width / 5.2;
   mSP.h = height;
   mSP.w = width / 11.4;
-  
+
   sSP.x = width / 3.488372093023256;
   sSP.y = height / 2.2641509243396226;
   sSP.h = height - sSP.y;
   sSP.w = width / 11.25;
-  
+
   tSP.x = width / 3.488372093023256;
-  tSP.h = height / 4;
+  //tSP.h = height / 4;
+  tSP.h = sSP.y;
   tSP.w = width / 11.25;
+  
+  mSSP.x = sSP.x + sSP.w + width / 500;
+  mSSP.y = sSP.y - mSSP.h - height / 250;
+  mSSP.w = width - mSSP.x;
+  mSSP.h = height / 50;
   scenes();
   //textFont(og);
   //fill(255);

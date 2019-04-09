@@ -12,8 +12,15 @@ void scenes() {
     //image(temp, 0, 0, width, height);
     image(imgsur, width / 213, height / 142, width / 5.5, height / 4.1);
     image(logo, width / 56, height / 29, width / 6.4, height / 5.6);
+
     if (miniScreen == 1) {
       Time(width / 254, height / 2.0, width / 5.4, height / 5.5, true);
+    } else if (miniScreen == 2) {
+      textAlign(CENTER, CENTER);
+      fill(255);
+      textSize(HYPOTNUCE / 25);
+      text("FPS: "+floor(frameRate), width / 254, height / 2.0, width / 5.4, height / 5.5);
+      textAlign(CORNER, CORNER);
     }
 
     if (Button("54-875977", width / 180, height / 3.900, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, 1, color(20, 120, 200))) {
@@ -39,14 +46,17 @@ void scenes() {
       exit();
     }
     if (Button("SYS TIME", width / 180, height / 1.229, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, 1, color(252, 221, 12))) {
-      miniScreen = 1;
+      if (miniScreen != 1) {
+        miniScreen = 1;
+      } else if (miniScreen == 1) {
+        miniScreen = 0;
+      }
     }
     if (Button("LOCK", width / 180, height / 1.327, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, 1, color(0, 238, 235))) {
       scene = 0;
       l.typed = "";
     }
     if (Button("LCARS", width / 180, height / 1.449, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, 1, color(9, 42, 243))) {
-      miniScreen = 0;
       veiwScreen = 0;
     }
 
@@ -56,7 +66,16 @@ void scenes() {
       veiwScreen = 1;
     }
     if (Button("SYS INFO", width / 180 + width / 11.25 + width / 450, height / 1.327, width / 11.25, height / 18.75, color(0, 238, 235))) {
-      veiwScreen = 2;
+      if (veiwScreen != 2) {
+        veiwScreen = 2;
+      } else if (veiwScreen == 2) {
+        veiwScreen = 0;
+      }
+      if (miniScreen != 2) {
+        miniScreen = 2;
+      } else if (miniScreen == 2) {
+        miniScreen = 0;
+      }
     }
     if (Button("MODEL SEL", width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, color(9, 42, 243))) {
     }

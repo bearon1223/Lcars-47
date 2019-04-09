@@ -44,8 +44,8 @@ void CornerPeice(float x, float y, float widthb, float heightb) {
 
 class panel {
   float x, y, w, h, pc;
-  color[] colors = new color[100];
-  String[] texts = new String[1000];
+  color[] colors;
+  String[] texts;
   panel(float xb, float yb, float wb, float hb, float panelcount, String[] textsb) {
     x = xb;
     y = yb;
@@ -53,6 +53,7 @@ class panel {
     h = hb;
     pc = panelcount;
     texts = textsb;
+    colors = new color[int(panelcount)];
     for (int i = 0; i <= panelcount - 1; i++) {
       colors[i] = color(random(20, 70), random(100, 200), random(200, 255));
     }
@@ -63,7 +64,8 @@ class panel {
     w = wb;
     h = hb;
     pc = panelcount;
-    texts = new String[1000];
+    texts = new String[int(panelcount)];
+    colors = new color[int(panelcount)];
     for (int i = 0; i <= panelcount - 1; i++) {
       texts[i] = floor(random(50, 99)) + "-" + floor(random(200000, 999999));
     }
@@ -79,16 +81,16 @@ class panel {
       textAlign(CENTER, CENTER);
       textSize(HYPOTNUCE / 66);
       fill(colors[i]);
-      rect(x, y+((h / pc) * i), w, h / pc - (height / 300));
+      rect(x, y+((h / pc) * i), w, h / pc - (height / 250));
       fill(0);
-      text(texts[i], x, y + (h / pc) * i, w, h / pc - (height / 300));
+      text(texts[i], x, y + (h / pc) * i, w, h / pc - (height / 250));
       textAlign(CORNER, CORNER);
     }
   }
 
   void InteractiveV(float[] panelScene) {
     for (int i = 0; i <= pc - 1; i++) {
-      if (Button(x, y+((h / pc) * i), w, h / pc - (height / 300))) {
+      if (Button(x, y+((h / pc) * i), w, h / pc - (height / 250))) {
         veiwScreen = panelScene[i];
       }
     }
@@ -96,7 +98,70 @@ class panel {
 
   void InteractiveS(float[] panelScene) {
     for (int i = 0; i <= pc - 1; i++) {
-      if (Button(x, y+((h / pc) * i), w, h / pc - (height / 300))) {
+      if (Button(x, y+((h / pc) * i), w, h / pc - (height / 250))) {
+        scene = panelScene[i];
+      }
+    }
+  }
+}
+
+class panelS {
+  float x, y, w, h, pc;
+  color[] colors;
+  String[] texts;
+  panelS(float xb, float yb, float wb, float hb, float panelcount, String[] textsb) {
+    x = xb;
+    y = yb;
+    w = wb;
+    h = hb;
+    pc = panelcount;
+    texts = textsb;
+    colors = new color[int(panelcount)];
+    for (int i = 0; i <= panelcount - 1; i++) {
+      colors[i] = color(random(20, 70), random(100, 200), random(200, 255));
+    }
+  }
+  panelS(float xb, float yb, float wb, float hb, float panelcount) {
+    x = xb;
+    y = yb;
+    w = wb;
+    h = hb;
+    pc = panelcount;
+    colors = new color[int(panelcount)];
+    texts = new String[int(panelcount)];
+    for (int i = 0; i <= panelcount - 1; i++) {
+      texts[i] = floor(random(50, 99)) + "-" + floor(random(200000, 999999));
+    }
+    for (int i = 0; i <= panelcount - 1; i++) {
+      colors[i] = color(random(20, 70), random(100, 200), random(200, 255));
+    }
+  }
+
+  void render() {
+    fill(255);
+    //rect(x, y, w, h);
+    for (int i = 0; i <= pc - 1; i++) {
+      textAlign(CENTER, CENTER);
+      textSize(HYPOTNUCE / 170);
+      fill(colors[i]);
+      rect(x + ((w / pc) * i), y, w / pc - (width / 500), h);
+      fill(0);
+      text(texts[i], x + ((w / pc) * i), y, w / pc - (width / 500), h);
+      textAlign(CORNER, CORNER);
+    }
+  }
+
+  void InteractiveV(float[] panelScene) {
+    for (int i = 0; i <= pc - 1; i++) {
+      if (Button(x + ((w / pc) * i), y, w / pc - (width / 500), h)) {
+        veiwScreen = panelScene[i];
+      }
+    }
+  }
+
+  void InteractiveS(float[] panelScene) {
+    for (int i = 0; i <= pc - 1; i++) {
+      if (Button(x + ((w / pc) * i), y, w / pc - (width / 500), h)) {
         scene = panelScene[i];
       }
     }
