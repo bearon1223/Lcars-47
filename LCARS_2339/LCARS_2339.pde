@@ -9,7 +9,7 @@ float[] mSPView = {3, 4, 5, 6, 7, 8, 9};
 float[] mSPScene = {2, 3, 4, 5, 6, 7, 8};
 float[] PanelDebugfloat = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
 boolean isNotMuted = true;
-SoundFile click;
+SoundFile click, HF;
 
 Login  l = new Login(0, width / 2, height / 2, 1);
 panel  d = new panel(200, 100, 100, height - 100, 10, PanelDebug);
@@ -31,6 +31,7 @@ void setup() {
   f = loadFont("Lcars 47.vlw");
   og = loadFont("InaiMathi-48.vlw");
   click = new SoundFile(this, "207.wav");
+  HF = new SoundFile(this, "207.wav");
   surface.setIcon(icon);
 }
 

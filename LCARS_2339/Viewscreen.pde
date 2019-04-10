@@ -24,6 +24,7 @@ void viewScreen() {
     // COMMUNICATIONS
     mSSP.render();
     if (Button("Open Hailing Frequencies", mSSP.x, sSP.y, width / 5, height / 15, true, color(255))) {
+      HF.play();
     }
   }
   if (veiwScreen == 7) {
