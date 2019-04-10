@@ -33,13 +33,17 @@ void Time(float x, float y, float w, float h, boolean twentyfourhr) {
   }
 }
 
-boolean Button(String stringtext, float x, float y, float w, float h, color c) {
+boolean Button(String stringtext, float x, float y, float w, float h, boolean isRounded, color c) {
   boolean t = false;
   noStroke();
   fill(c);
   textAlign(CENTER, CENTER);
   textSize(HYPOTNUCE / 66);
-  rect(x, y, w, h);
+  if (!isRounded) {
+    rect(x, y, w, h, 0);
+  } else if (isRounded) {
+    rect(x, y, w, h, RATIOWH * 500);
+  }
   fill(0);
   text(stringtext, x, y, w, h);
   if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && !ggfdsakfj && mousePressed) {
@@ -47,23 +51,20 @@ boolean Button(String stringtext, float x, float y, float w, float h, color c) {
   } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfj && !mousePressed) {
     ggfdsakfj = false;
     t = true;
+    if(isNotMuted)
     click.play();
   }
   stroke(0);
   return t;
 }
 
-boolean Button(String stringtext, float x, float y, float wp, float hp, float w, float h, float n, color c) {
+boolean Button(String stringtext, float x, float y, float wp, float hp, float w, float h, color c) {
   boolean t = false;
   noStroke();
   fill(c);
   textAlign(CENTER, CENTER);
   textSize(HYPOTNUCE / 66);
-  if (n == 1) {
     OneCircleButton(x, y, wp, hp);
-  } else if (n == 2) {
-    rect(x, y, w, h, RATIOWH * 50);
-  }
   fill(0);
   text(stringtext, x, y, w, h);
   if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && !ggfdsakfj && mousePressed) {
@@ -71,6 +72,7 @@ boolean Button(String stringtext, float x, float y, float wp, float hp, float w,
   } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfj && !mousePressed) {
     ggfdsakfj = false;
     t = true;
+    if(isNotMuted)
     click.play();
   }
   stroke(0);
@@ -84,6 +86,7 @@ boolean Button(float x, float y, float w, float h) {
   } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfjd && !mousePressed) {
     ggfdsakfjd = false;
     t = true;
+    if(isNotMuted)
     click.play();
   }
   return t;

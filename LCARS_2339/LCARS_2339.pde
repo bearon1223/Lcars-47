@@ -8,6 +8,7 @@ String[] mSPText = {"SYS DIRECTORY", "AUX DIRECTORY", "MED DIRECTORY", "COMMUNIC
 float[] mSPView = {3, 4, 5, 6, 7, 8, 9};
 float[] mSPScene = {2, 3, 4, 5, 6, 7, 8};
 float[] PanelDebugfloat = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
+boolean isNotMuted = true;
 SoundFile click;
 
 Login  l = new Login(0, width / 2, height / 2, 1);

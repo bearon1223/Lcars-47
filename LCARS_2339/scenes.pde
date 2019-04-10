@@ -1,7 +1,11 @@
 float scene = 0, veiwScreen = 0, miniScreen = 0;
 void scenes() {
   if (scene == 0) {
-    image(logo, width / 4.5, height / 4, width / 1.8, height / 2);
+    fill(255);
+    //rect(width / 4.5 - 1, height / 4 - 1, width / 1.8 + 2, height / 2 + 2);
+    imageMode(CENTER);
+    image(logo, width / 2, height / 2, width / 3, height / 2);
+    imageMode(CORNER);
     l.type();
     l.render();
     l.compare();
@@ -23,49 +27,50 @@ void scenes() {
       textAlign(CORNER, CORNER);
     }
 
-    if (Button("54-875977", width / 180, height / 3.900, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, 1, color(20, 120, 200))) {
+    if (Button("54-875977", width / 180, height / 3.900, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(20, 120, 200))) {
     }
-    if (Button("34-873976", width / 180, height / 3.157, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, 1, color(16, 8, 179))) {
+    if (Button("34-873976", width / 180, height / 3.157, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(16, 8, 179))) {
     }
-    if (Button("92-438629", width / 180, height / 2.631, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, 1, color(15, 179, 232))) {
+    if (Button("92-438629", width / 180, height / 2.631, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(15, 179, 232))) {
     }
-    if (Button("47-384209", width / 180, height / 2.272, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, 1, color(72, 139, 239))) {
-    }
-
-
-    if (Button("25-752841", width / 180 + width / 11.25 + width / 450, height / 3.900, width / 11.25, height / 18.75, color(96, 137, 168))) {
-    }
-    if (Button("51-482361", width / 180 + width / 11.25 + width / 450, height / 3.157, width / 11.25, height / 18.75, color(252, 221, 12))) {
-    }
-    if (Button("37-589735", width / 180 + width / 11.25 + width / 450, height / 2.631, width / 11.25, height / 18.75, color(0, 238, 235))) {
-    }
-    if (Button("56-985324", width / 180 + width / 11.25 + width / 450, height / 2.272, width / 11.25, height / 18.75, color(9, 42, 243))) {
+    if (Button("47-384209", width / 180, height / 2.272, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(72, 139, 239))) {
     }
 
-    if (Button("Deactivate", width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, 1, color(96, 137, 168))) {
+
+    if (Button("25-752841", width / 180 + width / 11.25 + width / 450, height / 3.900, width / 11.25, height / 18.75, false, color(96, 137, 168))) {
+    }
+    if (Button("51-482361", width / 180 + width / 11.25 + width / 450, height / 3.157, width / 11.25, height / 18.75, false, color(252, 221, 12))) {
+    }
+    if (Button("37-589735", width / 180 + width / 11.25 + width / 450, height / 2.631, width / 11.25, height / 18.75, false, color(0, 238, 235))) {
+    }
+    if (Button("56-985324", width / 180 + width / 11.25 + width / 450, height / 2.272, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
+    }
+
+    if (Button("Deactivate", width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(96, 137, 168))) {
       exit();
     }
-    if (Button("SYS TIME", width / 180, height / 1.229, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, 1, color(252, 221, 12))) {
+    if (Button("SYS TIME", width / 180, height / 1.229, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(252, 221, 12))) {
       if (miniScreen != 1) {
         miniScreen = 1;
       } else if (miniScreen == 1) {
         miniScreen = 0;
       }
     }
-    if (Button("LOCK", width / 180, height / 1.327, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, 1, color(0, 238, 235))) {
+    if (Button("LOCK", width / 180, height / 1.327, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(0, 238, 235))) {
       scene = 0;
       l.typed = "";
     }
-    if (Button("LCARS", width / 180, height / 1.449, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, 1, color(9, 42, 243))) {
+    if (Button("LCARS", width / 180, height / 1.449, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(9, 42, 243))) {
       veiwScreen = 0;
     }
 
-    if (Button("ONLINE", width / 180 + width / 11.25 + width / 450, height / 1.142, width / 11.25, height / 18.75, color(96, 137, 168))) {
+    if (Button("ONLINE", width / 180 + width / 11.25 + width / 450, height / 1.142, width / 11.25, height / 18.75, false, color(96, 137, 168))) {
+      link("http://youtube.com");
     }
-    if (Button("SETTINGS", width / 180 + width / 11.25 + width / 450, height / 1.229, width / 11.25, height / 18.75, color(252, 221, 12))) {
+    if (Button("SETTINGS", width / 180 + width / 11.25 + width / 450, height / 1.229, width / 11.25, height / 18.75, false, color(252, 221, 12))) {
       veiwScreen = 1;
     }
-    if (Button("SYS INFO", width / 180 + width / 11.25 + width / 450, height / 1.327, width / 11.25, height / 18.75, color(0, 238, 235))) {
+    if (Button("SYS INFO", width / 180 + width / 11.25 + width / 450, height / 1.327, width / 11.25, height / 18.75, false, color(0, 238, 235))) {
       if (veiwScreen != 2) {
         veiwScreen = 2;
       } else if (veiwScreen == 2) {
@@ -77,7 +82,7 @@ void scenes() {
         miniScreen = 0;
       }
     }
-    if (Button("MODEL SEL", width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, color(9, 42, 243))) {
+    if (Button("MODEL SEL", width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
     }
 
     viewScreen();
@@ -86,7 +91,9 @@ void scenes() {
     mSP.render();
     mSP.InteractiveV(mSPView);
     sSP.render();
+    sSP.InteractiveV(new float[int(sSP.pc)]);
     tSP.render();
+    tSP.InteractiveV(new float[int(tSP.pc)]);
   } else if (scene == 400) {
     background(255);
     d.render();
@@ -98,7 +105,7 @@ void scenes() {
     text(frameRate, 10, 15);
     text(width + ", " + height, 10, 30);
     text("debug accessed", 10, 45);
-    if (Button("Return to Login", 10, 60, 100, 50, color(100))) {
+    if (Button("Return to Login", 10, 60, 100, 50, true, color(100))) {
       scene = 0;
       l.typed = "";
     }
