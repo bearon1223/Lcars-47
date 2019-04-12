@@ -39,9 +39,9 @@ boolean Button(String stringtext, float x, float y, float w, float h, boolean is
   fill(c);
   textAlign(CENTER, CENTER);
   textSize(HYPOTNUCE / 66);
-  if (!isRounded) {
+  if (quality == 0  || (quality == 2 && !isRounded)) {
     rect(x, y, w, h, 0);
-  } else if (isRounded) {
+  } else if (isRounded || quality == 1) {
     rect(x, y, w, h, RATIOWH * 500);
   }
   fill(0);
@@ -51,8 +51,8 @@ boolean Button(String stringtext, float x, float y, float w, float h, boolean is
   } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfj && !mousePressed) {
     ggfdsakfj = false;
     t = true;
-    if(isNotMuted)
-    click.play();
+    if (isNotMuted)
+      click.play();
   }
   stroke(0);
   return t;
@@ -64,7 +64,13 @@ boolean Button(String stringtext, float x, float y, float wp, float hp, float w,
   fill(c);
   textAlign(CENTER, CENTER);
   textSize(HYPOTNUCE / 66);
+  if (quality > 1) {
     OneCircleButton(x, y, wp, hp);
+  } else if(quality == 0){
+    rect(x, y, w, h);
+  } else if(quality == 1){
+    rect(x, y, w, h, RATIOWH*500);
+  }
   fill(0);
   text(stringtext, x, y, w, h);
   if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && !ggfdsakfj && mousePressed) {
@@ -72,8 +78,8 @@ boolean Button(String stringtext, float x, float y, float wp, float hp, float w,
   } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfj && !mousePressed) {
     ggfdsakfj = false;
     t = true;
-    if(isNotMuted)
-    click.play();
+    if (isNotMuted)
+      click.play();
   }
   stroke(0);
   return t;
@@ -86,8 +92,8 @@ boolean Button(float x, float y, float w, float h) {
   } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfjd && !mousePressed) {
     ggfdsakfjd = false;
     t = true;
-    if(isNotMuted)
-    click.play();
+    if (isNotMuted)
+      click.play();
   }
   return t;
 }

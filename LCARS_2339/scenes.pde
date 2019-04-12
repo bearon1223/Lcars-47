@@ -3,19 +3,30 @@ void scenes() {
   if (scene == 0) {
     fill(255);
     //rect(width / 4.5 - 1, height / 4 - 1, width / 1.8 + 2, height / 2 + 2);
-    imageMode(CENTER);
-    image(logo, width / 2, height / 2, width / 3, height / 2);
-    imageMode(CORNER);
+    if (quality == 2) {
+      imageMode(CENTER);
+      image(logo, width / 2, height / 2, width / 3, height / 2);
+      imageMode(CORNER);
+    } else if (quality != 2) {
+      fill(100, 100, 255);
+      ellipse(width / 2, height / 2, width / 3, height / 2);
+    }
     l.type();
     l.render();
     l.compare();
     fill(0, 150, 255);
     rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, 10);
     rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
+    v.updateStarCound();
   } else if (scene == 1) { 
     //image(temp, 0, 0, width, height);
-    image(imgsur, width / 213, height / 142, width / 5.5, height / 4.1);
-    image(logo, width / 56, height / 29, width / 6.4, height / 5.6);
+    if (quality != 0) {
+      image(imgsur, width / 213, height / 142, width / 5.5, height / 4.1);
+      image(logo, width / 56, height / 29, width / 6.4, height / 5.6);
+    } else if (quality == 0) {
+      fill(100, 100, 255);
+      ellipse(width / 213 + ((width / 5.5)/2), height / 142 + ((height / 4.1)/2), width / 6.5, height / 5.1);
+    }
 
     if (miniScreen == 1) {
       Time(width / 254, height / 2.0, width / 5.4, height / 5.5, true);
@@ -82,10 +93,24 @@ void scenes() {
         miniScreen = 0;
       }
     }
-    if (Button("MODEL SEL", width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
+    viewScreen();
+    if (quality == 2) {
+      if (Button("Exteriror", width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
+        if (veiwScreen != 10) {
+        veiwScreen = 10;
+      } else if (veiwScreen == 10) {
+        veiwScreen = 0;
+      }
+      }
+    } else if (quality != 2) {
+      if (Button("MODEL SEQ", width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
+        textAlign(CENTER, CENTER);
+        fill(255);
+        text("Not Available", width / 2, height / 2);
+      }
     }
 
-    viewScreen();
+    
     stroke(0);
     textAlign(CENTER, CENTER);
     mSP.render();

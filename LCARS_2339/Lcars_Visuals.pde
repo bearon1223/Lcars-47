@@ -167,3 +167,51 @@ class panelS {
     }
   }
 }
+
+class viewScreen {
+  float x, y, w, h, sT, starAmount;
+  float[] offx = new float[50], offy = new float[50];
+  viewScreen(float screenType) {
+    sT = screenType;
+    if (quality == 0) {
+      starAmount = 50;
+    }
+    if (quality == 1) {
+      starAmount = 100;
+    }
+    if (quality == 2) {
+      starAmount = 500;
+    }
+  }
+
+  void updateStarCound() {
+    if (quality == 0) {
+      starAmount = 100;
+    }
+    if (quality == 1) {
+      starAmount = 500;
+    }
+    if (quality == 2) {
+      starAmount = 1000;
+    }
+    offx = new float[int(starAmount)];
+    offy = new float[int(starAmount)];
+    generateStars();
+  }
+
+  void generateStars() {
+    for (int i = 0; i <= starAmount - 1; i++) {
+      offx[i] = random(0, w);
+      offy[i] = random(0, h);
+    }
+  }
+
+  void render() {
+    if (sT == 0) {
+      for (int i = 0; i <= starAmount - 1; i++) {
+        fill(255);
+        ellipse(x + (offx[i] * (width / 1000.0)), y + (offy[i] * (height / 500.0)), width / 500, height / 250);
+      }
+    }
+  }
+}
