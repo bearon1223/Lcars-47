@@ -57,31 +57,31 @@ void scenes() {
     if (Button("56-985324", width / 180 + width / 11.25 + width / 450, height / 2.272, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
     }
 
-    if (Button("Deactivate", width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(96, 137, 168))) {
+    if (Button(mainText[18], width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(96, 137, 168))) {
       exit();
     }
-    if (Button("SYS TIME", width / 180, height / 1.229, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(252, 221, 12))) {
+    if (Button(mainText[17], width / 180, height / 1.229, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(252, 221, 12))) {
       if (miniScreen != 1) {
         miniScreen = 1;
       } else if (miniScreen == 1) {
         miniScreen = 0;
       }
     }
-    if (Button("LOCK", width / 180, height / 1.327, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(0, 238, 235))) {
+    if (Button(mainText[10], width / 180, height / 1.327, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(0, 238, 235))) {
       scene = 0;
       l.typed = "";
     }
-    if (Button("LCARS", width / 180, height / 1.449, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(9, 42, 243))) {
+    if (Button(mainText[11], width / 180, height / 1.449, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(9, 42, 243))) {
       veiwScreen = 0;
     }
 
-    if (Button("ONLINE", width / 180 + width / 11.25 + width / 450, height / 1.142, width / 11.25, height / 18.75, false, color(96, 137, 168))) {
+    if (Button(mainText[12], width / 180 + width / 11.25 + width / 450, height / 1.142, width / 11.25, height / 18.75, false, color(96, 137, 168))) {
       link("http://youtube.com");
     }
-    if (Button("SETTINGS", width / 180 + width / 11.25 + width / 450, height / 1.229, width / 11.25, height / 18.75, false, color(252, 221, 12))) {
+    if (Button(mainText[13], width / 180 + width / 11.25 + width / 450, height / 1.229, width / 11.25, height / 18.75, false, color(252, 221, 12))) {
       veiwScreen = 1;
     }
-    if (Button("SYS INFO", width / 180 + width / 11.25 + width / 450, height / 1.327, width / 11.25, height / 18.75, false, color(0, 238, 235))) {
+    if (Button(mainText[14], width / 180 + width / 11.25 + width / 450, height / 1.327, width / 11.25, height / 18.75, false, color(0, 238, 235))) {
       if (veiwScreen != 2) {
         veiwScreen = 2;
       } else if (veiwScreen == 2) {
@@ -95,22 +95,19 @@ void scenes() {
     }
     viewScreen();
     if (quality == 2) {
-      if (Button("Exteriror", width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
+      if (Button(mainText[15], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
         if (veiwScreen != 10) {
-        veiwScreen = 10;
-      } else if (veiwScreen == 10) {
-        veiwScreen = 0;
-      }
+          veiwScreen = 10;
+        } else if (veiwScreen == 10) {
+          veiwScreen = 0;
+        }
       }
     } else if (quality != 2) {
-      if (Button("MODEL SEQ", width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
-        textAlign(CENTER, CENTER);
-        fill(255);
-        text("Not Available", width / 2, height / 2);
+      if (Button(mainText[16], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
       }
     }
 
-    
+
     stroke(0);
     textAlign(CENTER, CENTER);
     mSP.render();

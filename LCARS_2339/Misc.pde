@@ -66,9 +66,9 @@ boolean Button(String stringtext, float x, float y, float wp, float hp, float w,
   textSize(HYPOTNUCE / 66);
   if (quality > 1) {
     OneCircleButton(x, y, wp, hp);
-  } else if(quality == 0){
+  } else if (quality == 0) {
     rect(x, y, w, h);
-  } else if(quality == 1){
+  } else if (quality == 1) {
     rect(x, y, w, h, RATIOWH*500);
   }
   fill(0);

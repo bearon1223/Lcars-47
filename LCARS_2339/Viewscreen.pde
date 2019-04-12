@@ -6,10 +6,9 @@ void viewScreen() {
       v.render();
     }
     mSSP.render();
-  }
-  if (veiwScreen == 1) {
+  } else if (veiwScreen == 1) {
     mSSP.render();
-    if (Button("Sound: "+isNotMuted, sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250, width / 10, height / 18.75, true, color(20, 200, 255))) {
+    if (Button(mainText[0]+isNotMuted, sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250, width / 10, height / 18.75, true, color(20, 200, 255))) {
       if (isNotMuted) {
         isNotMuted = false;
       } else {
@@ -17,15 +16,15 @@ void viewScreen() {
       }
       save();
     }
-    if (Button("Low Quality", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250 + (height / 18.75 + height / 250) * 1, width / 10, height / 18.75, true, color(17, 58, 174))) {
+    if (Button(mainText[1], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250 + (height / 18.75 + height / 250) * 1, width / 10, height / 18.75, true, color(17, 58, 174))) {
       quality = 0;
       save();
     }
-    if (Button("Medium Quality", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250 + (height / 18.75 + height / 250) * 2, width / 10, height / 18.75, true, color(255, 214, 20))) {
+    if (Button(mainText[2], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250 + (height / 18.75 + height / 250) * 2, width / 10, height / 18.75, true, color(255, 214, 20))) {
       quality = 1;
       save();
     }
-    if (Button("High Quality", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 3, width / 10, height / 18.75, true, color(102, 155, 243))) {
+    if (Button(mainText[3], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 3, width / 10, height / 18.75, true, color(102, 155, 243))) {
       quality = 2;
       save();
     }
@@ -41,40 +40,49 @@ void viewScreen() {
     }
     fill(0);
     if (quality == 2) {
-      text("Current Quality: High", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 4, width / (6+(2/3)), height / 18.75);
+      text(mainText[4], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 4, width / (6+(2/3)), height / 18.75);
     }
     if (quality == 1) {
-      text("Current Quality: Med", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 4, width / (6+(2/3)), height / 18.75);
+      text(mainText[5], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 4, width / (6+(2/3)), height / 18.75);
     }
     if (quality == 0) {
-      text("Current Quality: Low", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 4, width / (6+(2/3)), height / 18.75);
+      text(mainText[6], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 4, width / (6+(2/3)), height / 18.75);
     }
-  }
-  if (veiwScreen == 2) {
+
+    if (Button(mainText[7], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 5, width / 10, height / 18.75, true, color(18, 97, 196))) {
+      veiwScreen = 11;
+    }
+  } else if (veiwScreen == 2) {
     mSSP.render();
-  }
-  if (veiwScreen == 4) {
-  }
-  if (veiwScreen == 5) {
+  } else if (veiwScreen == 4) {
+  } else if (veiwScreen == 5) {
     mSSP.render();
-  }
-  if (veiwScreen == 6) {
+  } else if (veiwScreen == 6) {
     // COMMUNICATIONS
     mSSP.render();
-    if (Button("Open Hailing Frequencies", mSSP.x, sSP.y, width / 5, height / 15, true, color(255))) {
+    if (Button(mainText[8], mSSP.x, sSP.y, width / 5, height / 15, true, color(255))) {
       if (isNotMuted) {
         HF.play();
       }
     }
-  }
-  if (veiwScreen == 7) {
-  }
-  if (veiwScreen == 8) {
-  }
-  if (veiwScreen == 9) {
-  }
-  if (veiwScreen == 10) {
+  } else if (veiwScreen == 7) {
+  } else if (veiwScreen == 8) {
+  } else if (veiwScreen == 9) {
+  } else if (veiwScreen == 10) {
     mSSP.render();
     v.render();
+  } else if (veiwScreen == 11) {
+    mSSP.render();
+    if (Button("English", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 1, width / 10, height / 18.75, true, color(18, 97, 196))) {
+      loadLang(LANG_US);
+      LANGUAGE = 0;
+    }
+    if (Button("Japanese", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 2, width / 10, height / 18.75, true, color(18, 97, 196))) {
+      LANGUAGE = 1;
+      loadLang(LANG_JP);
+    }
+    if (Button(mainText[9], sSP.x + sSP.w + width / 500, height - height / 18.75 - height / 250, width / 10, height / 18.75, true, color(18, 97, 196))) {
+      veiwScreen = 1;
+    }
   }
 }
