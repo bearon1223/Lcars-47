@@ -210,7 +210,7 @@ class viewScreen {
     if (sT == 0) {
       for (int i = 0; i <= starAmount - 1; i++) {
         fill(255);
-        ellipse(x + (offx[i] * (width / 1000.0)), y + (offy[i] * (height / 500.0)), width / 500, height / 250);
+        ellipse(x + (offx[i] * (width / 1000.0)), y + (offy[i] * (height / 500.0)), 2, 2);
       }
     }
   }

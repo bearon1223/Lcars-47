@@ -2,6 +2,7 @@ import processing.sound.*;
 
 PImage logo, icon, temp, imgsur, standby;
 PFont f, og;
+boolean debugPressed = false;
 float RATIOWH = 100, HYPOTNUCE = 100, totalTextFiles = 19;
 String[] PanelDebug = {"test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"};
 String[] mSPText = {"SYS DIRECTORY", "AUX DIRECTORY", "MED DIRECTORY", "COMMUNICATIONS", "STELLAR CHART", "MISSION OPS", "DATABASE"};
@@ -122,4 +123,10 @@ void draw() {
   //ellipse(mouseX, mouseY, 5, 1);
   pwidth = width;
   pheight = height;
+  if (mousePressed && !debugPressed) {
+    println("Veiwscreen: "+veiwScreen+"\nMiniscreen: "+miniScreen+"\nCurrent Scene: "+scene);
+    debugPressed = true;
+  } else if (!mousePressed && debugPressed) {
+    debugPressed = false;
+  }
 }
