@@ -1,3 +1,6 @@
+float tempquality = 0;
+boolean tempisNotMuted = false;
+
 void viewScreen() {
   if (veiwScreen == 0) {
     if (quality == 2) {
@@ -9,24 +12,20 @@ void viewScreen() {
   } else if (veiwScreen == 1) {
     mSSP.render();
     if (Button(mainText[0]+isNotMuted, sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250, width / 10, height / 18.75, true, color(20, 200, 255))) {
-      if (isNotMuted) {
-        isNotMuted = false;
+      if (tempisNotMuted) {
+        tempisNotMuted = false;
       } else {
-        isNotMuted = true;
+        tempisNotMuted = true;
       }
-      save();
     }
-    if (Button(mainText[1], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250 + (height / 18.75 + height / 250) * 1, width / 10, height / 18.75, true, color(17, 58, 174))) {
-      quality = 0;
-      save();
+    if (Button(mainText[1], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250 + (height / 18.75 + height / 250) * 1, width / 10, height / 18.75, true, color(32, 177, 219))) {
+      tempquality = 0;
     }
     if (Button(mainText[2], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250 + (height / 18.75 + height / 250) * 2, width / 10, height / 18.75, true, color(255, 214, 20))) {
-      quality = 1;
-      save();
+      tempquality = 1;
     }
     if (Button(mainText[3], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 3, width / 10, height / 18.75, true, color(102, 155, 243))) {
-      quality = 2;
-      save();
+      tempquality = 2;
     }
 
     v.updateStarCound();
@@ -39,22 +38,45 @@ void viewScreen() {
       rect(sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 4, width / (6+(2/3)), height / 18.75, 0);
     }
     fill(0);
-    if (quality == 2) {
+    if (tempquality == 2) {
       text(mainText[4], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 4, width / (6+(2/3)), height / 18.75);
     }
-    if (quality == 1) {
+    if (tempquality == 1) {
       text(mainText[5], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 4, width / (6+(2/3)), height / 18.75);
     }
-    if (quality == 0) {
+    if (tempquality == 0) {
       text(mainText[6], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 4, width / (6+(2/3)), height / 18.75);
     }
 
-    if (Button(mainText[7], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 5, width / 10, height / 18.75, true, color(18, 97, 196))) {
+    if (Button(mainText[7], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 5, width / 10, height / 18.75, true, color(52, 124, 212))) {
       veiwScreen = 11;
     }
+    if (Button(mainText[27]+fullscreen, sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 6, width / 5, height / 18.75, true, color(52, 124, 212))) {
+      if (!fullscreen) {
+        fullscreen = true;
+      } else {
+        fullscreen = false;
+      }
+    }
+    
+    if (Button(mainText[28], sSP.x + sSP.w + width / 500, height - height / 18.75 - height / 250, width / 10, height / 18.75, true, color(18, 97, 196))) {
+      quality = tempquality;
+      isNotMuted = tempisNotMuted;
+      save();
+    }
+    
   } else if (veiwScreen == 2) {
     mSSP.render();
-  } else if (veiwScreen == 4) {
+  } else if (veiwScreen == 3) {
+    mSSP.render();
+    if (Button(mainText[26], mSSP.x, sSP.y, width / 10, height / 15, true, color(255))) {
+      scene = 2;
+      v.x = 0;
+      v.y = 0;
+      v.w = width;
+      v.h = height;
+      v.updateStarCound();
+    }
   } else if (veiwScreen == 5) {
     mSSP.render();
   } else if (veiwScreen == 6) {
@@ -77,7 +99,7 @@ void viewScreen() {
       loadLang(LANG_US);
       LANGUAGE = 0;
     }
-    if (Button("Japanese", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 2, width / 10, height / 18.75, true, color(18, 97, 196))) {
+    if (Button("Japanese", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 2, width / 10, height / 18.75, true, color(235, 178, 67))) {
       LANGUAGE = 1;
       loadLang(LANG_JP);
     }

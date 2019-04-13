@@ -20,6 +20,11 @@ class Login {
     if (((typed.equals(p) == true) || (typed.equals("cfopi") || typed.equals("command function override pi"))) && key == ENTER && keyPressed) {
       scene = wc;
       println(wc);
+      v.x = mSSP.x;
+      v.y = sSP.y;
+      v.w = mSSP.w - width / 500;
+      v.h = sSP.h - height / 250;
+      v.updateStarCound();
       if (isNotMuted) {
         click.play();
       }

@@ -11,6 +11,7 @@ void scenes() {
       fill(100, 100, 255);
       ellipse(width / 2, height / 2, width / 3, height / 2);
     }
+
     l.type();
     l.render();
     l.compare();
@@ -27,6 +28,12 @@ void scenes() {
       fill(100, 100, 255);
       ellipse(width / 213 + ((width / 5.5)/2), height / 142 + ((height / 4.1)/2), width / 6.5, height / 5.1);
     }
+
+    v.x = mSSP.x;
+    v.y = sSP.y;
+    v.w = mSSP.w - width / 500;
+    v.h = sSP.h - height / 250;
+    v.multipier = 1;
 
     if (miniScreen == 1) {
       Time(width / 254, height / 2.0, width / 5.4, height / 5.5, true);
@@ -116,6 +123,21 @@ void scenes() {
     sSP.InteractiveV(new float[int(sSP.pc)]);
     tSP.render();
     tSP.InteractiveV(new float[int(tSP.pc)]);
+  } else if (scene == 2) {
+    v.x = 0;
+    v.y = 0;
+    v.w = width;
+    v.h = height;
+    v.multipier = 2;
+    v.render();
+    if (Button(mainText[9], width - width / 10 - width / 500, height - height / 18.75 - height / 250, width / 10, height / 18.75, true, color(18, 97, 196))) {
+      scene = 1;
+      v.x = mSSP.x;
+      v.y = sSP.y;
+      v.w = mSSP.w - width / 500;
+      v.h = sSP.h - height / 250;
+      v.updateStarCound();
+    }
   } else if (scene == 400) {
     background(255);
     d.render();

@@ -3,16 +3,17 @@ import processing.sound.*;
 PImage logo, icon, temp, imgsur, standby;
 PFont f, og;
 boolean debugPressed = false;
-float RATIOWH = 100, HYPOTNUCE = 100, totalTextFiles = 19;
+float RATIOWH = 100, HYPOTNUCE = 100;
 String[] PanelDebug = {"test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"};
 String[] mSPText = {"SYS DIRECTORY", "AUX DIRECTORY", "MED DIRECTORY", "COMMUNICATIONS", "STELLAR CHART", "MISSION OPS", "DATABASE"};
 float[] mSPView = {3, 4, 5, 6, 7, 8, 9};
 float[] mSPScene = {2, 3, 4, 5, 6, 7, 8};
 float[] PanelDebugfloat = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
 boolean isNotMuted = true;
+boolean fullscreen = false;
 float quality = 2;  
 SoundFile click, HF;
-String[] mainText = new String[int(totalTextFiles)];
+String[] mainText = new String[int(1000)];
 
 static final String CONFIG_FILE = "config.dat";
 static final String LANG_US = "lang_us", LANG_JP = "lang_jp";
@@ -26,10 +27,17 @@ panel  tSP = new panel(0, 0, 0, 0, floor(random(2, 3)));
 panelS mSSP  = new panelS(0, 0, 0, 0, floor(random(5, 10)));
 viewScreen v = new viewScreen(0);
 float pwidth = 1000, pheight = 500;
+void settings() {
+  load();
+  if (!fullscreen) {
+    size(1000, 500);
+  } else {
+    fullScreen();
+  }
+}
 
 void setup() {
-  size(1000, 500);
-  load();
+
   surface.setResizable(true);
   surface.setTitle("Lcars: "+ (year() + 320));
   smooth(2);
@@ -52,17 +60,20 @@ void setup() {
 
 void loadLang(String currentLang) {
   String[] lines = loadStrings(currentLang + ".dat");
-  for (int i = 0; i <= totalTextFiles - 1; i++) {
+  for (int i = 0; i <= 19 - 1; i++) {
     mainText[i] = lines[i];
   }
   for (int i = 0; i <= mSPText.length - 1; i++) {
     mSPText[i] = lines[i + 19];
   }
+  for (int i = 0; i <= 3 - 1; i++) {
+    mainText[i + 26] = lines[i + 26];
+  }
 }
 
 void save() {
   String[] lines = {
-    str(quality), str(isNotMuted), str(LANGUAGE)
+    str(quality), str(isNotMuted), str(LANGUAGE), str(fullscreen)
   };
   saveStrings(dataFile(CONFIG_FILE), lines);
 }
@@ -72,7 +83,10 @@ void load() {
   String[] lines = loadStrings(CONFIG_FILE);
   quality = float(lines[0]);
   isNotMuted = boolean(lines[1]);
+  tempquality = float(lines[0]);
+  tempisNotMuted = boolean(lines[1]);
   LANGUAGE = float(lines[2]);
+  fullscreen = boolean(lines[3]);
 }
 
 void draw() {
@@ -108,25 +122,7 @@ void draw() {
   mSSP.w = width - mSSP.x;
   mSSP.h = height / 50;
 
-  v.x = mSSP.x;
-  v.y = sSP.y;
-  v.w = mSSP.w - width / 500;
-  v.h = sSP.h - height / 250;
-
   scenes();
-  //textFont(og);
-  //fill(255);
-  //text(mouseX, 30, 50);
-  //text(mouseY, 30, 100);
-  //noCursor();
-  //stroke(255);
-  //ellipse(mouseX, mouseY, 5, 1);
   pwidth = width;
   pheight = height;
-  if (mousePressed && !debugPressed) {
-    println("Veiwscreen: "+veiwScreen+"\nMiniscreen: "+miniScreen+"\nCurrent Scene: "+scene);
-    debugPressed = true;
-  } else if (!mousePressed && debugPressed) {
-    debugPressed = false;
-  }
 }

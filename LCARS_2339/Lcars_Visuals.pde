@@ -1,47 +1,3 @@
-void CornerPeice(float x, float y, float widthb, float heightb) {
-  float w = widthb / 4, h = heightb / 4;
-  rect(x + (0) * w, y + (0) * h, w * 0, h * 0);
-  rect(x + (0) * w, y + (0) * h, w * 0, h * 0);
-  rect(x + (0) * w, y + (0) * h, w * 0, h * 0);
-  rect(x + (0) * w, y + (0) * h, w * 0, h * 0);
-  rect(x + (0) * w, y + (585) * h, w * 315, h * -270);
-  rect(x + (0) * w, y + (570) * h, w * 315, h * 30);
-  rect(x + (330) * w, y + (60) * h, w * 270, h * 255);
-  rect(x + (330) * w, y + (0) * h, w * 270, h * 60);
-  rect(x + (315) * w, y + (315) * h, w * 15, h * 90);
-  rect(x + (330) * w, y + (315) * h, w * 15, h * 60);
-  rect(x + (345) * w, y + (315) * h, w * 15, h * 30);
-  rect(x + (360) * w, y + (315) * h, w * 30, h * 15);
-  rect(x + (390) * w, y + (315) * h, w * 30, h * 15);
-  rect(x + (375) * w, y + (330) * h, w * -15, h * 15);
-  rect(x + (375) * w, y + (330) * h, w * 15, h * 15);
-  rect(x + (345) * w, y + (345) * h, w * 15, h * 0);
-  rect(x + (345) * w, y + (345) * h, w * 15, h * 15);
-  rect(x + (330) * w, y + (375) * h, w * 15, h * 15);
-  rect(x + (315) * w, y + (405) * h, w * 15, h * 15);
-  rect(x + (105) * w, y + (0) * h, w * 225, h * 315);
-  rect(x + (0) * w, y + (120) * h, w * 120, h * 195);
-  rect(x + (15) * w, y + (90) * h, w * 15, h * 30);
-  rect(x + (30) * w, y + (60) * h, w * 15, h * 30);
-  rect(x + (45) * w, y + (45) * h, w * 15, h * 15);
-  rect(x + (60) * w, y + (30) * h, w * 30, h * 15);
-  rect(x + (90) * w, y + (15) * h, w * 15, h * 15);
-  rect(x + (60) * w, y + (30) * h, w * 45, h * 90);
-  rect(x + (30) * w, y + (60) * h, w * 30, h * 60);
-  rect(x + (90) * w, y + (0) * h, w * 15, h * 15);
-  rect(x + (75) * w, y + (0) * h, w * 15, h * 15);
-  rect(x + (60) * w, y + (15) * h, w * 15, h * 15);
-  rect(x + (45) * w, y + (15) * h, w * 15, h * 15);
-  rect(x + (30) * w, y + (30) * h, w * 15, h * 15);
-  rect(x + (15) * w, y + (45) * h, w * 15, h * 30);
-  rect(x + (0) * w, y + (75) * h, w * 15, h * 45);
-  rect(x + (15) * w, y + (75) * h, w * 15, h * 15);
-  rect(x + (30) * w, y + (45) * h, w * 15, h * 15);
-  rect(x + (45) * w, y + (30) * h, w * 15, h * 15);
-  rect(x + (75) * w, y + (15) * h, w * 15, h * 15);
-}
-
-
 class panel {
   float x, y, w, h, pc;
   color[] colors;
@@ -169,8 +125,8 @@ class panelS {
 }
 
 class viewScreen {
-  float x, y, w, h, sT, starAmount;
-  float[] offx = new float[50], offy = new float[50];
+  float x, y, w, h, sT, starAmount, multipier;
+  float[] offx = new float[50], offy = new float[50], offs = new float[50];
   viewScreen(float screenType) {
     sT = screenType;
     if (quality == 0) {
@@ -196,6 +152,7 @@ class viewScreen {
     }
     offx = new float[int(starAmount)];
     offy = new float[int(starAmount)];
+    offs = new float[int(starAmount)];
     generateStars();
   }
 
@@ -203,6 +160,7 @@ class viewScreen {
     for (int i = 0; i <= starAmount - 1; i++) {
       offx[i] = random(0, w);
       offy[i] = random(0, h);
+      offs[i] = random(0.75, 3);
     }
   }
 
@@ -210,7 +168,7 @@ class viewScreen {
     if (sT == 0) {
       for (int i = 0; i <= starAmount - 1; i++) {
         fill(255);
-        ellipse(x + (offx[i] * (width / 1000.0)), y + (offy[i] * (height / 500.0)), 2, 2);
+        ellipse(x + (offx[i] * (width / 1000.0)), y + (offy[i] * (height / 500.0)), offs[i] * multipier, offs[i] * multipier);
       }
     }
   }
