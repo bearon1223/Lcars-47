@@ -24,7 +24,9 @@ panel  d = new panel(200, 100, 100, height - 100, 10, PanelDebug);
 panel  mSP = new panel(0, 0, 0, 0, 7, mSPText);
 panel  sSP = new panel(0, 0, 0, 0, 8);
 panel  tSP = new panel(0, 0, 0, 0, floor(random(2, 3)));
+panel  cMP = new panel(0, 0, 0, 0, 4);
 panelS mSSP  = new panelS(0, 0, 0, 0, floor(random(5, 10)));
+panelS cMSP  = new panelS(0, 0, 0, 0, 3);
 viewScreen v = new viewScreen(0);
 float pwidth = 1000, pheight = 500;
 void settings() {
@@ -66,7 +68,7 @@ void loadLang(String currentLang) {
   for (int i = 0; i <= mSPText.length - 1; i++) {
     mSPText[i] = lines[i + 19];
   }
-  for (int i = 0; i <= 3 - 1; i++) {
+  for (int i = 0; i <= 4 - 1; i++) {
     mainText[i + 26] = lines[i + 26];
   }
 }
@@ -124,6 +126,16 @@ void draw() {
   mSSP.y = sSP.y - mSSP.h - height / 250;
   mSSP.w = width - mSSP.x;
   mSSP.h = height / 50;
+  
+  cMP.x = mSSP.x + sSP.w;
+  cMP.y = mSSP.y + height / 8;
+  cMP.w = sSP.w;
+  cMP.h = sSP.h / 2;
+  
+  cMSP.x = cMP.x + cMP.w;
+  cMSP.y = cMP.y;
+  cMSP.w = width / 5;
+  cMSP.h = width / 100;
 
   scenes();
   pwidth = width;

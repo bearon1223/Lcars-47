@@ -86,6 +86,7 @@ void viewScreen() {
       if (isNotMuted) {
         HF.play();
       }
+      veiwScreen = 12;
     }
   } else if (veiwScreen == 7) {
   } else if (veiwScreen == 8) {
@@ -106,5 +107,9 @@ void viewScreen() {
     if (Button(mainText[9], sSP.x + sSP.w + width / 500, height - height / 18.75 - height / 250, width / 10, height / 18.75, true, color(18, 97, 196))) {
       veiwScreen = 1;
     }
+  } else if (veiwScreen == 12){
+    mSSP.render();
+    cMP.render();
+    cMSP.render();
   }
 }

@@ -18,7 +18,7 @@ void scenes() {
     rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
     fill(255);
     textAlign(CORNER, CORNER);
-    text("Credits\nCreator: Aron\nDesigner: Aron\nInsperation: Lcars47.com\nBased off Star Trek (c)CBS", 2, height / 10, width - 4, height / 1.1 - height / 20);
+    text("Credits\nCreator: Codeing Network\nDesigner: Codeing Network\nInsperation: Lcars47.com\nBased off Star Trek (c)CBS", 2, height / 10, width - 4, height / 1.1 - height / 20);
     if (exit.timercalc()) {
       exit();
     }
