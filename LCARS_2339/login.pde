@@ -33,7 +33,7 @@ class Login {
       click.play();
       println("debug");
     } else if (typed.equals("exit") && key == ENTER && keyPressed) {
-      exit();
+      scene = -2;
     }
   }
 
@@ -56,6 +56,5 @@ class Login {
     textSize(HYPOTNUCE / 25);
     textAlign(CENTER, CENTER);
     text(typed, x, y);
-    textAlign(CORNER, CORNER);
   }
 }

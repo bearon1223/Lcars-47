@@ -1,6 +1,46 @@
-float scene = 0, veiwScreen = 0, miniScreen = 0;
+float scene = -1, veiwScreen = 0, miniScreen = 0, logoZoomin = width;
+
+timer exit = new timer("exit", 500, 1.1, 5);
+timer start = new timer("start", 500, 1.1, 5);
+
 void scenes() {
-  if (scene == 0) {
+  if (scene == -2) {
+    background(0);
+    if (logoZoomin >= 10) {
+      logoZoomin -= width / 1000.0;
+    }
+    textSize(HYPOTNUCE / 25);
+    imageMode(CENTER);
+    image(logo, width / 1.3, height / 2, width / (logoZoomin / 3), height / (logoZoomin  / 4));
+    imageMode(CORNER);
+    fill(235, 178, 67);
+    rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, 10);
+    rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
+    fill(255);
+    textAlign(CORNER, CORNER);
+    text("Credits\nCreator: Aron\nDesigner: Aron\nInsperation: Lcars47.com\nBased off Star Trek (c)CBS", 2, height / 10, width - 4, height / 1.1 - height / 20);
+    if (exit.timercalc()) {
+      exit();
+    }
+    exit.render();
+    textAlign(CENTER, CENTER);
+  } else if (scene == -1) {
+    textSize(HYPOTNUCE / 25);
+    background(0);
+    textAlign(CORNER, CORNER);
+    fill(235, 178, 67);
+    rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, 10);
+    rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
+    fill(0, 150, 255);
+    text("Lcars 47 Database Access Codes:\nBase Codes: omega-alpha-nine \nCommand Codes: alpha-delta-tango", width / 500, height / 10, width - width / 500, height - height / 20);
+
+    if (start.timercalc()) {
+      scene = 0;
+    }
+    start.render();
+
+    textAlign(CENTER, CENTER);
+  } else if (scene == 0) {
     fill(255);
     //rect(width / 4.5 - 1, height / 4 - 1, width / 1.8 + 2, height / 2 + 2);
     if (quality == 2) {
@@ -42,7 +82,6 @@ void scenes() {
       fill(255);
       textSize(HYPOTNUCE / 25);
       text("FPS: "+floor(frameRate), width / 254, height / 2.0, width / 5.4, height / 5.5);
-      textAlign(CORNER, CORNER);
     }
 
     if (Button("54-875977", width / 180, height / 3.900, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(20, 120, 200))) {
@@ -65,7 +104,7 @@ void scenes() {
     }
 
     if (Button(mainText[18], width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(96, 137, 168))) {
-      exit();
+      scene = -2;
     }
     if (Button(mainText[17], width / 180, height / 1.229, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(252, 221, 12))) {
       if (miniScreen != 1) {
@@ -137,6 +176,12 @@ void scenes() {
       v.w = mSSP.w - width / 500;
       v.h = sSP.h - height / 250;
       v.updateStarCound();
+    }
+    fill(0, 150, 255);
+    rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, 10);
+    //rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
+    if (Button(mainText[29], width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, true, color(0, 150, 255))) {
+      scene = 1;
     }
   } else if (scene == 400) {
     background(255);

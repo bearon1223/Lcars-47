@@ -40,7 +40,6 @@ class panel {
       rect(x, y+((h / pc) * i), w, h / pc - (height / 250));
       fill(0);
       text(texts[i], x, y + (h / pc) * i, w, h / pc - (height / 250));
-      textAlign(CORNER, CORNER);
     }
   }
 
@@ -103,7 +102,6 @@ class panelS {
       rect(x + ((w / pc) * i), y, w / pc - (width / 500), h);
       fill(0);
       text(texts[i], x + ((w / pc) * i), y, w / pc - (width / 500), h);
-      textAlign(CORNER, CORNER);
     }
   }
 

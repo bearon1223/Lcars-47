@@ -11,7 +11,7 @@ void viewScreen() {
     mSSP.render();
   } else if (veiwScreen == 1) {
     mSSP.render();
-    if (Button(mainText[0]+isNotMuted, sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250, width / 10, height / 18.75, true, color(20, 200, 255))) {
+    if (Button(mainText[0]+tempisNotMuted, sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250, width / 10, height / 18.75, true, color(20, 200, 255))) {
       if (tempisNotMuted) {
         tempisNotMuted = false;
       } else {

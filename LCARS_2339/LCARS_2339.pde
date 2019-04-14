@@ -90,7 +90,10 @@ void load() {
 }
 
 void draw() {
-  frameRate(200);
+  frameRate(60);
+  if (scene != -2 || scene != -1) {
+    textAlign(CENTER, CENTER);
+  }
   RATIOWH = width / height;
   HYPOTNUCE = sqrt((width * width) + (height * height));
   if (quality == 2 || LANGUAGE == 1) {
