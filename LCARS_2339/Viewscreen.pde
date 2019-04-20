@@ -31,7 +31,7 @@ void viewScreen() {
     v.updateStarCound();
 
     textSize(HYPOTNUCE / 66);
-    fill(57, 17, 230);
+    fill(color(57, 17, 230));
     if (quality > 0) {
       rect(sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 4, width / (6+(2/3)), height / 18.75, RATIOWH*500);
     } else {
@@ -69,7 +69,7 @@ void viewScreen() {
     mSSP.render();
   } else if (veiwScreen == 3) {
     mSSP.render();
-    if (Button(mainText[26], mSSP.x, sSP.y, width / 10, height / 15, true, color(255))) {
+    if (Button(mainText[26], mSSP.x, sSP.y, width / 10, height / 15, true, color(255), accept)) {
       scene = 2;
       v.x = 0;
       v.y = 0;
@@ -83,9 +83,7 @@ void viewScreen() {
     // COMMUNICATIONS
     mSSP.render();
     if (Button(mainText[8], mSSP.x, sSP.y, width / 5, height / 15, true, color(255))) {
-      if (isNotMuted) {
-        HF.play();
-      }
+      
     }
   } else if (veiwScreen == 7) {
   } else if (veiwScreen == 8) {
@@ -102,6 +100,10 @@ void viewScreen() {
     if (Button("Japanese", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 2, width / 10, height / 18.75, true, color(235, 178, 67))) {
       LANGUAGE = 1;
       loadLang(LANG_JP);
+    }
+    if(keyDetection('p')){
+      LANGUAGE = 0;
+      loadLang(LANG_PEW);
     }
     if (Button(mainText[9], sSP.x + sSP.w + width / 500, height - height / 18.75 - height / 250, width / 10, height / 18.75, true, color(18, 97, 196))) {
       veiwScreen = 1;

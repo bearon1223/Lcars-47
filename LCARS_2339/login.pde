@@ -17,7 +17,7 @@ class Login {
   }
 
   void compare() {
-    if (((typed.equals(p) == true) || (typed.equals("cfopi") || typed.equals("command function override pi"))) && key == ENTER && keyPressed) {
+    if (((typed.equals(p) == true) || (typed.equals("cfopi") || typed.equals("command function override pi"))) && keyDetection(ENTER)) {
       scene = wc;
       println(wc);
       v.x = mSSP.x;
@@ -26,14 +26,20 @@ class Login {
       v.h = sSP.h - height / 250;
       v.updateStarCound();
       if (isNotMuted) {
-        click.play();
+        accept.play();
       }
-    } else if (typed.equals("debug") && key == ENTER && keyPressed) {
+    } else if (typed.equals("debug") && keyDetection(ENTER)) {
       scene = 400;
-      click.play();
+      if (isNotMuted) {
+        accept.play();
+      }
       println("debug");
-    } else if (typed.equals("exit") && key == ENTER && keyPressed) {
+    } else if (typed.equals("exit") && keyDetection(ENTER)) {
       scene = -2;
+    } else if (keyDetection(ENTER)) {
+      if (isNotMuted) {
+        fail.play();
+      }
     }
   }
 

@@ -1,4 +1,4 @@
-boolean ggfdsakfj = false, ggfdsakfjd = false;
+boolean ggfdsakfj = false, ggfdsakfjd = false, KPRESSED = false;
 
 void OneCircleButton(float x, float y, float widthb, float heightb) {
   float w = widthb / 4, h = heightb / 4;
@@ -31,6 +31,18 @@ void Time(float x, float y, float w, float h, boolean twentyfourhr) {
   }
 }
 
+boolean keyDetection(char k) {
+  if (keyPressed && key == k && !KPRESSED) {
+    KPRESSED = true;
+    return false;
+  } else if (!keyPressed && key == k && KPRESSED) {
+    KPRESSED = false;
+    return true;
+  } else {
+    return false;
+  }
+}
+
 boolean Button(String stringtext, float x, float y, float w, float h, boolean isRounded, color c) {
   boolean t = false;
   noStroke();
@@ -51,6 +63,31 @@ boolean Button(String stringtext, float x, float y, float w, float h, boolean is
     t = true;
     if (isNotMuted)
       click.play();
+  }
+  stroke(0);
+  return t;
+}
+
+boolean Button(String stringtext, float x, float y, float w, float h, boolean isRounded, color c, SoundFile s) {
+  boolean t = false;
+  noStroke();
+  fill(c);
+  textAlign(CENTER, CENTER);
+  textSize(HYPOTNUCE / 66);
+  if (quality == 0  || (quality == 2 && !isRounded)) {
+    rect(x, y, w, h, 0);
+  } else if (isRounded || quality == 1) {
+    rect(x, y, w, h, RATIOWH * 500);
+  }
+  fill(0);
+  text(stringtext, x, y, w, h);
+  if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && !ggfdsakfj && mousePressed) {
+    ggfdsakfj = true;
+  } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfj && !mousePressed) {
+    ggfdsakfj = false;
+    t = true;
+    if (isNotMuted)
+      s.play();
   }
   stroke(0);
   return t;

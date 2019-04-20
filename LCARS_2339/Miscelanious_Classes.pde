@@ -2,11 +2,13 @@ class timer {
   String t;
   float T = 0, x, y;
   float timers;
-  timer(String text, float xb, float yb, float time) {
+  boolean cts;
+  timer(String text, float xb, float yb, float time, boolean clicktoskip) {
     t = text;
     timers = time;
     x = xb;
     y = yb;
+    cts = clicktoskip;
   }
   /*
   if (timer >= 5*frameRate || Button(0, 0, width, height)) {
@@ -15,15 +17,28 @@ class timer {
    text("Click or wait: "+(floor(5-(timer / (frameRate / 0.9999))) + 1)+" seconds to exit", width / 500, height / 1.1);
    */
   boolean timercalc() {
-    if (T >= timers * frameRate / 0.9999 || Button(0, 0, width, height)) {
-      return true;
+    if (cts) {
+      if (T >= timers * frameRate / 0.999 || Button(0, 0, width, height)) {
+        return true;
+      } else {
+        T++;
+        return false;
+      }
     } else {
-      T++;
-      return false;
+      if (T >= timers * frameRate / 0.999) {
+        return true;
+      } else {
+        T++;
+        return false;
+      }
     }
   }
 
   void render() {
-    text("Click or wait: " + (floor(5 - (T / (frameRate / 0.9999))) + 1) + " seconds to " + t, width / x, height / y);
+    if (cts) {
+      text("Click or wait: " + (floor(timers - (T / (frameRate / 0.999))) + 1) + " seconds to " + t, width / x, height / y);
+    } else {
+      text("Please wait: " + (floor(timers - (T / (frameRate / 0.999)))+1) + " seconds to " + t, width / x, height / y);
+    }
   }
 }

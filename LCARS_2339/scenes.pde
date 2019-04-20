@@ -1,7 +1,7 @@
 float scene = -1, veiwScreen = 0, miniScreen = 0, logoZoomin = width;
 
-timer exit = new timer("exit", 500, 1.1, 5);
-timer start = new timer("start", 500, 1.1, 5);
+timer exit = new timer("exit", 500, 1.1, 5, false);
+timer start = new timer("start", 500, 1.1, 5, true);
 
 void scenes() {
   if (scene == -2) {
@@ -169,19 +169,15 @@ void scenes() {
     v.h = height;
     v.multipier = 2;
     v.render();
-    if (Button(mainText[9], width - width / 10 - width / 500, height - height / 18.75 - height / 250, width / 10, height / 18.75, true, color(18, 97, 196))) {
+    fill(0, 150, 255);
+    rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, 10);
+    if (Button(mainText[29], width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, true, color(0, 150, 255))) {
       scene = 1;
       v.x = mSSP.x;
       v.y = sSP.y;
       v.w = mSSP.w - width / 500;
       v.h = sSP.h - height / 250;
       v.updateStarCound();
-    }
-    fill(0, 150, 255);
-    rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, 10);
-    //rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
-    if (Button(mainText[29], width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, true, color(0, 150, 255))) {
-      scene = 1;
     }
   } else if (scene == 400) {
     background(255);

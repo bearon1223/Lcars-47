@@ -9,14 +9,14 @@ String[] mSPText = {"SYS DIRECTORY", "AUX DIRECTORY", "MED DIRECTORY", "COMMUNIC
 float[] mSPView = {3, 4, 5, 6, 7, 8, 9};
 float[] mSPScene = {2, 3, 4, 5, 6, 7, 8};
 float[] PanelDebugfloat = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
-boolean isNotMuted = true;
+boolean isNotMuted = true, inverted = false;
 boolean fullscreen = false;
 float quality = 2;  
-SoundFile click, HF;
+SoundFile click, keyPress, fail, accept;
 String[] mainText = new String[int(1000)];
 
 static final String CONFIG_FILE = "config.dat";
-static final String LANG_US = "lang_us", LANG_JP = "lang_jp";
+static final String LANG_US = "lang_us", LANG_JP = "lang_jp", LANG_PEW = "lang_pew";
 float LANGUAGE = 0;
 
 Login  l = new Login(0, width / 2, height / 2, 1);
@@ -37,7 +37,6 @@ void settings() {
 }
 
 void setup() {
-
   surface.setResizable(true);
   surface.setTitle("Lcars: "+ (year() + 320));
   smooth(2);
@@ -48,8 +47,10 @@ void setup() {
   standby = loadImage("Federation Standby.jpg");
   f = loadFont("Impact-48.vlw");
   og = loadFont("ProcessingSansPro-Regular-48.vlw");
-  click = new SoundFile(this, "207.wav");
-  HF = new SoundFile(this, "207.wav");
+  click = new SoundFile(this, "Click.wav");
+  keyPress = new SoundFile(this, "");
+  fail = new SoundFile(this, "Deny.wav");
+  accept = new SoundFile(this, "Allow.wav");
   surface.setIcon(icon);
   if (LANGUAGE == 0) {
     loadLang(LANG_US);
@@ -66,7 +67,7 @@ void loadLang(String currentLang) {
   for (int i = 0; i <= mSPText.length - 1; i++) {
     mSPText[i] = lines[i + 19];
   }
-  for (int i = 0; i <= 3 - 1; i++) {
+  for (int i = 0; i <= 4 - 1; i++) {
     mainText[i + 26] = lines[i + 26];
   }
 }
