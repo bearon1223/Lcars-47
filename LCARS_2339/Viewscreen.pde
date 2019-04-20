@@ -58,13 +58,12 @@ void viewScreen() {
         fullscreen = false;
       }
     }
-    
+
     if (Button(mainText[28], sSP.x + sSP.w + width / 500, height - height / 18.75 - height / 250, width / 10, height / 18.75, true, color(18, 97, 196))) {
       quality = tempquality;
       isNotMuted = tempisNotMuted;
       save();
     }
-    
   } else if (veiwScreen == 2) {
     mSSP.render();
   } else if (veiwScreen == 3) {
@@ -83,7 +82,7 @@ void viewScreen() {
     // COMMUNICATIONS
     mSSP.render();
     if (Button(mainText[8], mSSP.x, sSP.y, width / 5, height / 15, true, color(255))) {
-      
+      veiwScreen = 12;
     }
   } else if (veiwScreen == 7) {
   } else if (veiwScreen == 8) {
@@ -101,12 +100,16 @@ void viewScreen() {
       LANGUAGE = 1;
       loadLang(LANG_JP);
     }
-    if(keyDetection('p')){
+    if (keyDetection('p')) {
       LANGUAGE = 0;
       loadLang(LANG_PEW);
     }
     if (Button(mainText[9], sSP.x + sSP.w + width / 500, height - height / 18.75 - height / 250, width / 10, height / 18.75, true, color(18, 97, 196))) {
       veiwScreen = 1;
     }
+  } else if (veiwScreen == 12) {
+    mSSP.render();
+    cMP.render();
+    cMSP.render();
   }
 }
