@@ -3,6 +3,10 @@ boolean tempisNotMuted = false;
 
 void viewScreen() {
   if (veiwScreen == 0) {
+    mSSP.x = sSP.x + sSP.w + width / 500;
+    mSSP.y = sSP.y - mSSP.h - height / 250;
+    mSSP.w = width - mSSP.x;
+    mSSP.h = height / 50;
     if (quality == 2) {
       image(standby, width / 3.488 + width / 11.25, height / 2.654, width - width / 3.488 - width / 11.25, height - height / 2.654);
     } else if (quality != 2) {
@@ -10,6 +14,10 @@ void viewScreen() {
     }
     mSSP.render();
   } else if (veiwScreen == 1) {
+    mSSP.x = sSP.x + sSP.w + width / 500;
+    mSSP.y = sSP.y - mSSP.h - height / 250;
+    mSSP.w = width - mSSP.x;
+    mSSP.h = height / 50;
     mSSP.render();
     if (Button(mainText[0]+tempisNotMuted, sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250, width / 10, height / 18.75, true, color(20, 200, 255))) {
       if (tempisNotMuted) {
@@ -65,8 +73,16 @@ void viewScreen() {
       save();
     }
   } else if (veiwScreen == 2) {
+    mSSP.x = sSP.x + sSP.w + width / 500;
+    mSSP.y = sSP.y - mSSP.h - height / 250;
+    mSSP.w = width - mSSP.x;
+    mSSP.h = height / 50;
     mSSP.render();
   } else if (veiwScreen == 3) {
+    mSSP.x = sSP.x + sSP.w + width / 500;
+    mSSP.y = sSP.y - mSSP.h - height / 250;
+    mSSP.w = width - mSSP.x;
+    mSSP.h = height / 50;
     mSSP.render();
     if (Button(mainText[26], mSSP.x, sSP.y, width / 10, height / 15, true, color(255), accept)) {
       scene = 2;
@@ -77,8 +93,16 @@ void viewScreen() {
       v.updateStarCound();
     }
   } else if (veiwScreen == 5) {
+    mSSP.x = sSP.x + sSP.w + width / 500;
+    mSSP.y = sSP.y - mSSP.h - height / 250;
+    mSSP.w = width - mSSP.x;
+    mSSP.h = height / 50;
     mSSP.render();
   } else if (veiwScreen == 6) {
+    mSSP.x = sSP.x + sSP.w + width / 500;
+    mSSP.y = sSP.y - mSSP.h - height / 250;
+    mSSP.w = width - mSSP.x;
+    mSSP.h = height / 50;
     // COMMUNICATIONS
     mSSP.render();
     if (Button(mainText[8], mSSP.x, sSP.y, width / 5, height / 15, true, color(255))) {
@@ -88,9 +112,17 @@ void viewScreen() {
   } else if (veiwScreen == 8) {
   } else if (veiwScreen == 9) {
   } else if (veiwScreen == 10) {
+    mSSP.x = sSP.x + sSP.w + width / 500;
+    mSSP.y = sSP.y - mSSP.h - height / 250;
+    mSSP.w = width - mSSP.x;
+    mSSP.h = height / 50;
     mSSP.render();
     v.render();
   } else if (veiwScreen == 11) {
+    mSSP.x = sSP.x + sSP.w + width / 500;
+    mSSP.y = sSP.y - mSSP.h - height / 250;
+    mSSP.w = width - mSSP.x;
+    mSSP.h = height / 50;
     mSSP.render();
     if (Button("English", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 1, width / 10, height / 18.75, true, color(18, 97, 196))) {
       loadLang(LANG_US);
@@ -108,6 +140,21 @@ void viewScreen() {
       veiwScreen = 1;
     }
   } else if (veiwScreen == 12) {
+    mSSP.x = sSP.x + sSP.w + width / 500;
+    mSSP.y = sSP.y - mSSP.h - height / 250;
+    mSSP.w = width - mSSP.x;
+    mSSP.h = height / 50;
+    
+    cMP.x = mSSP.x + sSP.w;
+    cMP.y = mSSP.y + height / 8;
+    cMP.w = sSP.w;
+    cMP.h = sSP.h / 2;
+
+    cMSP.x = cMP.x + cMP.w + width/500;
+    cMSP.y = cMP.y;
+    cMSP.w = width / 5;
+    cMSP.h = width / 100;
+
     mSSP.render();
     cMP.render();
     cMSP.render();

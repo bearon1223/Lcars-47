@@ -18,14 +18,14 @@ class timer {
    */
   boolean timercalc() {
     if (cts) {
-      if (T >= timers * frameRate / 0.999 || Button(0, 0, width, height)) {
+      if (T >= timers * (frameRate / 0.999) || Button(0, 0, width, height)) {
         return true;
       } else {
         T++;
         return false;
       }
     } else {
-      if (T >= timers * frameRate / 0.999) {
+      if (T >= timers * (frameRate / 0.999)) {
         return true;
       } else {
         T++;

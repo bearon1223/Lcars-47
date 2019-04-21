@@ -93,7 +93,7 @@ void load() {
 }
 
 void draw() {
-  frameRate(60);
+  frameRate(100);
   if (scene != -2 || scene != -1) {
     textAlign(CENTER, CENTER);
   }
@@ -105,39 +105,7 @@ void draw() {
     textFont(og);
   }
   background(0);
-  l.x = width / 2;
-  l.y = height / 1.25;
-  d.h = height - 150;
-  d.w = width / 5;
-  mSP.x = width / 5.2;
-  mSP.h = height;
-  mSP.w = width / 11.4;
-
-  sSP.x = width / 3.488372093023256;
-  sSP.y = height / 2.2641509243396226;
-  sSP.h = height - sSP.y;
-  sSP.w = width / 11.25;
-
-  tSP.x = width / 3.488372093023256;
-  //tSP.h = height / 4;
-  tSP.h = sSP.y;
-  tSP.w = width / 11.25;
-
-  mSSP.x = sSP.x + sSP.w + width / 500;
-  mSSP.y = sSP.y - mSSP.h - height / 250;
-  mSSP.w = width - mSSP.x;
-  mSSP.h = height / 50;
   
-  cMP.x = mSSP.x + sSP.w;
-  cMP.y = mSSP.y + height / 8;
-  cMP.w = sSP.w;
-  cMP.h = sSP.h / 2;
-  
-  cMSP.x = cMP.x + cMP.w;
-  cMSP.y = cMP.y;
-  cMSP.w = width / 5;
-  cMSP.h = width / 100;
-
   scenes();
   pwidth = width;
   pheight = height;

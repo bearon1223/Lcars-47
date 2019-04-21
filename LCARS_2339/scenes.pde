@@ -1,4 +1,4 @@
-float scene = -1, veiwScreen = 0, miniScreen = 0, logoZoomin = width;
+float scene = -1, veiwScreen = 0, miniScreen = 0, logoZoomin = width, fade = 250;
 
 timer exit = new timer("exit", 500, 1.1, 5, false);
 timer start = new timer("start", 500, 1.1, 5, true);
@@ -41,6 +41,9 @@ void scenes() {
 
     textAlign(CENTER, CENTER);
   } else if (scene == 0) {
+    l.x = width / 2;
+    l.y = height / 1.25;
+    fade = 250;
     fill(255);
     //rect(width / 4.5 - 1, height / 4 - 1, width / 1.8 + 2, height / 2 + 2);
     if (quality == 2) {
@@ -60,6 +63,20 @@ void scenes() {
     rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
     v.updateStarCound();
   } else if (scene == 1) { 
+    mSP.x = width / 5.2;
+    mSP.h = height;
+    mSP.w = width / 11.4;
+
+    sSP.x = width / 3.488372093023256;
+    sSP.y = height / 2.2641509243396226;
+    sSP.h = height - sSP.y;
+    sSP.w = width / 11.25;
+
+    tSP.x = width / 3.488372093023256;
+    //tSP.h = height / 4;
+    tSP.h = sSP.y;
+    tSP.w = width / 11.25;
+
     //image(temp, 0, 0, width, height);
     if (quality != 0) {
       image(imgsur, width / 213, height / 142, width / 5.5, height / 4.1);
@@ -162,6 +179,11 @@ void scenes() {
     sSP.InteractiveV(new float[int(sSP.pc)]);
     tSP.render();
     tSP.InteractiveV(new float[int(tSP.pc)]);
+    if (fade > 0) {
+      fill(0, 0, 0, fade);
+      rect(0, 0, width, height);
+      fade-=15;
+    }
   } else if (scene == 2) {
     v.x = 0;
     v.y = 0;
@@ -180,6 +202,10 @@ void scenes() {
       v.updateStarCound();
     }
   } else if (scene == 400) {
+
+    d.h = height - 150;
+    d.w = width / 5;
+
     background(255);
     d.render();
     d.InteractiveS(PanelDebugfloat);
