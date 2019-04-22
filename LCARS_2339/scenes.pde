@@ -10,15 +10,19 @@ void scenes() {
       logoZoomin -= width / 1000.0;
     }
     textSize(HYPOTNUCE / 25);
-    imageMode(CENTER);
-    image(logo, width / 1.3, height / 2, width / (logoZoomin / 3), height / (logoZoomin  / 4));
-    imageMode(CORNER);
+    if (quality == 2) {
+      imageMode(CENTER);
+      image(logo, width / 1.3, height / 2, width / (logoZoomin / 3), height / (logoZoomin  / 4));
+      imageMode(CORNER);
+    } else {
+      FederationSymbol(width / 1.3, height / 2, width / (logoZoomin / 3), height / (logoZoomin  / 4));
+    }
     fill(235, 178, 67);
     rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, 10);
     rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
     fill(255);
     textAlign(CORNER, CORNER);
-    text("Credits\nCreator: Codeing Network\nDesigner: Codeing Network\nInsperation: Lcars47.com\nBased off Star Trek (c)CBS", 2, height / 10, width - 4, height / 1.1 - height / 20);
+    text("Credits:\nCreator: Codeing Network\nDesigner: Codeing Network\nInsperation: Lcars47.com\nBased off Star Trek (c)CBS", 2, height / 10, width - 4, height / 1.1 - height / 20);
     if (exit.timercalc()) {
       exit();
     }
@@ -52,9 +56,9 @@ void scenes() {
       imageMode(CORNER);
     } else if (quality != 2) {
       fill(100, 100, 255);
-      ellipse(width / 2, height / 2, width / 3, height / 2);
+      FederationSymbol(width / 2, height / 2, width / 3, height / 2);
     }
-
+    //1250000
     l.type();
     l.render();
     l.compare();
@@ -83,7 +87,7 @@ void scenes() {
       image(logo, width / 56, height / 29, width / 6.4, height / 5.6);
     } else if (quality == 0) {
       fill(100, 100, 255);
-      ellipse(width / 213 + ((width / 5.5)/2), height / 142 + ((height / 4.1)/2), width / 6.5, height / 5.1);
+      FederationSymbol(width / 213 + ((width / 5.5)/2), height / 142 + ((height / 4.1)/2), width / 6.5, height / 5.1);
     }
 
     v.x = mSSP.x;
@@ -182,7 +186,11 @@ void scenes() {
     if (fade > 0) {
       fill(0, 0, 0, fade);
       rect(0, 0, width, height);
-      fade-=15;
+      if (frameRate > 30) {
+        fade -= 15;
+      } else if (frameRate < 30) {
+        fade -= 30;
+      }
     }
   } else if (scene == 2) {
     v.x = 0;

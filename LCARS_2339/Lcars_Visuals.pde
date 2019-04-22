@@ -171,3 +171,23 @@ class viewScreen {
     }
   }
 }
+
+void FederationSymbol(float x, float y, float d) {
+  float r = d/2;
+
+  fill(255);
+  ellipse(x, y + r / 6, d*1.25, d*0.85);
+
+  fill(100, 100, 255);
+  ellipse(x, y, d, d);
+}
+
+void FederationSymbol(float x, float y, float d, float d2) {
+  float r = d/2;
+
+  fill(255);
+  ellipse(x, y + r / 6, d*1.25, d2*0.85);
+
+  fill(100, 100, 255);
+  ellipse(x, y, d, d2);
+}
