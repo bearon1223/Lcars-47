@@ -191,3 +191,46 @@ void FederationSymbol(float x, float y, float d, float d2) {
   fill(100, 100, 255);
   ellipse(x, y, d, d2);
 }
+
+class textAnalisis {
+  float x, y, w, h, tL;
+  String[] t;
+  timer ti;
+  textAnalisis(float xb, float yb, float wb, float hb, float textLines) {
+    x = xb;
+    y = yb;
+    w = wb;
+    h = hb;
+    tL = textLines;
+    ti = new timer(textLines);
+    t = new String[int(textLines)];
+    for (int i = 0; i <= textLines - 1; i++) {
+      t[i] = floor(random(100000, 999999))+"-"+floor(random(100000, 999999))+""+floor(random(100000, 999999))+""+floor(random(100000, 999999))
+        +""+floor(random(100000, 999999))+"-"+floor(random(100000, 999999))+""+floor(random(100000, 999999))+""+floor(random(100000, 999999))
+        +""+floor(random(100000, 999999))+"-"+floor(random(100000, 999999))+"-"+floor(random(100000, 999999))+""+floor(random(100000, 999999))
+        +""+floor(random(100000, 999999));
+    }
+  }
+
+  void render() {
+    textSize(sqrt(square(w) + square(h)) / 36);
+    textAlign(CORNER, CENTER);
+    if (ti.timercalc()) {
+      for (int i = 0; i <= tL - 1; i++) {
+        t[i] = floor(random(100000, 999999))+"-"+floor(random(100000, 999999))+""+floor(random(100000, 999999))+""+floor(random(100000, 999999))
+          +""+floor(random(100000, 999999))+"-"+floor(random(100000, 999999))+""+floor(random(100000, 999999))+""+floor(random(100000, 999999))
+          +""+floor(random(100000, 999999))+"-"+floor(random(100000, 999999))+"-"+floor(random(100000, 999999))+""+floor(random(100000, 999999))
+          +""+floor(random(100000, 999999));
+      }
+    }
+    for (int i = 0; i <= tL - 1; i++) {
+      if (floor(ti.T / (frameRate / 0.999)) != i) {
+        fill(222, 10, 255);
+      } else if (floor(ti.T / (frameRate / 0.999)) == i) {
+        fill(50, 54, 247);
+      }
+      text(t[i], x, y + (h / tL) * i, w, h / tL - (height / 250));
+    }
+    textAlign(CENTER, CENTER);
+  }
+}

@@ -6,6 +6,10 @@ void OneCircleButton(float x, float y, float widthb, float heightb) {
   ellipse(x + (82) * w, y + (82) * h, w * 165, h * 165);
 }
 
+float square(float i){
+  return i*i;
+}
+
 void Time(float x, float y, float w, float h, boolean twentyfourhr) {
   String minute = str(minute()), hour = str(hour()), second;
   if (minute() < 10) {

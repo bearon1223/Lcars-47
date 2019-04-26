@@ -1,4 +1,4 @@
-float scene = -1, veiwScreen = 0, miniScreen = 0, logoZoomin = width, fade = 250;
+float scene = -1, veiwScreen = 0, miniScreen = 0, logoZoomin = 100, fade = 250;
 
 timer exit = new timer("exit", 500, 1.1, 5, false);
 timer start = new timer("start", 500, 1.1, 5, true);
@@ -81,6 +81,15 @@ void scenes() {
     tSP.h = sSP.y;
     tSP.w = width / 11.25;
 
+    mTA.x = mSSP.x;
+    mTA.y = tSP.y;
+    mTA.w = mSSP.w;
+    mTA.h = mSSP.y;
+
+    mSSP.x = sSP.x + sSP.w + width / 500;
+    mSSP.y = sSP.y - mSSP.h - height / 250;
+    mSSP.w = width - mSSP.x;
+    mSSP.h = height / 50;
     //image(temp, 0, 0, width, height);
     if (quality != 0) {
       image(imgsur, width / 213, height / 142, width / 5.5, height / 4.1);
@@ -95,14 +104,20 @@ void scenes() {
     v.w = mSSP.w - width / 500;
     v.h = sSP.h - height / 250;
     v.multipier = 1;
+    if (miniScreen == 0) {
+      sTA.x = width / 254.0;
+      sTA.y = height / 2.0;
+      sTA.w = width / 5.4;
+      sTA.h = height / 5.5;
 
-    if (miniScreen == 1) {
-      Time(width / 254, height / 2.0, width / 5.4, height / 5.5, true);
+      sTA.render();
+    } else if (miniScreen == 1) {
+      Time(width / 254.0, height / 2.0, width / 5.4, height / 5.5, true);
     } else if (miniScreen == 2) {
       textAlign(CENTER, CENTER);
       fill(255);
       textSize(HYPOTNUCE / 25);
-      text("FPS: "+floor(frameRate), width / 254, height / 2.0, width / 5.4, height / 5.5);
+      text("FPS: "+floor(frameRate), width / 254.0, height / 2.0, width / 5.4, height / 5.5);
     }
 
     if (Button("54-875977", width / 180, height / 3.900, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(20, 120, 200))) {
@@ -123,9 +138,13 @@ void scenes() {
     }
     if (Button("56-985324", width / 180 + width / 11.25 + width / 450, height / 2.272, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
     }
-
-    if (Button(mainText[18], width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(96, 137, 168))) {
-      scene = -2;
+    if (!theaterMode) {
+      if (Button(mainText[18], width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(96, 137, 168))) {
+        scene = -2;
+      }
+    } else {
+      if (Button("98-348362", width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(96, 137, 168))) {
+      }
     }
     if (Button(mainText[17], width / 180, height / 1.229, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(252, 221, 12))) {
       if (miniScreen != 1) {
@@ -140,13 +159,24 @@ void scenes() {
     }
     if (Button(mainText[11], width / 180, height / 1.449, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(9, 42, 243))) {
       veiwScreen = 0;
+      miniScreen = 0;
     }
-
+if(!theaterMode){
     if (Button(mainText[12], width / 180 + width / 11.25 + width / 450, height / 1.142, width / 11.25, height / 18.75, false, color(96, 137, 168))) {
       link("http://youtube.com");
     }
-    if (Button(mainText[13], width / 180 + width / 11.25 + width / 450, height / 1.229, width / 11.25, height / 18.75, false, color(252, 221, 12))) {
-      veiwScreen = 1;
+} else {
+if (Button("45-213456", width / 180 + width / 11.25 + width / 450, height / 1.142, width / 11.25, height / 18.75, false, color(96, 137, 168))) {
+      
+    }
+}
+    if (!theaterMode) {
+      if (Button(mainText[13], width / 180 + width / 11.25 + width / 450, height / 1.229, width / 11.25, height / 18.75, false, color(252, 221, 12))) {
+        veiwScreen = 1;
+      }
+    } else {
+      if (Button(mainText[16], width / 180 + width / 11.25 + width / 450, height / 1.229, width / 11.25, height / 18.75, false, color(252, 221, 12))) {
+      }
     }
     if (Button(mainText[14], width / 180 + width / 11.25 + width / 450, height / 1.327, width / 11.25, height / 18.75, false, color(0, 238, 235))) {
       if (veiwScreen != 2) {
@@ -183,6 +213,8 @@ void scenes() {
     sSP.InteractiveV(new float[int(sSP.pc)]);
     tSP.render();
     tSP.InteractiveV(new float[int(tSP.pc)]);
+    mTA.render();
+    mSSP.render();
     if (fade > 0) {
       fill(0, 0, 0, fade);
       rect(0, 0, width, height);

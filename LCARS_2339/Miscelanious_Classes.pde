@@ -10,6 +10,14 @@ class timer {
     y = yb;
     cts = clicktoskip;
   }
+  
+  timer(float time) {
+    t = "";
+    timers = time;
+    x = 0;
+    y = 0;
+    cts = false;
+  }
   /*
   if (timer >= 5*frameRate || Button(0, 0, width, height)) {
    exit();
@@ -19,6 +27,7 @@ class timer {
   boolean timercalc() {
     if (cts) {
       if (T >= timers * (frameRate / 0.999) || Button(0, 0, width, height)) {
+        T = 0;
         return true;
       } else {
         T++;
@@ -26,6 +35,7 @@ class timer {
       }
     } else {
       if (T >= timers * (frameRate / 0.999)) {
+        T = 0;
         return true;
       } else {
         T++;

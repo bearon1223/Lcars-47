@@ -36,6 +36,12 @@ class Login {
       println("debug");
     } else if (typed.equals("exit") && keyDetection(ENTER)) {
       scene = -2;
+    }else if (typed.equals("settings") && keyDetection(ENTER)) {
+      scene = 1;
+      veiwScreen = 1;
+      if (isNotMuted) {
+        accept.play();
+      }
     } else if (keyDetection(ENTER)) {
       if (isNotMuted) {
         fail.play();

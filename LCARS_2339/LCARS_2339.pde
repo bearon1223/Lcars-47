@@ -9,7 +9,7 @@ String[] mSPText = {"SYS DIRECTORY", "AUX DIRECTORY", "MED DIRECTORY", "COMMUNIC
 float[] mSPView = {3, 4, 5, 6, 7, 8, 9};
 float[] mSPScene = {2, 3, 4, 5, 6, 7, 8};
 float[] PanelDebugfloat = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
-boolean isNotMuted = true, inverted = false;
+boolean isNotMuted = true, inverted = false, theaterMode = false;
 boolean fullscreen = false;
 float quality = 2;  
 SoundFile click, keyPress, fail, accept;
@@ -27,6 +27,8 @@ panel  tSP = new panel(0, 0, 0, 0, floor(random(2, 3)));
 panel  cMP = new panel(0, 0, 0, 0, 4);
 panelS mSSP  = new panelS(0, 0, 0, 0, floor(random(5, 10)));
 panelS cMSP  = new panelS(0, 0, 0, 0, 3);
+textAnalisis mTA = new textAnalisis(0, 0, 0, 0, 9);
+textAnalisis sTA = new textAnalisis(0, 0, 0, 0, 12);
 viewScreen v = new viewScreen(0);
 float pwidth = 1000, pheight = 500;
 void settings() {
@@ -36,12 +38,13 @@ void settings() {
   } else {
     fullScreen();
   }
+
+  smooth(2);
 }
 
 void setup() {
   surface.setResizable(true);
   surface.setTitle("Lcars: "+ (year() + 320));
-  smooth(2);
   logo = loadImage("Federation Logo.jpg");
   icon = loadImage("starfleet logo.jpg");
   temp = loadImage("template.png");
@@ -69,8 +72,11 @@ void loadLang(String currentLang) {
   for (int i = 0; i <= mSPText.length - 1; i++) {
     mSPText[i] = lines[i + 19];
   }
-  for (int i = 0; i <= 4 - 1; i++) {
+  for (int i = 0; i <= 5 - 1; i++) {
     mainText[i + 26] = lines[i + 26];
+  }
+  for (int i = 0; i<=lines.length - 1; i++) {
+    println(i+": "+lines[i]);
   }
 }
 
@@ -94,6 +100,25 @@ void load() {
 
 void draw() {
   frameRate(100);
+  if (keyDetection('*')) {
+    l = new Login(0, width / 2, height / 2, 1);
+    d = new panel(200, 100, 100, height - 100, 10, PanelDebug);
+    mSP = new panel(0, 0, 0, 0, 7, mSPText);
+    sSP = new panel(0, 0, 0, 0, 8);
+    tSP = new panel(0, 0, 0, 0, floor(random(2, 3)));
+    cMP = new panel(0, 0, 0, 0, 4);
+    mSSP  = new panelS(0, 0, 0, 0, floor(random(5, 10)));
+    cMSP  = new panelS(0, 0, 0, 0, 3);
+    mTA = new textAnalisis(0, 0, 0, 0, 9);
+    v = new viewScreen(0);
+    sTA = new textAnalisis(0, 0, 0, 0, 12);
+
+    scene = -1; 
+    veiwScreen = 0; 
+    miniScreen = 0; 
+    logoZoomin = 100; 
+    fade = 250;
+  }
   if (scene != -2 || scene != -1) {
     textAlign(CENTER, CENTER);
   }
@@ -105,7 +130,7 @@ void draw() {
     textFont(og);
   }
   background(0);
-  
+
   scenes();
   pwidth = width;
   pheight = height;
