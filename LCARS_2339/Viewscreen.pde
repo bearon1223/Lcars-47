@@ -46,17 +46,17 @@ void viewScreen() {
       text(mainText[6], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 4, width / (6+(2/3)), height / 18.75);
     }
 
-    if (Button(mainText[7], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 5, width / 10, height / 18.75, true, color(52, 124, 212))) {
+    if (Button(mainText[7], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 5, width / 10.0, height / 18.75, true, color(52, 124, 212))) {
       veiwScreen = 11;
     }
-    if (Button(mainText[27]+fullscreen, sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 6, width / 5, height / 18.75, true, color(52, 124, 212))) {
+    if (Button(mainText[27]+fullscreen, sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 6, width / 5.0, height / 18.75, true, color(52, 124, 212))) {
       if (!fullscreen) {
         fullscreen = true;
       } else {
         fullscreen = false;
       }
     }
-    if (Button(mainText[30]+theaterMode, sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 7, width / 10, height / 18.75, true, color(52, 124, 212))) {
+    if (Button(mainText[30]+theaterMode, sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 7, width / 5.0, height / 18.75, true, color(52, 124, 212))) {
       if (!theaterMode) {
         theaterMode = true;
       } else {

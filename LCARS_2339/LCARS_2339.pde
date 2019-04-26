@@ -27,8 +27,8 @@ panel  tSP = new panel(0, 0, 0, 0, floor(random(2, 3)));
 panel  cMP = new panel(0, 0, 0, 0, 4);
 panelS mSSP  = new panelS(0, 0, 0, 0, floor(random(5, 10)));
 panelS cMSP  = new panelS(0, 0, 0, 0, 3);
-textAnalisis mTA = new textAnalisis(0, 0, 0, 0, 9);
-textAnalisis sTA = new textAnalisis(0, 0, 0, 0, 12);
+textAnalisis mTA = new textAnalisis(0, 0, 0, 0, 4);
+textAnalisis sTA = new textAnalisis(0, 0, 0, 0, 6);
 viewScreen v = new viewScreen(0);
 float pwidth = 1000, pheight = 500;
 void settings() {
@@ -82,7 +82,7 @@ void loadLang(String currentLang) {
 
 void save() {
   String[] lines = {
-    str(quality), str(isNotMuted), str(LANGUAGE), str(fullscreen)
+    str(quality), str(isNotMuted), str(LANGUAGE), str(fullscreen), str(theaterMode)
   };
   saveStrings(dataFile(CONFIG_FILE), lines);
 }
@@ -96,6 +96,7 @@ void load() {
   tempisNotMuted = boolean(lines[1]);
   LANGUAGE = float(lines[2]);
   fullscreen = boolean(lines[3]);
+  theaterMode = boolean(lines[4]);
 }
 
 void draw() {
@@ -109,9 +110,9 @@ void draw() {
     cMP = new panel(0, 0, 0, 0, 4);
     mSSP  = new panelS(0, 0, 0, 0, floor(random(5, 10)));
     cMSP  = new panelS(0, 0, 0, 0, 3);
-    mTA = new textAnalisis(0, 0, 0, 0, 9);
+    mTA = new textAnalisis(0, 0, 0, 0, 4);
     v = new viewScreen(0);
-    sTA = new textAnalisis(0, 0, 0, 0, 12);
+    sTA = new textAnalisis(0, 0, 0, 0, 6);
 
     scene = -1; 
     veiwScreen = 0; 

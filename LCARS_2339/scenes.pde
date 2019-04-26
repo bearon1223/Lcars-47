@@ -83,7 +83,7 @@ void scenes() {
 
     mTA.x = mSSP.x;
     mTA.y = tSP.y;
-    mTA.w = mSSP.w;
+    mTA.w = mSSP.w / 1.5;
     mTA.h = mSSP.y;
 
     mSSP.x = sSP.x + sSP.w + width / 500;
@@ -105,14 +105,14 @@ void scenes() {
     v.h = sSP.h - height / 250;
     v.multipier = 1;
     if (miniScreen == 0) {
-      sTA.x = width / 254.0;
+      sTA.x = width / 254.0 + (width / 250);
       sTA.y = height / 2.0;
-      sTA.w = width / 5.4;
-      sTA.h = height / 5.5;
+      sTA.w = (width / 5.4);
+      sTA.h = height / 5.5 - (width / (250 / 2));
 
       sTA.render();
     } else if (miniScreen == 1) {
-      Time(width / 254.0, height / 2.0, width / 5.4, height / 5.5, true);
+      Time(width / 254.0 + (width / 250), height / 2.0, width / 5.4, height / 5.5 - (width / (250/2)), true);
     } else if (miniScreen == 2) {
       textAlign(CENTER, CENTER);
       fill(255);
