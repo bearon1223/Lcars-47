@@ -3,6 +3,8 @@ class Login {
   String p;
   String typed = "";
   boolean pressedT = false;
+  timer t = new timer(1, false);
+  
   Login (float authority, float xb, float yb, float wantedScene) {
     if (authority == 0) {
       p = "omega-alpha-nine";
@@ -49,19 +51,27 @@ class Login {
         }
       }
     } else {
-      if (typed.equals("exit") && keyDetection(ENTER)) {
-        scene = -2;
-      } else if (typed.equals("settings") && keyDetection(ENTER)) {
-        scene = 1;
-        veiwScreen = 1;
-        if (isNotMuted) {
-          accept.play();
+      if (t.timercalc()) {
+        if (typed.equals("exit") && keyDetection(ENTER)) {
+          scene = -2;
+        } else if (typed.equals("settings") && keyDetection(ENTER)) {
+          scene = 1;
+          veiwScreen = 1;
+          if (isNotMuted) {
+            accept.play();
+          }
+        } else if (keyDetection(ENTER) || Button(0, 0, width, height)) {
+          if (isNotMuted) {
+            accept.play();
+          }
+          scene = wc;
+        } else if (mouseX != pmouseX || mouseY != pmouseY) {
+          if (isNotMuted) {
+            accept.play();
+          }
+          scene = wc;
+          t.T = 0;
         }
-      } else if (keyDetection(ENTER) || Button(0, 0, width, height)) {
-        if (isNotMuted) {
-          accept.play();
-        }
-        scene = wc;
       }
     }
   }

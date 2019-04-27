@@ -1,5 +1,5 @@
-float tempquality = 0;
-boolean tempisNotMuted = false;
+float tempquality = 0, temptimeoutTime = 0;
+boolean tempisNotMuted = false, temptheater = false, temptimeoutEnabled = false;
 
 void viewScreen() {
   if (veiwScreen == 0) {
@@ -56,17 +56,37 @@ void viewScreen() {
         fullscreen = false;
       }
     }
-    if (Button(mainText[30]+theaterMode, sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 7, width / 5.0, height / 18.75, true, color(52, 124, 212))) {
-      if (!theaterMode) {
-        theaterMode = true;
+    if (Button(mainText[30]+temptheater, sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 7, width / 5.0, height / 18.75, true, color(52, 124, 212))) {
+      if (!temptheater) {
+        temptheater = true;
       } else {
-        theaterMode = false;
+        temptheater = false;
+      }
+    }
+    if (Button(mainText[31] + temptimeoutTime, sSP.x + sSP.w + width / 500 + (width / 5.0 + width / 500) * 1.25, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 1, width / 5.0, height / 18.75, true, color(52, 124, 212))) {
+    }
+    if (Button("<", sSP.x + sSP.w + width / 500 + (width / 5.0 + width / 500) * 1.25 + (width / 20.0 + width / 500) * 0, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 2, width / 20.0, height / 18.75, true, color(52, 124, 212))) {
+      temptimeoutTime -= 10;
+    }
+    if (Button(">", sSP.x + sSP.w + width / 500 + (width / 5.0 + width / 500) * 1.25 + (width / 20.0 + width / 500) * 1, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 2, width / 20.0, height / 18.75, true, color(52, 124, 212))) {
+      temptimeoutTime += 10;
+    }
+    if (Button(mainText[32] + temptimeoutEnabled, sSP.x + sSP.w + width / 500 + (width / 5.0 + width / 500) * 1.25, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 3, width / 5.0, height / 18.75, true, color(52, 124, 212))) {
+      if (!temptimeoutEnabled) {
+        temptimeoutEnabled = true;
+      } else {
+        temptimeoutEnabled = false;
       }
     }
 
     if (Button(mainText[28], sSP.x + sSP.w + width / 500, height - height / 18.75 - height / 250, width / 10, height / 18.75, true, color(18, 97, 196))) {
       quality = tempquality;
       isNotMuted = tempisNotMuted;
+      theaterMode = temptheater;
+      timeoutTime = temptimeoutTime;
+      timeout.timers = timeoutTime;
+      timeout.T = 0;
+      timeoutEnabled = temptimeoutEnabled;
       save();
     }
   } else if (veiwScreen == 2) {

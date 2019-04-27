@@ -1,9 +1,20 @@
 float scene = -1, veiwScreen = 0, miniScreen = 0, logoZoomin = 100, fade = 250;
 
-timer exit = new timer("exit", 500, 1.1, 5, false);
-timer start = new timer("start", 500, 1.1, 5, true);
+timer exit = new timer("exit", 100, 1.1, 5, false);
+timer start = new timer("start", 100, 1.1, 5, true);
+
+timer timeout = new timer(10);
 
 void scenes() {
+  if(scene != -2 && scene != -1 && scene != 0 && timeoutEnabled){
+    if(timeout.timercalc()){
+      scene = 0;
+      l.typed = "";
+    }
+    if(keyPressed || mouseX != pmouseX || mouseY != pmouseY){
+      timeout.T = 0;
+    }
+  }
   if (scene == -2) {
     background(0);
     if (logoZoomin >= 10) {
@@ -22,7 +33,8 @@ void scenes() {
     rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
     fill(255);
     textAlign(CORNER, CORNER);
-    text("Credits:\nCreator: Codeing Network\nDesigner: Codeing Network\nInsperation: Lcars47.com\nBased off Star Trek (c)CBS", 2, height / 10, width - 4, height / 1.1 - height / 20);
+    text("Credits:\nCreator: Codeing Network\nDesigner: Codeing Network\nInsperation: Lcars47.com\nBased off Star Trek (c)CBS", width / 100, height / 10, width - 4, height / 1.1 - height / 20);
+    
     if (exit.timercalc()) {
       exit();
     }
@@ -36,7 +48,7 @@ void scenes() {
     rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, 10);
     rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
     fill(0, 150, 255);
-    text("Lcars 47 Database Access Codes:\nBase Codes: omega-alpha-nine \nCommand Codes: alpha-delta-tango", width / 500, height / 10, width - width / 500, height - height / 20);
+    text("Lcars 47 Database Access Codes:\nBase Codes: omega-alpha-nine \nCommand Codes: alpha-delta-tango", width / 100, height / 10, width - width / 500, height - height / 20);
 
     if (start.timercalc()) {
       scene = 0;

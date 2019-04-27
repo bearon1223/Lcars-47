@@ -9,9 +9,8 @@ String[] mSPText = {"SYS DIRECTORY", "AUX DIRECTORY", "MED DIRECTORY", "COMMUNIC
 float[] mSPView = {3, 4, 5, 6, 7, 8, 9};
 float[] mSPScene = {2, 3, 4, 5, 6, 7, 8};
 float[] PanelDebugfloat = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
-boolean isNotMuted = true, inverted = false, theaterMode = false;
-boolean fullscreen = false;
-float quality = 2;  
+boolean isNotMuted = true, inverted = false, theaterMode = false, fullscreen = false, timeoutEnabled = true;
+float quality = 2, timeoutTime = 60;  
 SoundFile click, keyPress, fail, accept;
 String[] mainText = new String[int(1000)];
 
@@ -30,7 +29,7 @@ panelS cMSP  = new panelS(0, 0, 0, 0, 3);
 textAnalisis mTA = new textAnalisis(0, 0, 0, 0, 4);
 textAnalisis sTA = new textAnalisis(0, 0, 0, 0, 6);
 viewScreen v = new viewScreen(0);
-float pwidth = 1000, pheight = 500;
+
 void settings() {
   load();
   if (!fullscreen) {
@@ -53,7 +52,7 @@ void setup() {
   f = loadFont("Impact-48.vlw");
   og = loadFont("ProcessingSansPro-Regular-48.vlw");
   click = new SoundFile(this, "Click.wav");
-  keyPress = new SoundFile(this, "");
+  //keyPress = new SoundFile(this, "");
   fail = new SoundFile(this, "Deny.wav");
   accept = new SoundFile(this, "Allow.wav");
   surface.setIcon(icon);
@@ -72,7 +71,7 @@ void loadLang(String currentLang) {
   for (int i = 0; i <= mSPText.length - 1; i++) {
     mSPText[i] = lines[i + 19];
   }
-  for (int i = 0; i <= 5 - 1; i++) {
+  for (int i = 0; i <= 7 - 1; i++) {
     mainText[i + 26] = lines[i + 26];
   }
   for (int i = 0; i<=lines.length - 1; i++) {
@@ -82,7 +81,7 @@ void loadLang(String currentLang) {
 
 void save() {
   String[] lines = {
-    str(quality), str(isNotMuted), str(LANGUAGE), str(fullscreen), str(theaterMode)
+    str(quality), str(isNotMuted), str(LANGUAGE), str(fullscreen), str(theaterMode), str(timeoutTime)
   };
   saveStrings(dataFile(CONFIG_FILE), lines);
 }
@@ -92,11 +91,17 @@ void load() {
   String[] lines = loadStrings(CONFIG_FILE);
   quality = float(lines[0]);
   isNotMuted = boolean(lines[1]);
-  tempquality = float(lines[0]);
-  tempisNotMuted = boolean(lines[1]);
   LANGUAGE = float(lines[2]);
   fullscreen = boolean(lines[3]);
   theaterMode = boolean(lines[4]);
+  timeoutTime = float(lines[5]);
+  timeoutEnabled = boolean(lines[6]);
+
+  tempquality = float(lines[0]);
+  tempisNotMuted = boolean(lines[1]);
+  temptheater = boolean(lines[4]);
+  temptimeoutTime = float(lines[5]);
+  temptimeoutEnabled = boolean(lines[6]);
 }
 
 void draw() {
@@ -133,6 +138,4 @@ void draw() {
   background(0);
 
   scenes();
-  pwidth = width;
-  pheight = height;
 }

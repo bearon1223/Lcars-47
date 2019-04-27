@@ -2,32 +2,40 @@ class timer {
   String t;
   float T = 0, x, y;
   float timers;
-  boolean cts;
+  boolean cts, reset;
   timer(String text, float xb, float yb, float time, boolean clicktoskip) {
     t = text;
     timers = time;
+    reset = false;
     x = xb;
     y = yb;
     cts = clicktoskip;
   }
   
-  timer(float time) {
+  timer(float time, boolean Reset) {
     t = "";
     timers = time;
+    reset = Reset;
     x = 0;
     y = 0;
     cts = false;
   }
-  /*
-  if (timer >= 5*frameRate || Button(0, 0, width, height)) {
-   exit();
-   }
-   text("Click or wait: "+(floor(5-(timer / (frameRate / 0.9999))) + 1)+" seconds to exit", width / 500, height / 1.1);
-   */
+  
+  timer(float time) {
+    t = "";
+    timers = time;
+    reset = true;
+    x = 0;
+    y = 0;
+    cts = false;
+  }
+  
   boolean timercalc() {
     if (cts) {
       if (T >= timers * (frameRate / 0.999) || Button(0, 0, width, height)) {
-        T = 0;
+        if (reset) {
+          T = 0;
+        }
         return true;
       } else {
         T++;
@@ -35,7 +43,9 @@ class timer {
       }
     } else {
       if (T >= timers * (frameRate / 0.999)) {
-        T = 0;
+        if (reset) {
+          T = 0;
+        }
         return true;
       } else {
         T++;
