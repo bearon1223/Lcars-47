@@ -81,7 +81,7 @@ void loadLang(String currentLang) {
 
 void save() {
   String[] lines = {
-    str(quality), str(isNotMuted), str(LANGUAGE), str(fullscreen), str(theaterMode), str(timeoutTime)
+    str(quality), str(isNotMuted), str(LANGUAGE), str(fullscreen), str(theaterMode), str(timeoutTime), str(timeoutEnabled)
   };
   saveStrings(dataFile(CONFIG_FILE), lines);
 }
