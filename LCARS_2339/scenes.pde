@@ -11,7 +11,7 @@ void scenes() {
       scene = 0;
       l.typed = "";
     }
-    if(keyPressed || mouseX != pmouseX || mouseY != pmouseY){
+    if(keyPressed || mouseX != pmouseX || mouseY != pmouseY || mousePressed){
       timeout.T = 0;
     }
   }
@@ -48,7 +48,7 @@ void scenes() {
     rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, 10);
     rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
     fill(0, 150, 255);
-    text("Lcars 47 Database Access Codes:\nBase Codes: omega-alpha-nine \nCommand Codes: alpha-delta-tango", width / 100, height / 10, width - width / 500, height - height / 20);
+    text("Lcars 47 Database Access Codes:\nBase Codes: omega-alpha-nine \nCommand Codes: alpha-delta-tango \nBeta Features: Codeing Network", width / 100, height / 10, width - width / 500, height - height / 20);
 
     if (start.timercalc()) {
       scene = 0;
