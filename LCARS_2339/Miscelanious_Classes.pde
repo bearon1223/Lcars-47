@@ -12,6 +12,15 @@ class timer {
     cts = clicktoskip;
   }
   
+  timer(String text, float xb, float yb, float time, boolean clicktoskip, boolean Reset) {
+    t = text;
+    timers = time;
+    reset = Reset;
+    x = xb;
+    y = yb;
+    cts = clicktoskip;
+  }
+  
   timer(float time, boolean Reset) {
     t = "";
     timers = time;
@@ -32,7 +41,7 @@ class timer {
   
   boolean timercalc() {
     if (cts) {
-      if (T >= timers * (frameRate / 0.999) || Button(0, 0, width, height)) {
+      if (T >= timers * frameRate|| Button(0, 0, width, height)) {
         if (reset) {
           T = 0;
         }
@@ -42,7 +51,7 @@ class timer {
         return false;
       }
     } else {
-      if (T >= timers * (frameRate / 0.999)) {
+      if (T >= timers * frameRate) {
         if (reset) {
           T = 0;
         }
@@ -56,9 +65,9 @@ class timer {
 
   void render() {
     if (cts) {
-      text("Click or wait: " + (floor(timers - (T / (frameRate / 0.999))) + 1) + " seconds to " + t, width / x, height / y);
+      text("Click or wait: " + (round(timers - (T / frameRate)) + 1) + " seconds to " + t, width / x, height / y);
     } else {
-      text("Please wait: " + (floor(timers - (T / (frameRate / 0.999)))+1) + " seconds to " + t, width / x, height / y);
+      text("Please wait: " + (round(timers - (T / frameRate)) + 1) + " seconds to " + t, width / x, height / y);
     }
   }
 }

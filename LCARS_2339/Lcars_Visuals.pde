@@ -31,8 +31,15 @@ class panel {
   }
 
   void render() {
-    fill(255);
-    //rect(x, y, w, h);
+    if (RedAlert == true && pRedAlert == false) {
+      for (int i = 0; i <= pc - 1; i++) {
+        colors[i] = color(random(100, 255), random(10, 20), random(20, 30));
+      }
+    } else if (RedAlert == false && pRedAlert == true) {
+      for (int i = 0; i <= pc - 1; i++) {
+        colors[i] = color(random(20, 70), random(100, 200), random(200, 255));
+      }
+    }
     for (int i = 0; i <= pc - 1; i++) {
       textAlign(CENTER, CENTER);
       textSize(HYPOTNUCE / 66);
@@ -93,8 +100,15 @@ class panelS {
   }
 
   void render() {
-    fill(255);
-    //rect(x, y, w, h);
+    if (RedAlert == true && pRedAlert == false) {
+      for (int i = 0; i <= pc - 1; i++) {
+        colors[i] = color(random(100, 255), random(10, 20), random(20, 30));
+      }
+    } else if (RedAlert == false && pRedAlert == true) {
+      for (int i = 0; i <= pc - 1; i++) {
+        colors[i] = color(random(20, 70), random(100, 200), random(200, 255));
+      }
+    }
     for (int i = 0; i <= pc - 1; i++) {
       textAlign(CENTER, CENTER);
       textSize(HYPOTNUCE / 170);
@@ -206,8 +220,8 @@ class textAnalisis {
     t = new String[int(textLines)];
     for (int i = 0; i <= textLines - 1; i++) {
       t[i] = floor(random(500, 99999))+"-"+floor(random(100, 999999))+""+floor(random(1000, 9999999))+""+floor(random(10000, 999999))
-          +""+floor(random(1000, 999999))+"-"+floor(random(10000, 999999))+""+floor(random(10000, 99999))+""+floor(random(1000, 9999))
-          +""+floor(random(1000, 999999));
+        +""+floor(random(1000, 999999))+"-"+floor(random(10000, 999999))+""+floor(random(10000, 99999))+""+floor(random(1000, 9999))
+        +""+floor(random(1000, 999999));
     }
   }
 
@@ -222,10 +236,18 @@ class textAnalisis {
       }
     }
     for (int i = 0; i <= tL - 1; i++) {
-      if (floor(ti.T / (frameRate / 0.999)) != i) {
-        fill(43, 16, 225);
-      } else if (floor(ti.T / (frameRate / 0.999)) == i) {
-        fill(255, 124, 16);
+      if (RedAlert) {
+        if (floor(ti.T / (frameRate / 0.999)) != i) {
+          fill(255, 0, 0);
+        } else if (floor(ti.T / (frameRate / 0.999)) == i) {
+          fill(255, 255, 255);
+        }
+      } else {
+        if (floor(ti.T / (frameRate / 0.999)) != i) {
+          fill(43, 16, 225);
+        } else if (floor(ti.T / (frameRate / 0.999)) == i) {
+          fill(255, 124, 16);
+        }
       }
       text(t[i], x, y + (h / tL) * i, w, h / tL - (height / 250));
     }

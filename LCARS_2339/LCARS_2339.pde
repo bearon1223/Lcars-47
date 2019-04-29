@@ -11,8 +11,9 @@ float[] mSPScene = {2, 3, 4, 5, 6, 7, 8};
 float[] PanelDebugfloat = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
 boolean isNotMuted = true, inverted = false, theaterMode = false, fullscreen = false, timeoutEnabled = true;
 float quality = 2, timeoutTime = 60;  
-SoundFile click, keyPress, fail, accept;
+SoundFile click, fail, accept;
 String[] mainText = new String[int(1000)];
+boolean RedAlert = false, pRedAlert = false;
 
 static final String CONFIG_FILE = "config.dat";
 static final String LANG_US = "lang_us", LANG_JP = "lang_jp", LANG_PEW = "lang_pew";
@@ -30,6 +31,8 @@ textAnalisis mTA = new textAnalisis(0, 0, 0, 0, 4);
 textAnalisis sTA = new textAnalisis(0, 0, 0, 0, 6);
 viewScreen v = new viewScreen(0);
 
+timer timeout = new timer(10);
+
 void settings() {
   load();
   if (!fullscreen) {
@@ -37,6 +40,7 @@ void settings() {
   } else {
     fullScreen();
   }
+  timeout = new timer(timeoutTime);
 
   smooth(2);
 }
@@ -52,7 +56,6 @@ void setup() {
   f = loadFont("Impact-48.vlw");
   og = loadFont("ProcessingSansPro-Regular-48.vlw");
   click = new SoundFile(this, "Click.wav");
-  //keyPress = new SoundFile(this, "");
   fail = new SoundFile(this, "Deny.wav");
   accept = new SoundFile(this, "Allow.wav");
   surface.setIcon(icon);
@@ -106,25 +109,6 @@ void load() {
 
 void draw() {
   frameRate(100);
-  if (keyDetection('*')) {
-    l = new Login(0, width / 2, height / 2, 1);
-    d = new panel(200, 100, 100, height - 100, 10, PanelDebug);
-    mSP = new panel(0, 0, 0, 0, 7, mSPText);
-    sSP = new panel(0, 0, 0, 0, 8);
-    tSP = new panel(0, 0, 0, 0, floor(random(2, 3)));
-    cMP = new panel(0, 0, 0, 0, 4);
-    mSSP  = new panelS(0, 0, 0, 0, floor(random(5, 10)));
-    cMSP  = new panelS(0, 0, 0, 0, 3);
-    mTA = new textAnalisis(0, 0, 0, 0, 4);
-    v = new viewScreen(0);
-    sTA = new textAnalisis(0, 0, 0, 0, 6);
-
-    scene = -1; 
-    veiwScreen = 0; 
-    miniScreen = 0; 
-    logoZoomin = 100; 
-    fade = 250;
-  }
   if (scene != -2 || scene != -1) {
     textAlign(CENTER, CENTER);
   }
@@ -138,4 +122,5 @@ void draw() {
   background(0);
 
   scenes();
+  pRedAlert = RedAlert;
 }
