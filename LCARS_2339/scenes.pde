@@ -31,13 +31,14 @@ void scenes() {
     rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
     fill(255);
     textAlign(CORNER, CORNER);
-    text("Credits:\nCreator: Codeing Network\nDesigner: Codeing Network\nInsperation: Lcars47.com\nBased off Star Trek (c)CBS", width / 100, height / 10, width - 4, height / 1.1 - height / 20);
+    text("Credits:\nCreator: Codeing Network\nDesigner: Codeing Network\nSounds Provided by:\ntrekcore.com & lcarscom.net\nBased off Star Trek (c)CBS", width / 100, height / 10, width - 4, height / 1.1 - height / 20);
 
     if (exit.timercalc()) {
       exit();
     }
     exit.render();
     textAlign(CENTER, CENTER);
+    bSounds.stop();
   } else if (scene == -1) {
     textSize(HYPOTNUCE / 25);
     background(0);
@@ -153,6 +154,7 @@ void scenes() {
       if (!theaterMode) {
         if (Button(mainText[18], width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(255, 32, 15))) {
           scene = -2;
+          powerDown.play();
         }
       } else {
         if (Button("98-348362", width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(231, 3, 5))) {

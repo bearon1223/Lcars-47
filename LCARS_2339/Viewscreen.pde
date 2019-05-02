@@ -90,6 +90,10 @@ void viewScreen() {
       save();
     }
   } else if (veiwScreen == 2) {
+    textAlign(CORNER, CORNER);
+    fill(255);
+    text("Build b1.06.3 WIP\nThis is a recreation of the Lcars47 found on Star Trek. This is also a blend of all of the versions we see on the screen", mSSP.x, sSP.y, mSSP.w, sSP.h);
+    textAlign(CENTER, CENTER);
   } else if (veiwScreen == 3) {
     if (Button(mainText[26], mSSP.x, sSP.y, width / 10, height / 15, true, color(255), accept)) {
       scene = 2;

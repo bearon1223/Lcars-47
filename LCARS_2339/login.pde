@@ -22,6 +22,7 @@ class Login {
     if (!theaterMode) {
       if (((typed.equals(p) == true) || (typed.equals("cfopi") || typed.equals("command function override pi"))) && keyDetection(ENTER)) {
         scene = wc;
+        bSounds.loop();
         println(wc);
         v.x = mSSP.x;
         v.y = sSP.y;
@@ -39,6 +40,7 @@ class Login {
         println("debug");
       } else if (typed.equals("exit") && keyDetection(ENTER)) {
         scene = -2;
+        powerDown.play();
       } else if (typed.equals("settings") && keyDetection(ENTER)) {
         scene = 1;
         veiwScreen = 1;
@@ -54,6 +56,7 @@ class Login {
       if (t.timercalc()) {
         if (typed.equals("exit") && keyDetection(ENTER)) {
           scene = -2;
+          powerDown.play();
         } else if (typed.equals("settings") && keyDetection(ENTER)) {
           scene = 1;
           veiwScreen = 1;
@@ -70,6 +73,7 @@ class Login {
             accept.play();
           }
           scene = wc;
+          bSounds.loop();
           t.T = 0;
         }
       }

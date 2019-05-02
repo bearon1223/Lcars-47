@@ -11,7 +11,7 @@ float[] mSPScene = {2, 3, 4, 5, 6, 7, 8};
 float[] PanelDebugfloat = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
 boolean isNotMuted = true, inverted = false, theaterMode = false, fullscreen = false, timeoutEnabled = true;
 float quality = 2, timeoutTime = 60;  
-SoundFile click, fail, accept;
+SoundFile click, fail, accept, bSounds, powerDown;
 String[] mainText = new String[int(1000)];
 boolean RedAlert = false, pRedAlert = false;
 
@@ -48,6 +48,10 @@ void settings() {
 void setup() {
   surface.setResizable(true);
   surface.setTitle("Lcars: "+ (year() + 320));
+  background(0);
+  textAlign(CENTER, CENTER);
+  textSize(50);
+  text("Loading...", 0, 0, 1000, 500);
   logo = loadImage("Federation Logo.jpg");
   icon = loadImage("starfleet logo.jpg");
   temp = loadImage("template.png");
@@ -58,6 +62,8 @@ void setup() {
   click = new SoundFile(this, "Click.wav");
   fail = new SoundFile(this, "Deny.wav");
   accept = new SoundFile(this, "Allow.wav");
+  bSounds = new SoundFile(this, "tng_bridge_2.mp3");
+  powerDown = new SoundFile(this, "power_down.mp3");
   surface.setIcon(icon);
   if (LANGUAGE == 0) {
     loadLang(LANG_US);
