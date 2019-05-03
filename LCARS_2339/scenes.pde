@@ -31,7 +31,7 @@ void scenes() {
     rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
     fill(255);
     textAlign(CORNER, CORNER);
-    text("Credits:\nCreator: Codeing Network\nDesigner: Codeing Network\nSounds Provided by:\ntrekcore.com & lcarscom.net\nBased off Star Trek (c)CBS", width / 100, height / 10, width - 4, height / 1.1 - height / 20);
+    text("Credits:\nCreator: Codeing Network\nSounds Provided by:\ntrekcore.com, lcarscom.net,\nBensound.com\nBased off Star Trek (c)CBS", width / 100, height / 10, width - 4, height / 1.1 - height / 20);
 
     if (exit.timercalc()) {
       exit();
@@ -154,6 +154,7 @@ void scenes() {
       if (!theaterMode) {
         if (Button(mainText[18], width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(255, 32, 15))) {
           scene = -2;
+          bSounds.stop();
           powerDown.play();
         }
       } else {
@@ -169,6 +170,7 @@ void scenes() {
       }
       if (Button(mainText[10], width / 180, height / 1.327, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(255, 31, 23))) {
         scene = 0;
+        bSounds.stop();
         l.typed = "";
       }
       if (Button(mainText[11], width / 180, height / 1.449, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(255, 42, 13))) {

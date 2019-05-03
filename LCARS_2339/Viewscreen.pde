@@ -1,5 +1,5 @@
 float tempquality = 0, temptimeoutTime = 0;
-boolean tempisNotMuted = false, temptheater = false, temptimeoutEnabled = false;
+boolean tempisNotMuted = false, temptheater = false, temptimeoutEnabled = false, dMplaying = false;
 
 void viewScreen() {
   if (veiwScreen == 0) {
@@ -92,7 +92,7 @@ void viewScreen() {
   } else if (veiwScreen == 2) {
     textAlign(CORNER, CORNER);
     fill(255);
-    text("Build b1.06.3 WIP\nThis is a recreation of the Lcars47 found on Star Trek. This is also a blend of all of the versions we see on the screen", mSSP.x, sSP.y, mSSP.w, sSP.h);
+    text("Build b1.06.04\nThis is a recreation of the Lcars47 found on Star Trek. This is also a blend of all of the versions we see on the screen", mSSP.x, sSP.y, mSSP.w, sSP.h);
     textAlign(CENTER, CENTER);
   } else if (veiwScreen == 3) {
     if (Button(mainText[26], mSSP.x, sSP.y, width / 10, height / 15, true, color(255), accept)) {
@@ -112,6 +112,17 @@ void viewScreen() {
   } else if (veiwScreen == 7) {
   } else if (veiwScreen == 8) {
   } else if (veiwScreen == 9) {
+    if (Button("92-48416", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250, width / 10, height / 18.75, true, color(20, 200, 255))) {
+      if (dMplaying) {
+        dMusic.stop();
+        bSounds.loop();
+        dMplaying = false;
+      } else {
+        dMusic.loop();
+        bSounds.stop();
+        dMplaying = true;
+      }
+    }
   } else if (veiwScreen == 10) {
     v.render();
   } else if (veiwScreen == 11) {
