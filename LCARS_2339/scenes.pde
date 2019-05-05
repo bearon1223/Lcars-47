@@ -77,6 +77,7 @@ void scenes() {
     rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
     v.updateStarCound();
   } else if (scene == 1) { 
+    //image(temp, 0, 0, width, height);
     mSP.x = width / 5.2;
     mSP.h = height;
     mSP.w = width / 11.4;
@@ -97,10 +98,9 @@ void scenes() {
     mTA.h = mSSP.y;
 
     mSSP.x = sSP.x + sSP.w + width / 500;
-    mSSP.y = sSP.y - mSSP.h - height / 250;
+    mSSP.y = sSP.y - mSSP.h - height / 15;
     mSSP.w = width - mSSP.x;
     mSSP.h = height / 50;
-    //image(temp, 0, 0, width, height);
     if (quality != 0) {
       image(imgsur, width / 213, height / 142, width / 5.5, height / 4.1);
       image(logo, width / 56, height / 29, width / 6.4, height / 5.6);
@@ -110,10 +110,11 @@ void scenes() {
     }
 
     v.x = mSSP.x;
-    v.y = sSP.y;
+    v.y = mSSP.y + mSSP.h + height / 250;
     v.w = mSSP.w - width / 500;
-    v.h = sSP.h - height / 250;
+    v.h = height - mSSP.y - height / 250;
     v.multipier = 1;
+    
     if (miniScreen == 0) {
       sTA.x = width / 254.0 + (width / 250);
       sTA.y = height / 2.0;

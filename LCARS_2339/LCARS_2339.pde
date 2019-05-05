@@ -11,7 +11,7 @@ float[] mSPScene = {2, 3, 4, 5, 6, 7, 8};
 float[] PanelDebugfloat = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
 boolean isNotMuted = true, inverted = false, theaterMode = false, fullscreen = false, timeoutEnabled = true;
 float quality = 2, timeoutTime = 60;  
-SoundFile click, fail, accept, bSounds, powerDown, dMusic;
+SoundFile click, fail, accept, bSounds, powerDown, dMusic, HFO;
 String[] mainText = new String[int(1000)];
 boolean RedAlert = false, pRedAlert = false;
 
@@ -27,7 +27,7 @@ panel  tSP = new panel(0, 0, 0, 0, floor(random(2, 3)));
 panel  cMP = new panel(0, 0, 0, 0, 4);
 panelS mSSP  = new panelS(0, 0, 0, 0, floor(random(5, 10)));
 panelS cMSP  = new panelS(0, 0, 0, 0, 3);
-textAnalisis mTA = new textAnalisis(0, 0, 0, 0, 4);
+textAnalisis mTA = new textAnalisis(0, 0, 0, 0, 3);
 textAnalisis sTA = new textAnalisis(0, 0, 0, 0, 6);
 viewScreen v = new viewScreen(0);
 
@@ -69,6 +69,7 @@ void setup() {
   powerDown = new SoundFile(this, "power_down.mp3");
   dMusic = new SoundFile(this, "Extra Music.mp3");
   dMusic.amp(0.5);
+  HFO = new SoundFile(this, "");
   surface.setIcon(icon);
   if (LANGUAGE == 0) {
     loadLang(LANG_US);

@@ -4,7 +4,8 @@ boolean tempisNotMuted = false, temptheater = false, temptimeoutEnabled = false,
 void viewScreen() {
   if (veiwScreen == 0) {
     if (quality == 2) {
-      image(standby, width / 3.488 + width / 11.25, height / 2.654, width - width / 3.488 - width / 11.25, height - height / 2.654);
+      image(standby, mSSP.x, mSSP.y+mSSP.h, mSSP.w, height - (mSSP.y+mSSP.h));
+      v.updateStarCound();
     } else if (quality != 2) {
       v.render();
     }
@@ -92,7 +93,7 @@ void viewScreen() {
   } else if (veiwScreen == 2) {
     textAlign(CORNER, CORNER);
     fill(255);
-    text("Build b1.06.04\nThis is a recreation of the Lcars47 found on Star Trek. This is also a blend of all of the versions we see on the screen", mSSP.x, sSP.y, mSSP.w, sSP.h);
+    text("Build b1.07.00\nThis is a recreation of the Lcars found on Star Trek. This is also a blend of all of the versions we see on the screen", mSSP.x, mSSP.y + mSSP.h + width / 250, mSSP.w, sSP.h);
     textAlign(CENTER, CENTER);
   } else if (veiwScreen == 3) {
     if (Button(mainText[26], mSSP.x, sSP.y, width / 10, height / 15, true, color(255), accept)) {
@@ -106,9 +107,22 @@ void viewScreen() {
   } else if (veiwScreen == 5) {
   } else if (veiwScreen == 6) {
     // COMMUNICATIONS
-    if (Button(mainText[8], mSSP.x, sSP.y, width / 5, height / 15, true, color(255))) {
-      veiwScreen = 12;
+    cMP.x = mSSP.x + sSP.w;
+    cMP.y = mSSP.y + height / 8;
+    cMP.w = sSP.w;
+    cMP.h = sSP.h / 2;
+
+    cMSP.x = cMP.x + cMP.w + width/500;
+    cMSP.y = cMP.y;
+    cMSP.w = width / 5;
+    cMSP.h = width / 100;
+
+    if (Button(mainText[8], cMSP.x, cMSP.y + cMSP.h + height / 250, cMSP.w, cMP.h / cMP.pc, false, color(50, 130, 255))) {
+      HFO.play();
     }
+
+    cMP.render();
+    cMSP.render();
   } else if (veiwScreen == 7) {
   } else if (veiwScreen == 8) {
   } else if (veiwScreen == 9) {
@@ -141,19 +155,5 @@ void viewScreen() {
     if (Button(mainText[9], sSP.x + sSP.w + width / 500, height - height / 18.75 - height / 250, width / 10, height / 18.75, true, color(18, 97, 196))) {
       veiwScreen = 1;
     }
-  } else if (veiwScreen == 12) {
-
-    cMP.x = mSSP.x + sSP.w;
-    cMP.y = mSSP.y + height / 8;
-    cMP.w = sSP.w;
-    cMP.h = sSP.h / 2;
-
-    cMSP.x = cMP.x + cMP.w + width/500;
-    cMSP.y = cMP.y;
-    cMSP.w = width / 5;
-    cMSP.h = width / 100;
-
-    cMP.render();
-    cMSP.render();
   }
 }
