@@ -15,16 +15,19 @@ void scenes() {
   }
   if (scene == -2) {
     background(0);
+    if (logoZoomin == 100) {
+      powerDown.play();
+    }
     if (logoZoomin >= 10) {
       logoZoomin -= width / 1000.0;
     }
     textSize(HYPOTNUCE / 25);
     if (quality == 2) {
       imageMode(CENTER);
-      image(logo, width / 1.3, height / 2, width / (logoZoomin / 3), height / (logoZoomin  / 4));
+      image(logo, width / 1.3, height / 2, width / (logoZoomin / 3), height / (logoZoomin / 4));
       imageMode(CORNER);
     } else {
-      FederationSymbol(width / 1.3, height / 2, width / (logoZoomin / 3), height / (logoZoomin  / 4));
+      FederationSymbol(width / 1.3, height / 2, width / (logoZoomin / 3), height / (logoZoomin / 4));
     }
     fill(235, 178, 67);
     rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, 10);
@@ -38,7 +41,6 @@ void scenes() {
     }
     exit.render();
     textAlign(CENTER, CENTER);
-    bSounds.stop();
   } else if (scene == -1) {
     textSize(HYPOTNUCE / 25);
     background(0);
@@ -67,7 +69,7 @@ void scenes() {
       imageMode(CORNER);
     } else if (quality != 2) {
       fill(100, 100, 255);
-      FederationSymbol(width / 2, height / 2, width / 3, height / 2);
+      FederationSymbol(width / 2, height / 2, width / 5, height / 2.5);
     }
     l.type();
     l.render();
@@ -101,12 +103,18 @@ void scenes() {
     mSSP.y = sSP.y - mSSP.h - height / 15;
     mSSP.w = width - mSSP.x;
     mSSP.h = height / 50;
-    if (quality != 0) {
+    if (quality == 2) {
       image(imgsur, width / 213, height / 142, width / 5.5, height / 4.1);
       image(logo, width / 56, height / 29, width / 6.4, height / 5.6);
+    } else if (quality == 1) {
+      fill(100, 150, 255);
+      rect(width / 213, height / 142, width / 5.5, height / 4.1, HYPOTNUCE / 50);
+      fill(0);
+      rect(width / 100, height / 142, width / 5.9, height / 4.1, HYPOTNUCE / 50);
+
+      FederationSymbol(width / 213 + ((width / 5.5)/2), height / 142 + ((height / 4.1)/2), width / 8.0, height / 4.5);
     } else if (quality == 0) {
-      fill(100, 100, 255);
-      FederationSymbol(width / 213 + ((width / 5.5)/2), height / 142 + ((height / 4.1)/2), width / 6.5, height / 5.1);
+      FederationSymbol(width / 213 + ((width / 5.5)/2), height / 142 + ((height / 4.1)/2), width / 8.0, height / 4.5);
     }
 
     v.x = mSSP.x;
@@ -114,7 +122,7 @@ void scenes() {
     v.w = mSSP.w - width / 500;
     v.h = height - mSSP.y - height / 250;
     v.multipier = 1;
-    
+
     if (miniScreen == 0) {
       sTA.x = width / 254.0 + (width / 250);
       sTA.y = height / 2.0;
@@ -154,8 +162,8 @@ void scenes() {
       }
       if (!theaterMode) {
         if (Button(mainText[18], width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(255, 32, 15))) {
-          scene = -2;
           bSounds.stop();
+          scene = -2;
           powerDown.play();
         }
       } else {
@@ -219,7 +227,6 @@ void scenes() {
         if (Button(mainText[16], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(255, 42, 19))) {
         }
       }
-      
     } else {
       if (Button("54-875977", width / 180, height / 3.900, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(20, 120, 200))) {
       }
@@ -244,6 +251,7 @@ void scenes() {
       if (!theaterMode) {
         if (Button(mainText[18], width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(96, 137, 168))) {
           scene = -2;
+          bSounds.stop();
         }
       } else {
         if (Button("98-348362", width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(96, 137, 168))) {

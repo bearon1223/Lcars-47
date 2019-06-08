@@ -4,15 +4,9 @@ class Login {
   String typed = "";
   boolean pressedT = false;
   timer t = new timer(1, false);
-  
-  Login (float authority, float xb, float yb, float wantedScene) {
-    if (authority == 0) {
-      p = "omega-alpha-nine";
-    } else if (authority == 1) {
-      p = "omega-beta-two";
-    } else if (authority == 50) {
-      p = "debug";
-    }
+
+  Login (String password, float xb, float yb, float wantedScene) {
+    p = password;
     x = xb;
     y = yb;
     wc = wantedScene;
@@ -29,21 +23,23 @@ class Login {
         v.w = mSSP.w - width / 500;
         v.h = sSP.h - height / 250;
         v.updateStarCound();
+        len = 0;
         if (isNotMuted) {
           accept.play();
         }
       } else if (typed.equals("debug") && keyDetection(ENTER)) {
         scene = 400;
+        len = 0;
         if (isNotMuted) {
           accept.play();
         }
         println("debug");
       } else if (typed.equals("exit") && keyDetection(ENTER)) {
         scene = -2;
-        powerDown.play();
       } else if (typed.equals("settings") && keyDetection(ENTER)) {
         scene = 1;
         veiwScreen = 1;
+        len = 0;
         if (isNotMuted) {
           accept.play();
         }
@@ -60,10 +56,12 @@ class Login {
         } else if (typed.equals("settings") && keyDetection(ENTER)) {
           scene = 1;
           veiwScreen = 1;
+          len = 0;
           if (isNotMuted) {
             accept.play();
           }
         } else if (keyDetection(ENTER) || Button(0, 0, width, height)) {
+          len = 0;
           if (isNotMuted) {
             accept.play();
           }
@@ -72,6 +70,7 @@ class Login {
           if (isNotMuted) {
             accept.play();
           }
+          len = 0;
           scene = wc;
           bSounds.loop();
           t.T = 0;
@@ -79,13 +78,15 @@ class Login {
       }
     }
   }
-
+  int len = typed.length();
   void type() {
     if (keyPressed && !pressedT) {
       if (key != BACKSPACE && key != ENTER) {
         typed += key;
+        len = typed.length();
       } else if (key == BACKSPACE) {
-        typed = "";
+        typed = typed.substring(0, max(0, len - 1));
+        len = typed.length();
       }
       pressedT = true;
     } else if (!keyPressed && pressedT) {

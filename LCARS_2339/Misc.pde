@@ -10,6 +10,12 @@ float square(float i){
   return i*i;
 }
 
+void playSound(SoundFile s){
+  if(isNotMuted){
+    s.play();
+  }
+}
+
 void Time(float x, float y, float w, float h, boolean twentyfourhr) {
   String minute = str(minute()), hour = str(hour()), second;
   if (minute() < 10) {
@@ -53,10 +59,10 @@ boolean Button(String stringtext, float x, float y, float w, float h, boolean is
   fill(c);
   textAlign(CENTER, CENTER);
   textSize(HYPOTNUCE / 66);
-  if (quality == 0  || (quality == 2 && !isRounded)) {
+  if (quality == 0 || (quality == 2 && !isRounded)) {
     rect(x, y, w, h, 0);
   } else if (isRounded || quality == 1) {
-    rect(x, y, w, h, RATIOWH * 500);
+    rect(x, y, w, h, HYPOTNUCE);
   }
   fill(0);
   text(stringtext, x, y, w, h);
@@ -81,7 +87,7 @@ boolean Button(String stringtext, float x, float y, float w, float h, boolean is
   if (quality == 0  || (quality == 2 && !isRounded)) {
     rect(x, y, w, h, 0);
   } else if (isRounded || quality == 1) {
-    rect(x, y, w, h, RATIOWH * 500);
+    rect(x, y, w, h, HYPOTNUCE);
   }
   fill(0);
   text(stringtext, x, y, w, h);
@@ -119,6 +125,31 @@ boolean Button(String stringtext, float x, float y, float wp, float hp, float w,
     t = true;
     if (isNotMuted)
       click.play();
+  }
+  stroke(0);
+  return t;
+}
+
+boolean ButtonM(String stringtext, float x, float y, float wp, float hp, float w, float h, color c) {
+  boolean t = false;
+  noStroke();
+  fill(c);
+  textAlign(CENTER, CENTER);
+  textSize(HYPOTNUCE / 66);
+  if (quality > 1) {
+    OneCircleButton(x, y, wp, hp);
+  } else if (quality == 0) {
+    rect(x, y, w, h);
+  } else if (quality == 1) {
+    rect(x, y, w, h, RATIOWH*500);
+  }
+  fill(0);
+  text(stringtext, x, y, w, h);
+  if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && !ggfdsakfj && mousePressed) {
+    ggfdsakfj = true;
+  } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfj && !mousePressed) {
+    ggfdsakfj = false;
+    t = true;
   }
   stroke(0);
   return t;

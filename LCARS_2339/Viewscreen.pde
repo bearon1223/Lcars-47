@@ -120,6 +120,7 @@ void viewScreen() {
     if (Button(mainText[8], cMSP.x, cMSP.y + cMSP.h + height / 250, cMSP.w, cMP.h / cMP.pc, false, color(50, 130, 255))) {
       HFO.play();
     }
+    if (Button(mainText[9], cMSP.x, 2 * (cMSP.y + cMSP.h + height / 250), cMSP.w, cMP.h/cMP.pc, false, color(50, 100, 255))){}
 
     cMP.render();
     cMSP.render();

@@ -5,21 +5,22 @@ PFont f, og;
 boolean debugPressed = false;
 float RATIOWH = 100, HYPOTNUCE = 100;
 String[] PanelDebug = {"test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"};
-String[] mSPText = {"SYS DIRECTORY", "AUX DIRECTORY", "MED DIRECTORY", "COMMUNICATIONS", "STELLAR CHART", "MISSION OPS", "DATABASE"};
+//String[] mSPText = {"SYS DIRECTORY", "AUX DIRECTORY", "MED DIRECTORY", "COMMUNICATIONS", "STELLAR CHART", "MISSION OPS", "DATABASE"}; 
+String[] mSPText = new String[7];
 float[] mSPView = {3, 4, 5, 6, 7, 8, 9};
 float[] mSPScene = {2, 3, 4, 5, 6, 7, 8};
 float[] PanelDebugfloat = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
 boolean isNotMuted = true, inverted = false, theaterMode = false, fullscreen = false, timeoutEnabled = true;
 float quality = 2, timeoutTime = 60;  
 SoundFile click, fail, accept, bSounds, powerDown, dMusic, HFO;
-String[] mainText = new String[int(1000)];
+String[] mainText = new String[1000];
 boolean RedAlert = false, pRedAlert = false;
 
 static final String CONFIG_FILE = "config.dat";
 static final String LANG_US = "lang_us", LANG_JP = "lang_jp", LANG_PEW = "lang_pew";
 float LANGUAGE = 0;
 
-Login  l = new Login(0, width / 2, height / 2, 1);
+Login  l = new Login("omega-alpha-nine", width / 2, height / 2, 1);
 panel  d = new panel(200, 100, 100, height - 100, 10, PanelDebug);
 panel  mSP = new panel(0, 0, 0, 0, 7, mSPText);
 panel  sSP = new panel(0, 0, 0, 0, 8);
@@ -28,7 +29,7 @@ panel  cMP = new panel(0, 0, 0, 0, 4);
 panelS mSSP  = new panelS(0, 0, 0, 0, floor(random(5, 10)));
 panelS cMSP  = new panelS(0, 0, 0, 0, 3);
 textAnalisis mTA = new textAnalisis(0, 0, 0, 0, 3);
-textAnalisis sTA = new textAnalisis(0, 0, 0, 0, 6);
+textAnalisis sTA = new textAnalisis(0, 0, 0, 0, floor(random(3, 5)));
 viewScreen v = new viewScreen(0);
 
 timer timeout = new timer(10);
@@ -41,8 +42,6 @@ void settings() {
     fullScreen();
   }
   timeout = new timer(timeoutTime);
-
-  smooth(2);
 }
 
 void setup() {
@@ -60,7 +59,7 @@ void setup() {
   f = loadFont("Impact-48.vlw");
   og = loadFont("ProcessingSansPro-Regular-48.vlw");
   click = new SoundFile(this, "Click.wav");
-  click.amp(0.5);
+  click.amp(0.25);
   fail = new SoundFile(this, "Deny.wav");
   fail.amp(0.5);
   accept = new SoundFile(this, "Allow.wav");
@@ -69,7 +68,7 @@ void setup() {
   powerDown = new SoundFile(this, "power_down.mp3");
   dMusic = new SoundFile(this, "Extra Music.mp3");
   dMusic.amp(0.5);
-  HFO = new SoundFile(this, "");
+  HFO = new SoundFile(this, "Deny.wav");
   surface.setIcon(icon);
   if (LANGUAGE == 0) {
     loadLang(LANG_US);
@@ -88,9 +87,6 @@ void loadLang(String currentLang) {
   }
   for (int i = 0; i <= 7 - 1; i++) {
     mainText[i + 26] = lines[i + 26];
-  }
-  for (int i = 0; i<=lines.length - 1; i++) {
-    println(i+": "+lines[i]);
   }
 }
 

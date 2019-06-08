@@ -1,3 +1,18 @@
+class miniDisplay {
+  float x, y, w, h;
+  boolean Enabled = true;
+  miniDisplay(float xb, float yb, float wb, float hb) {
+    x = xb;
+    y = yb;
+    w = wb;
+    h = hb;
+  }
+  
+  void contents() {}
+  
+  void render() {}
+}
+
 class timer {
   String t;
   float T = 0, x, y;
