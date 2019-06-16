@@ -71,6 +71,7 @@ class panelS {
   float x, y, w, h, pc;
   color[] colors;
   String[] texts;
+  float TextSize = HYPOTNUCE / 130;
   panelS(float xb, float yb, float wb, float hb, float panelcount, String[] textsb) {
     x = xb;
     y = yb;
@@ -109,9 +110,10 @@ class panelS {
         colors[i] = color(random(20, 70), random(100, 200), random(200, 255));
       }
     }
+    textSize(TextSize);
+    TextSize = HYPOTNUCE / 130;
     for (int i = 0; i <= pc - 1; i++) {
       textAlign(CENTER, CENTER);
-      textSize(HYPOTNUCE / 170);
       fill(colors[i]);
       rect(x + ((w / pc) * i), y, w / pc - (width / 500), h);
       fill(0);
@@ -137,7 +139,8 @@ class panelS {
 }
 
 class viewScreen {
-  float x, y, w, h, sT, starAmount, multipier;
+  float x, y, w, h, sT, starAmount;
+  float starMult = 1;
   float[] offx = new float[50], offy = new float[50], offs = new float[50];
   viewScreen(float screenType) {
     sT = screenType;
@@ -152,15 +155,15 @@ class viewScreen {
     }
   }
 
-  void updateStarCound() {
+  void updateStarCount() {
     if (quality == 0) {
-      starAmount = 100;
+      starAmount = 100 * starMult;
     }
     if (quality == 1) {
-      starAmount = 500;
+      starAmount = 500 * starMult;
     }
     if (quality == 2) {
-      starAmount = 1000;
+      starAmount = 1000 * starMult;
     }
     offx = new float[int(starAmount)];
     offy = new float[int(starAmount)];
@@ -172,16 +175,18 @@ class viewScreen {
     for (int i = 0; i <= starAmount - 1; i++) {
       offx[i] = random(0, w);
       offy[i] = random(0, h);
-      offs[i] = random(0.75, 3);
+      offs[i] = random(0.75, 2);
     }
   }
 
   void render() {
     if (sT == 0) {
+      noStroke();
       for (int i = 0; i <= starAmount - 1; i++) {
         fill(255);
-        ellipse(x + (offx[i] * (width / 1000.0)), y + (offy[i] * (height / 500.0)), offs[i] * multipier, offs[i] * multipier);
+        ellipse(x + (offx[i] * (width / 1000.0)), y + (offy[i] * (height / 500.0)), offs[i] * (w / 500), offs[i] * (h / 250));
       }
+      stroke(0);
     }
   }
 }
@@ -237,20 +242,125 @@ class textAnalisis {
     }
     for (int i = 0; i <= tL - 1; i++) {
       if (RedAlert) {
-        if (floor(ti.T / (frameRate / 0.999)) != i) {
+        if (floor(ti.T / frameRate) != i) {
           fill(255, 0, 0);
-        } else if (floor(ti.T / (frameRate / 0.999)) == i) {
+        } else if (floor(ti.T / frameRate) == i) {
           fill(255, 255, 255);
         }
       } else {
-        if (floor(ti.T / (frameRate / 0.999)) != i) {
+        if (floor(ti.T / frameRate) != i) {
           fill(43, 16, 225);
-        } else if (floor(ti.T / (frameRate / 0.999)) == i) {
+        } else if (floor(ti.T / frameRate) == i) {
           fill(255, 124, 16);
         }
       }
       text(t[i], x, y + (h / tL) * i, w, h / tL - (height / 250));
     }
     textAlign(CENTER, CENTER);
+  }
+}
+
+class Star {
+  // I create variables to specify the x and y of each star.
+  float x;
+  float y;
+  // I create "z", a variable I'll use in a formula to modify the stars position.
+  float z;
+
+  // I create an other variable to store the previous value of the z variable.
+  // (the value of the z variable at the previous frame).
+  float pz;
+  
+  float w, h;
+
+  Star(float wb, float hb) {
+    w = wb;
+    h = hb;
+    // I place values in the variables
+    x = random(-w, w);
+    // note: height and width are the same: the canvas is a square.
+    y = random(-h*2, h*2);
+    // note: the z value can't exceed the width/2 (and height/2) value,
+    // beacuse I'll use "z" as divisor of the "x" and "y",
+    // whose values are also between "0" and "width/2".
+    z = random(HYPOTNUCE/2.5);
+    // I set the previous position of "z" in the same position of "z",
+    // which it's like to say that the stars are not moving during the first frame.
+    pz = z;
+  }
+
+  void update() {
+    // In the formula to set the new stars coordinates
+    // I'll divide a value for the "z" value and the outcome will be
+    // the new x-coordinate and y-coordinate of the star.
+    // Which means if I decrease the value of "z" (which is a divisor),
+    // the outcome will be bigger.
+    // Wich means the more the speed value is bigger, the more the "z" decrease,
+    // and the more the x and y coordinates increase.
+    // Note: the "z" value is the first value I updated for the new frame.
+    z = z - (warpFactor)*2;
+    // when the "z" value equals to 1, I'm sure the star have passed the
+    // borders of the canvas( probably it's already far away from the borders),
+    // so i can place it on more time in the canvas, with new x, y and z values.
+    // Note: in this way I also avoid a potential division by 0.
+    if (z < random(1, 5)) {
+      z = random(HYPOTNUCE/4, HYPOTNUCE);
+      x = random(-w, w);
+      y = random(-h, h);
+      pz = z;
+    }
+  }
+
+  void show() {
+    fill(255);
+    noStroke();
+
+    // with theese "map", I get the new star positions
+    //the division x / z get a number between 0 and a very high number,
+    // we map this number (proportionally to a range of 0 - 1), inside a range of 0 - width/2.
+    // In this way we are sure the new coordinates "sx" and "sy" move faster at each frame
+    // and which they finish their travel outside of the canvas (they finish when "z" is less than a).
+
+    float sx = map(x / z, 0, 1, 0, w/2);
+    float sy = map(y / z, 0, 1, 0, h/2);
+
+    // I use the z value to increase the star size between a range from 0 to 16.
+    //float r = map(z, 0, HYPOTNUCE, 16, 0);
+    //ellipse(sx, sy, r, r);
+
+    // Here i use the "pz" valute to get the previous position of the stars,
+    // so I can draw a line from the previous position to the new (current) one.
+    float px = map(x / pz, 0, 1, 0, w/2);
+    float py = map(y / pz, 0, 1, 0, h/2);
+
+    // Placing here this line of code, I'm sure the "pz" value are updated after the
+    // coordinates are already calculated; in this way the "pz" value is always equals
+    // to the "z" value of the previous frame.
+    pz = z;
+
+    stroke(255);
+    strokeWeight(2);
+    line(px, py, sx, sy);
+    strokeWeight(1);
+    stroke(0);
+  }
+}
+
+class starField {
+  Star[] stars = new Star[800];
+  float w, h;
+  starField() {
+    for (int i = 0; i < stars.length; i++) {
+      stars[i] = new Star(w, h);
+    }
+  }
+
+  void update() {
+    for (int i = 0; i < stars.length; i++) {
+      stars[i].w = w;
+      stars[i].h = h;
+      stars[i].update();
+      stars[i].show();
+    }
   }
 }

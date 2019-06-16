@@ -22,7 +22,7 @@ class Login {
         v.y = sSP.y;
         v.w = mSSP.w - width / 500;
         v.h = sSP.h - height / 250;
-        v.updateStarCound();
+        v.updateStarCount();
         len = 0;
         if (isNotMuted) {
           accept.play();

@@ -15,7 +15,7 @@ void scenes() {
   }
   if (scene == -2) {
     background(0);
-    if (logoZoomin == 100) {
+    if (logoZoomin == 100 && isNotMuted) {
       powerDown.play();
     }
     if (logoZoomin >= 10) {
@@ -40,16 +40,28 @@ void scenes() {
       exit();
     }
     exit.render();
+
+
     textAlign(CENTER, CENTER);
   } else if (scene == -1) {
-    textSize(HYPOTNUCE / 25);
     background(0);
+    if (logoZoomin >= 10) {
+      logoZoomin -= width / 1000.0;
+    }
+    textSize(HYPOTNUCE / 25);
+    if (quality == 2) {
+      imageMode(CENTER);
+      image(logo, width / 1.3, height / 2, width / (logoZoomin / 3), height / (logoZoomin / 4));
+      imageMode(CORNER);
+    } else {
+      FederationSymbol(width / 1.3, height / 2, width / (logoZoomin / 3), height / (logoZoomin / 4));
+    }
     textAlign(CORNER, CORNER);
     fill(235, 178, 67);
     rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, 10);
     rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
     fill(0, 150, 255);
-    text("Lcars 47 Database Access Codes:\nBase Codes: omega-alpha-nine \nCommand Codes: alpha-delta-tango \nBeta Features: Codeing Network", width / 100, height / 10, width - width / 500, height - height / 20);
+    text("Lcars 47 Database Access Codes:\nLogin Codes: omega-alpha-nine", width / 100, height / 10, width - width / 500, height - height / 20);
 
     if (start.timercalc()) {
       scene = 0;
@@ -58,6 +70,7 @@ void scenes() {
 
     textAlign(CENTER, CENTER);
   } else if (scene == 0) {
+    logoZoomin = 100;
     l.x = width / 2;
     l.y = height / 1.25;
     fade = 250;
@@ -77,9 +90,8 @@ void scenes() {
     fill(0, 150, 255);
     rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, 10);
     rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
-    v.updateStarCound();
+    v.updateStarCount();
   } else if (scene == 1) { 
-    //image(temp, 0, 0, width, height);
     mSP.x = width / 5.2;
     mSP.h = height;
     mSP.w = width / 11.4;
@@ -103,6 +115,8 @@ void scenes() {
     mSSP.y = sSP.y - mSSP.h - height / 15;
     mSSP.w = width - mSSP.x;
     mSSP.h = height / 50;
+    viewScreen();
+
     if (quality == 2) {
       image(imgsur, width / 213, height / 142, width / 5.5, height / 4.1);
       image(logo, width / 56, height / 29, width / 6.4, height / 5.6);
@@ -121,7 +135,6 @@ void scenes() {
     v.y = mSSP.y + mSSP.h + height / 250;
     v.w = mSSP.w - width / 500;
     v.h = height - mSSP.y - height / 250;
-    v.multipier = 1;
 
     if (miniScreen == 0) {
       sTA.x = width / 254.0 + (width / 250);
@@ -164,7 +177,6 @@ void scenes() {
         if (Button(mainText[18], width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(255, 32, 15))) {
           bSounds.stop();
           scene = -2;
-          powerDown.play();
         }
       } else {
         if (Button("98-348362", width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(231, 3, 5))) {
@@ -214,10 +226,13 @@ void scenes() {
           miniScreen = 0;
         }
       }
-      viewScreen();
+      
       if (quality == 2) {
         if (Button(mainText[15], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(255, 42, 12))) {
           if (veiwScreen != 10) {
+            if (warpFactor != 0) {
+              warning.play();
+            }
             veiwScreen = 10;
           } else if (veiwScreen == 10) {
             veiwScreen = 0;
@@ -225,6 +240,7 @@ void scenes() {
         }
       } else if (quality != 2) {
         if (Button(mainText[16], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(255, 42, 19))) {
+          fail.play();
         }
       }
     } else {
@@ -300,7 +316,7 @@ void scenes() {
           miniScreen = 0;
         }
       }
-      viewScreen();
+      
       if (quality == 2) {
         if (Button(mainText[15], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
           if (veiwScreen != 10) {
@@ -335,21 +351,45 @@ void scenes() {
       }
     }
   } else if (scene == 2) {
-    v.x = 0;
-    v.y = 0;
-    v.w = width;
-    v.h = height;
-    v.multipier = 2;
-    v.render();
-    fill(0, 150, 255);
-    rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, 10);
-    if (Button(mainText[29], width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, true, color(0, 150, 255))) {
-      scene = 1;
-      v.x = mSSP.x;
-      v.y = sSP.y;
-      v.w = mSSP.w - width / 500;
-      v.h = sSP.h - height / 250;
-      v.updateStarCound();
+    if (warpFactor == 0) {
+      v.x = 0;
+      v.y = 0;
+      v.w = width;
+      v.h = height;
+      v.render();
+      v.starMult = 1;
+      fill(0, 150, 255);
+      rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, HYPOTNUCE);
+      if (Button(mainText[29], width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, true, color(0, 150, 255))) {
+        scene = 1;
+        v.x = mSSP.x;
+        v.y = sSP.y;
+        v.w = mSSP.w - width / 500;
+        v.h = height - mSSP.y - height / 250;
+        v.updateStarCount();
+      }
+    } else {
+      v.x = 0;
+      v.y = 0;
+      v.w = width;
+      v.h = height;
+      v.render();
+      v.starMult = 0.25;
+      ViewScreenLarge.w = width;
+      ViewScreenLarge.h = height;
+      translate(width / 2, height / 2);
+      ViewScreenLarge.update();
+      translate(-(width / 2), -(height / 2));
+      fill(0, 150, 255);
+      rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, HYPOTNUCE);
+      if (Button(mainText[29], width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, true, color(0, 150, 255))) {
+        scene = 1;
+        v.x = mSSP.x;
+        v.y = sSP.y;
+        v.w = mSSP.w - width / 500;
+        v.h = height - mSSP.y - height / 250;
+        v.updateStarCount();
+      }
     }
   } else if (scene == 400) {
 

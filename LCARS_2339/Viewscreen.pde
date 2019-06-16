@@ -5,7 +5,7 @@ void viewScreen() {
   if (veiwScreen == 0) {
     if (quality == 2) {
       image(standby, mSSP.x, mSSP.y+mSSP.h, mSSP.w, height - (mSSP.y+mSSP.h));
-      v.updateStarCound();
+      v.updateStarCount();
     } else if (quality != 2) {
       v.render();
     }
@@ -27,7 +27,7 @@ void viewScreen() {
       tempquality = 2;
     }
 
-    v.updateStarCound();
+    v.updateStarCount();
 
     textSize(HYPOTNUCE / 66);
     fill(color(57, 17, 230));
@@ -93,17 +93,33 @@ void viewScreen() {
   } else if (veiwScreen == 2) {
     textAlign(CORNER, CORNER);
     fill(255);
-    text("Build b1.07.00 Pre 2\nThis is a recreation of the Lcars found on Star Trek. This is also a blend of all of the versions we see on the screen. Most of the Insperation for this project comes from the program Lcars47 from Lcars47.com", mSSP.x, mSSP.y + mSSP.h + width / 250, mSSP.w, sSP.h);
+    text("Build b1.07.00\nThis is a recreation of the Lcars47 OS found on Star Trek. This is also a blend of all of the versions we see on the screen. Most of the Insperation for this project comes from the program Lcars47 from Lcars47.com", mSSP.x, mSSP.y + mSSP.h + width / 250, mSSP.w, sSP.h);
     textAlign(CENTER, CENTER);
   } else if (veiwScreen == 3) {
-    if (Button(mainText[26], mSSP.x, sSP.y, width / 10, height / 15, true, color(255), accept)) {
+    // SYS DIRECTORY
+    if (Button(mainText[26], width - width / 10 - width / 500, sSP.y, width / 10, height / 15, false, color(70, 200, 255), accept)) {
       scene = 2;
       v.x = 0;
       v.y = 0;
       v.w = width;
       v.h = height;
-      v.updateStarCound();
+      if (warpFactor == 0) {
+        v.starMult = 1;
+      } else {
+        v.starMult = 0.1;
+      }
+      v.updateStarCount();
     }
+    if (Button(mainText[34], width - width / 10 - width / 500, sSP.y + height / 15 + height / 250, width / 10, height / 15, false, color(70, 100, 255), accept)) {
+      veiwScreen = 12;
+    }
+
+    SDSP.x = mSSP.x;
+    SDSP.y = mSSP.y + mSSP.h + height / 250;
+    SDSP.w = mSSP.w;
+    SDSP.h = tSP.h - SDSP.y - height / 250;
+    SDSP.TextSize = HYPOTNUCE / 66;
+    SDSP.render();
   } else if (veiwScreen == 5) {
   } else if (veiwScreen == 6) {
     // COMMUNICATIONS
@@ -120,7 +136,8 @@ void viewScreen() {
     if (Button(mainText[8], cMSP.x, cMSP.y + cMSP.h + height / 250, cMSP.w, cMP.h / cMP.pc, false, color(50, 130, 255))) {
       HFO.play();
     }
-    if (Button(mainText[9], cMSP.x, 2 * (cMSP.y + cMSP.h + height / 250), cMSP.w, cMP.h/cMP.pc, false, color(50, 100, 255))){}
+    if (Button(mainText[33], cMSP.x, (cMSP.y + cMSP.h + height / 250) + cMP.h/cMP.pc + height / 250, cMSP.w, cMP.h/cMP.pc, false, color(50, 100, 255))) {
+    }
 
     cMP.render();
     cMSP.render();
@@ -139,13 +156,33 @@ void viewScreen() {
       }
     }
   } else if (veiwScreen == 10) {
-    v.render();
+    // Exterior viewport not viewScreen
+    if (warpFactor != 0) {
+      v.render();
+      v.starMult = 0.1;
+      ViewScreenLarge.w = mSSP.w - width / 500;
+      ViewScreenLarge.h = height - mSSP.y - height / 250;
+      translate(mSSP.x + (mSSP.w - width / 500)/2, sSP.y + (height - mSSP.y - height / 250)/2);
+      ViewScreenLarge.update();
+      translate(-(mSSP.x + (mSSP.w - width / 500)/2), -(sSP.y + (height - mSSP.y - height / 250)/2));
+      fill(0);
+      rect(0, 0, width, mSSP.y);
+      rect(0, mSSP.y, mSSP.x, height - mSSP.y);
+    } else {
+
+      v.x = mSSP.x;
+      v.y = sSP.y;
+      v.w = mSSP.w - width / 500;
+      v.h = height - mSSP.y - height / 250;
+
+      v.render();
+    }
   } else if (veiwScreen == 11) {
     if (Button("English", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 1, width / 10, height / 18.75, true, color(18, 97, 196))) {
       loadLang(LANG_US);
       LANGUAGE = 0;
     }
-    if (Button("Japanese", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 2, width / 10, height / 18.75, true, color(235, 178, 67))) {
+    if (Button("日本語", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 2, width / 10, height / 18.75, true, color(235, 178, 67))) {
       LANGUAGE = 1;
       loadLang(LANG_JP);
     }
@@ -156,5 +193,8 @@ void viewScreen() {
     if (Button(mainText[9], sSP.x + sSP.w + width / 500, height - height / 18.75 - height / 250, width / 10, height / 18.75, true, color(18, 97, 196))) {
       veiwScreen = 1;
     }
+  } else if (veiwScreen == 12) {
+    // Navigation
+    image(temp, mSSP.x, mSSP.y + mSSP.h + height / 250, mSSP.w - width / 500, height - mSSP.y - height / 250);
   }
 }

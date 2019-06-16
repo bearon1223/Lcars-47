@@ -5,20 +5,21 @@ PFont f, og;
 boolean debugPressed = false;
 float RATIOWH = 100, HYPOTNUCE = 100;
 String[] PanelDebug = {"test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"};
-//String[] mSPText = {"SYS DIRECTORY", "AUX DIRECTORY", "MED DIRECTORY", "COMMUNICATIONS", "STELLAR CHART", "MISSION OPS", "DATABASE"}; 
 String[] mSPText = new String[7];
 float[] mSPView = {3, 4, 5, 6, 7, 8, 9};
 float[] mSPScene = {2, 3, 4, 5, 6, 7, 8};
 float[] PanelDebugfloat = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
 boolean isNotMuted = true, inverted = false, theaterMode = false, fullscreen = false, timeoutEnabled = true;
 float quality = 2, timeoutTime = 60;  
-SoundFile click, fail, accept, bSounds, powerDown, dMusic, HFO;
+SoundFile click, fail, accept, bSounds, powerDown, dMusic, HFO, warning;
 String[] mainText = new String[1000];
 boolean RedAlert = false, pRedAlert = false;
 
 static final String CONFIG_FILE = "config.dat";
 static final String LANG_US = "lang_us", LANG_JP = "lang_jp", LANG_PEW = "lang_pew";
 float LANGUAGE = 0;
+
+float warpFactor = 7;
 
 Login  l = new Login("omega-alpha-nine", width / 2, height / 2, 1);
 panel  d = new panel(200, 100, 100, height - 100, 10, PanelDebug);
@@ -28,9 +29,14 @@ panel  tSP = new panel(0, 0, 0, 0, floor(random(2, 3)));
 panel  cMP = new panel(0, 0, 0, 0, 4);
 panelS mSSP  = new panelS(0, 0, 0, 0, floor(random(5, 10)));
 panelS cMSP  = new panelS(0, 0, 0, 0, 3);
+panelS SDSP = new panelS(0, 0, 0, 0, 4);
+
 textAnalisis mTA = new textAnalisis(0, 0, 0, 0, 3);
 textAnalisis sTA = new textAnalisis(0, 0, 0, 0, floor(random(3, 5)));
+
 viewScreen v = new viewScreen(0);
+starField ViewScreenLarge = new starField();
+starField ViewScreenSmall = new starField();
 
 timer timeout = new timer(10);
 
@@ -53,7 +59,7 @@ void setup() {
   text("Loading...", 0, 0, 1000, 500);
   logo = loadImage("Federation Logo.jpg");
   icon = loadImage("starfleet logo.jpg");
-  temp = loadImage("template.png");
+  temp = loadImage("Nav Template.jpg");
   imgsur = loadImage("Image Surroundings.png");
   standby = loadImage("Federation Standby.jpg");
   f = loadFont("Impact-48.vlw");
@@ -67,6 +73,7 @@ void setup() {
   bSounds = new SoundFile(this, "tng_bridge_2.mp3");
   powerDown = new SoundFile(this, "power_down.mp3");
   dMusic = new SoundFile(this, "Extra Music.mp3");
+  warning = new SoundFile(this, "Warning.wav");
   dMusic.amp(0.5);
   HFO = new SoundFile(this, "Deny.wav");
   surface.setIcon(icon);
@@ -85,7 +92,7 @@ void loadLang(String currentLang) {
   for (int i = 0; i <= mSPText.length - 1; i++) {
     mSPText[i] = lines[i + 19];
   }
-  for (int i = 0; i <= 7 - 1; i++) {
+  for (int i = 0; i <= 9 - 1; i++) {
     mainText[i + 26] = lines[i + 26];
   }
 }
