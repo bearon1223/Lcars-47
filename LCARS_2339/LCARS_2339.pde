@@ -4,8 +4,8 @@ PImage logo, icon, temp, imgsur, standby;
 PFont f, og;
 boolean debugPressed = false;
 float RATIOWH = 100, HYPOTNUCE = 100;
-String[] PanelDebug = {"test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"};
 String[] mSPText = new String[7];
+String[] mNPText = new String[9];
 float[] mSPView = {3, 4, 5, 6, 7, 8, 9};
 float[] mSPScene = {2, 3, 4, 5, 6, 7, 8};
 float[] PanelDebugfloat = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1};
@@ -19,14 +19,15 @@ static final String CONFIG_FILE = "config.dat";
 static final String LANG_US = "lang_us", LANG_JP = "lang_jp", LANG_PEW = "lang_pew";
 float LANGUAGE = 0;
 
-float warpFactor = 7;
+float warpFactor = 0.05;
 
 Login  l = new Login("omega-alpha-nine", width / 2, height / 2, 1);
-panel  d = new panel(200, 100, 100, height - 100, 10, PanelDebug);
 panel  mSP = new panel(0, 0, 0, 0, 7, mSPText);
 panel  sSP = new panel(0, 0, 0, 0, 8);
 panel  tSP = new panel(0, 0, 0, 0, floor(random(2, 3)));
 panel  cMP = new panel(0, 0, 0, 0, 4);
+panel  mNP = new panel(0, 0, 0, 0, 9, mNPText);
+
 panelS mSSP  = new panelS(0, 0, 0, 0, floor(random(5, 10)));
 panelS cMSP  = new panelS(0, 0, 0, 0, 3);
 panelS SDSP = new panelS(0, 0, 0, 0, 4);
@@ -97,6 +98,13 @@ void loadLang(String currentLang) {
   }
 }
 
+void loadLangtemp(String currentLang) {
+  String[] lines = loadStrings(currentLang+".dat");
+  for (int i = 0; i <= mNPText.length - 1; i++) {
+    mNPText[i] = lines[i];
+  }
+}
+
 void save() {
   String[] lines = {
     str(quality), str(isNotMuted), str(LANGUAGE), str(fullscreen), str(theaterMode), str(timeoutTime), str(timeoutEnabled)
@@ -123,6 +131,7 @@ void load() {
 }
 
 void draw() {
+  loadLangtemp("temp");
   frameRate(100);
   if (scene != -2 || scene != -1) {
     textAlign(CENTER, CENTER);
@@ -135,7 +144,6 @@ void draw() {
     textFont(og);
   }
   background(0);
-
   scenes();
   pRedAlert = RedAlert;
 }

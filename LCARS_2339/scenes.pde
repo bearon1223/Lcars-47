@@ -67,7 +67,6 @@ void scenes() {
       scene = 0;
     }
     start.render();
-
     textAlign(CENTER, CENTER);
   } else if (scene == 0) {
     logoZoomin = 100;
@@ -75,7 +74,7 @@ void scenes() {
     l.y = height / 1.25;
     fade = 250;
     fill(255);
-    //rect(width / 4.5 - 1, height / 4 - 1, width / 1.8 + 2, height / 2 + 2);
+
     if (quality == 2) {
       imageMode(CENTER);
       image(logo, width / 2, height / 2, width / 3, height / 2);
@@ -226,14 +225,11 @@ void scenes() {
           miniScreen = 0;
         }
       }
-      
+
       if (quality == 2) {
         if (Button(mainText[15], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(255, 42, 12))) {
           if (veiwScreen != 10) {
-            if (warpFactor != 0) {
-              warning.play();
-            }
-            veiwScreen = 10;
+            veiwScreen = 9.9;
           } else if (veiwScreen == 10) {
             veiwScreen = 0;
           }
@@ -316,11 +312,12 @@ void scenes() {
           miniScreen = 0;
         }
       }
-      
+
       if (quality == 2) {
         if (Button(mainText[15], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
           if (veiwScreen != 10) {
-            veiwScreen = 10;
+            veiwScreen = 9.9;
+            v.updateStarCount();
           } else if (veiwScreen == 10) {
             veiwScreen = 0;
           }
@@ -351,64 +348,35 @@ void scenes() {
       }
     }
   } else if (scene == 2) {
-    if (warpFactor == 0) {
-      v.x = 0;
-      v.y = 0;
-      v.w = width;
-      v.h = height;
-      v.render();
-      v.starMult = 1;
-      fill(0, 150, 255);
-      rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, HYPOTNUCE);
-      if (Button(mainText[29], width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, true, color(0, 150, 255))) {
-        scene = 1;
-        v.x = mSSP.x;
-        v.y = sSP.y;
-        v.w = mSSP.w - width / 500;
-        v.h = height - mSSP.y - height / 250;
-        v.updateStarCount();
-      }
+    if (warpFactor > 0.11) {
+      ViewScreenLarge.w = width;
+      ViewScreenLarge.h = height;
+      translate(width / 2, height / 2);
+      ViewScreenLarge.update();
+      translate(-(width / 2), -(height / 2));
     } else {
       v.x = 0;
       v.y = 0;
       v.w = width;
       v.h = height;
       v.render();
-      v.starMult = 0.25;
+
       ViewScreenLarge.w = width;
       ViewScreenLarge.h = height;
       translate(width / 2, height / 2);
       ViewScreenLarge.update();
       translate(-(width / 2), -(height / 2));
-      fill(0, 150, 255);
-      rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, HYPOTNUCE);
-      if (Button(mainText[29], width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, true, color(0, 150, 255))) {
-        scene = 1;
-        v.x = mSSP.x;
-        v.y = sSP.y;
-        v.w = mSSP.w - width / 500;
-        v.h = height - mSSP.y - height / 250;
-        v.updateStarCount();
-      }
     }
-  } else if (scene == 400) {
 
-    d.h = height - 150;
-    d.w = width / 5;
-
-    background(255);
-    d.render();
-    d.InteractiveS(PanelDebugfloat);
-    sSP.render();
-    fill(0);
-    textFont(og);
-    textSize(15);
-    text(frameRate, 10, 15);
-    text(width + ", " + height, 10, 30);
-    text("debug accessed", 10, 45);
-    if (Button("Return to Login", 10, 60, 100, 50, true, color(100))) {
-      scene = 0;
-      l.typed = "";
+    fill(0, 150, 255);
+    rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, HYPOTNUCE*500);
+    if (Button(mainText[29], width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, true, color(0, 150, 255))) {
+      scene = 1;
+      v.x = mSSP.x;
+      v.y = sSP.y;
+      v.w = mSSP.w - width / 500;
+      v.h = height - mSSP.y - height / 250;
+      v.updateStarCount();
     }
   }
 }
