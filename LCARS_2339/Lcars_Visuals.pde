@@ -144,27 +144,14 @@ class viewScreen {
   float[] offx = new float[50], offy = new float[50], offs = new float[50];
   viewScreen(float screenType) {
     sT = screenType;
-    if (quality == 0) {
-      starAmount = 50;
-    }
-    if (quality == 1) {
-      starAmount = 100;
-    }
-    if (quality == 2) {
-      starAmount = 500;
-    }
+
+    starAmount = 500;
   }
 
   void updateStarCount() {
-    if (quality == 0) {
-      starAmount = 100 * starMult;
-    }
-    if (quality == 1) {
-      starAmount = 500 * starMult;
-    }
-    if (quality == 2) {
-      starAmount = 1000 * starMult;
-    }
+
+    starAmount = 1000 * starMult;
+
     offx = new float[int(starAmount)];
     offy = new float[int(starAmount)];
     offs = new float[int(starAmount)];
@@ -285,11 +272,15 @@ class Star {
   }
 
   void update() {
-    z = z - warpFactor * 2;
+    if (warpFactor > 4) {
+      z = z - warpFactor * (warpFactor / 2);
+    } else {
+      z = z - warpFactor * 2;
+    }
 
-    if (z < random(1, 5)) {
+    if (z < 3) {
       if (random(0, 100) > 90) {
-        z = random(HYPOTNUCE * 1.5, HYPOTNUCE * 2);
+        z = random(HYPOTNUCE * 1.7, HYPOTNUCE * 3);
         stroke = random(1, 3);
       } else {
         z = random(HYPOTNUCE / 40, HYPOTNUCE * 1.5);

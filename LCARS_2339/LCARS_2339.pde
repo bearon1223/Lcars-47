@@ -132,17 +132,13 @@ void load() {
 
 void draw() {
   loadLangtemp("temp");
+  textFont(f);
   frameRate(100);
   if (scene != -2 || scene != -1) {
     textAlign(CENTER, CENTER);
   }
   RATIOWH = width / height;
   HYPOTNUCE = sqrt((width * width) + (height * height));
-  if (quality == 2 || LANGUAGE == 1) {
-    textFont(f);
-  } else {
-    textFont(og);
-  }
   background(0);
   scenes();
   pRedAlert = RedAlert;

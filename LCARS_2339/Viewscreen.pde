@@ -5,11 +5,10 @@ void viewScreen() {
   if (veiwScreen == 0) {
     if (quality == 2) {
       image(standby, mSSP.x, mSSP.y+mSSP.h, mSSP.w, height - (mSSP.y+mSSP.h));
-
-      v.updateStarCount();
-    } else if (quality != 2) {
-      v.render();
+    } else {
+      FederationSymbol(mSSP.x +mSSP.w / 2,mSSP.y + (height - (mSSP.y+mSSP.h)) / 2,mSSP.w / 6.0 * 2, (height - (mSSP.y+mSSP.h))/3.5 * 2);
     }
+    v.updateStarCount();
   } else if (veiwScreen == 1) {
     if (Button(mainText[0]+tempisNotMuted, sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250, width / 10, height / 18.75, true, color(20, 200, 255))) {
       if (tempisNotMuted) {
@@ -94,8 +93,8 @@ void viewScreen() {
   } else if (veiwScreen == 2) {
     textAlign(CORNER, CORNER);
     fill(255);
-    textSize(15);
-    text("Build b1.07.02\nThis is a recreation of the Lcars47 OS found on Star Trek. This is also a blend of all of the versions we see on the screen. Most of the Insperation for this project comes from the program Lcars47 from Lcars47.com", mSSP.x, mSSP.y + mSSP.h + width / 250, mSSP.w, sSP.h);
+    textSize(HYPOTNUCE / 74.5353333333);
+    text("Build b1.07.03\nThis is a recreation of the Lcars47 OS found on Star Trek. This is also a blend of all of the versions we see on the screen. Most of the Insperation for this project comes from the program Lcars47 from Lcars47.com", mSSP.x, mSSP.y + mSSP.h + width / 250, mSSP.w, sSP.h);
     textAlign(CENTER, CENTER);
   } else if (veiwScreen == 3) {
     // SYS DIRECTORY
@@ -187,7 +186,7 @@ void viewScreen() {
       v.w = mSSP.w - width / 500;
       v.h = height - mSSP.y;
       v.render();
-      
+
       ViewScreenLarge.w = mSSP.w - width / 500;
       ViewScreenLarge.h = (height - mSSP.y - height / 250);
       translate(mSSP.x + (mSSP.w - width / 500)/2, sSP.y + (height - mSSP.y - height / 250)/2);

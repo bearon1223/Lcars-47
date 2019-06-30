@@ -27,7 +27,7 @@ void scenes() {
       image(logo, width / 1.3, height / 2, width / (logoZoomin / 3), height / (logoZoomin / 4));
       imageMode(CORNER);
     } else {
-      FederationSymbol(width / 1.3, height / 2, width / (logoZoomin / 3), height / (logoZoomin / 4));
+      FederationSymbol(width / 1.3, height / 2, width / (logoZoomin / 3) / 1.5, height / (logoZoomin / 4));
     }
     fill(235, 178, 67);
     rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, 10);
@@ -54,7 +54,7 @@ void scenes() {
       image(logo, width / 1.3, height / 2, width / (logoZoomin / 3), height / (logoZoomin / 4));
       imageMode(CORNER);
     } else {
-      FederationSymbol(width / 1.3, height / 2, width / (logoZoomin / 3), height / (logoZoomin / 4));
+      FederationSymbol(width / 1.3, height / 2, width / (logoZoomin / 3) / 1.5, height / (logoZoomin / 4));
     }
     textAlign(CORNER, CORNER);
     fill(235, 178, 67);
@@ -226,7 +226,7 @@ void scenes() {
         }
       }
 
-      if (quality == 2) {
+      //if (quality == 2) {
         if (Button(mainText[15], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(255, 42, 12))) {
           if (veiwScreen != 10) {
             veiwScreen = 9.9;
@@ -234,11 +234,11 @@ void scenes() {
             veiwScreen = 0;
           }
         }
-      } else if (quality != 2) {
-        if (Button(mainText[16], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(255, 42, 19))) {
-          fail.play();
-        }
-      }
+      //} else if (quality != 2) {
+        //if (Button(mainText[16], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(255, 42, 19))) {
+          //fail.play();
+        //}
+      //}
     } else {
       if (Button("54-875977", width / 180, height / 3.900, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(20, 120, 200))) {
       }
@@ -313,7 +313,7 @@ void scenes() {
         }
       }
 
-      if (quality == 2) {
+      //if (quality == 2) {
         if (Button(mainText[15], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
           if (veiwScreen != 10) {
             veiwScreen = 9.9;
@@ -322,10 +322,10 @@ void scenes() {
             veiwScreen = 0;
           }
         }
-      } else if (quality != 2) {
-        if (Button(mainText[16], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
-        }
-      }
+      //} else if (quality != 2) {
+        //if (Button(mainText[16], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
+        //}
+      //}
     }
 
     stroke(0);

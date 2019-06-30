@@ -6,12 +6,12 @@ void OneCircleButton(float x, float y, float widthb, float heightb) {
   ellipse(x + (82) * w, y + (82) * h, w * 165, h * 165);
 }
 
-float square(float i){
+float square(float i) {
   return i*i;
 }
 
-void playSound(SoundFile s){
-  if(isNotMuted){
+void playSound(SoundFile s) {
+  if (isNotMuted) {
     s.play();
   }
 }
@@ -59,9 +59,9 @@ boolean Button(String stringtext, float x, float y, float w, float h, boolean is
   fill(c);
   textAlign(CENTER, CENTER);
   textSize(HYPOTNUCE / 66);
-  if (quality == 0 || (quality == 2 && !isRounded)) {
+  if (!isRounded) {
     rect(x, y, w, h, 0);
-  } else if (isRounded || quality == 1) {
+  } else if (isRounded) {
     rect(x, y, w, h, HYPOTNUCE);
   }
   fill(0);
@@ -84,10 +84,10 @@ boolean Button(String stringtext, float x, float y, float w, float h, boolean is
   fill(c);
   textAlign(CENTER, CENTER);
   textSize(HYPOTNUCE / 66);
-  if (quality == 0  || (quality == 2 && !isRounded)) {
-    rect(x, y, w, h, 0);
-  } else if (isRounded || quality == 1) {
-    rect(x, y, w, h, HYPOTNUCE);
+  if (!isRounded) {
+  rect(x, y, w, h, 0);
+  } else if (isRounded) {
+  rect(x, y, w, h, HYPOTNUCE);
   }
   fill(0);
   text(stringtext, x, y, w, h);
@@ -109,13 +109,13 @@ boolean Button(String stringtext, float x, float y, float wp, float hp, float w,
   fill(c);
   textAlign(CENTER, CENTER);
   textSize(HYPOTNUCE / 66);
-  if (quality > 1) {
+  if (quality > 0) {
     OneCircleButton(x, y, wp, hp);
   } else if (quality == 0) {
     rect(x, y, w, h);
-  } else if (quality == 1) {
-    rect(x, y, w, h, RATIOWH*500);
-  }
+  } 
+  //rect(x, y, w, h, RATIOWH*500);
+  //}
   fill(0);
   text(stringtext, x, y, w, h);
   if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && !ggfdsakfj && mousePressed) {
@@ -136,13 +136,14 @@ boolean ButtonM(String stringtext, float x, float y, float wp, float hp, float w
   fill(c);
   textAlign(CENTER, CENTER);
   textSize(HYPOTNUCE / 66);
-  if (quality > 1) {
+  if (quality > 0) {
     OneCircleButton(x, y, wp, hp);
   } else if (quality == 0) {
     rect(x, y, w, h);
-  } else if (quality == 1) {
-    rect(x, y, w, h, RATIOWH*500);
   }
+  //} else if (quality == 1) {
+  //rect(x, y, w, h, RATIOWH*500);
+  //}
   fill(0);
   text(stringtext, x, y, w, h);
   if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && !ggfdsakfj && mousePressed) {
