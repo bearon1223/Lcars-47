@@ -7,10 +7,12 @@ class miniDisplay {
     w = wb;
     h = hb;
   }
-  
-  void contents() {}
-  
-  void render() {}
+
+  void contents() {
+  }
+
+  void render() {
+  }
 }
 
 class timer {
@@ -26,7 +28,7 @@ class timer {
     y = yb;
     cts = clicktoskip;
   }
-  
+
   timer(String text, float xb, float yb, float time, boolean clicktoskip, boolean Reset) {
     t = text;
     timers = time;
@@ -35,7 +37,7 @@ class timer {
     y = yb;
     cts = clicktoskip;
   }
-  
+
   timer(float time, boolean Reset) {
     t = "";
     timers = time;
@@ -44,7 +46,7 @@ class timer {
     y = 0;
     cts = false;
   }
-  
+
   timer(float time) {
     t = "";
     timers = time;
@@ -53,7 +55,7 @@ class timer {
     y = 0;
     cts = false;
   }
-  
+
   boolean timercalc() {
     if (cts) {
       if (T >= timers * frameRate|| Button(0, 0, width, height)) {

@@ -6,7 +6,10 @@ void viewScreen() {
     if (quality == 2) {
       image(standby, mSSP.x, mSSP.y+mSSP.h, mSSP.w, height - (mSSP.y+mSSP.h));
     } else {
-      FederationSymbol(mSSP.x +mSSP.w / 2,mSSP.y + (height - (mSSP.y+mSSP.h)) / 2,mSSP.w / 6.0 * 2, (height - (mSSP.y+mSSP.h))/3.5 * 2);
+      textSize(HYPOTNUCE / 74.5353333333);
+      FederationSymbol(mSSP.x +mSSP.w / 2, mSSP.y + (height - (mSSP.y+mSSP.h)) / 2 - (height / 50), mSSP.w / 6.0 * 2, (height - (mSSP.y+mSSP.h))/3.5 * 2);
+      fill(255);
+      text("United Federation of Planets", mSSP.x + mSSP.w/2, (mSSP.y + (height - (mSSP.y+mSSP.h)) / 2 ) + ((height - (mSSP.y+mSSP.h))/3.5)+height/250);
     }
     v.updateStarCount();
   } else if (veiwScreen == 1) {
@@ -80,6 +83,14 @@ void viewScreen() {
       }
     }
 
+    if (Button(mainText[35]+load_Debug, sSP.x + sSP.w + width / 500 + (width / 5.0 + width / 500) * 1.25, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 3, width / 4.0, height / 18.75, true, color(52, 124, 212))) {
+      if (!load_Debug) {
+        load_Debug = true;
+      } else {
+        load_Debug = false;
+      }
+    }
+
     if (Button(mainText[28], sSP.x + sSP.w + width / 500, height - height / 18.75 - height / 250, width / 10, height / 18.75, true, color(18, 97, 196))) {
       quality = tempquality;
       isNotMuted = tempisNotMuted;
@@ -94,7 +105,7 @@ void viewScreen() {
     textAlign(CORNER, CORNER);
     fill(255);
     textSize(HYPOTNUCE / 74.5353333333);
-    text("Build b1.07.03\nThis is a recreation of the Lcars47 OS found on Star Trek. This is also a blend of all of the versions we see on the screen. Most of the Insperation for this project comes from the program Lcars47 from Lcars47.com", mSSP.x, mSSP.y + mSSP.h + width / 250, mSSP.w, sSP.h);
+    text("Build b1.07.04\nThis is a recreation of the Lcars47 OS found on Star Trek. This is also a blend of all of the versions we see on the screen. Most of the Insperation for this project comes from the program Lcars47 from Lcars47.com", mSSP.x, mSSP.y + mSSP.h + width / 250, mSSP.w, sSP.h);
     textAlign(CENTER, CENTER);
   } else if (veiwScreen == 3) {
     // SYS DIRECTORY
@@ -249,5 +260,11 @@ void viewScreen() {
     if (Button(mNP.x, mNP.y + (mNP.h / mNP.pc * 8), mNP.w, mNP.h/mNP.pc)) {
       warpFactor = 0.05;
     }
+    fill(100, 100, 255);
+    ellipse(width / 1.333, height / 1.416, width / 4.0, height / 2.0);
+    fill(0);
+    ellipse(width / 1.333, height / 1.416, 160, 160);
+    fill(100, 10, 255);
+    ellipse(width / 1.333, height / 1.416, width / 6.66, height / 3.33);
   }
 }

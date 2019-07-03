@@ -81,7 +81,7 @@ class Login {
   int len = typed.length();
   void type() {
     if (keyPressed && !pressedT) {
-      if (key != BACKSPACE && key != ENTER) {
+      if (key != BACKSPACE && key != ENTER && key != SHIFT) {
         typed += key;
         len = typed.length();
       } else if (key == BACKSPACE) {

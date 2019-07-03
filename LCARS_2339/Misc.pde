@@ -85,9 +85,9 @@ boolean Button(String stringtext, float x, float y, float w, float h, boolean is
   textAlign(CENTER, CENTER);
   textSize(HYPOTNUCE / 66);
   if (!isRounded) {
-  rect(x, y, w, h, 0);
+    rect(x, y, w, h, 0);
   } else if (isRounded) {
-  rect(x, y, w, h, HYPOTNUCE);
+    rect(x, y, w, h, HYPOTNUCE);
   }
   fill(0);
   text(stringtext, x, y, w, h);

@@ -165,12 +165,12 @@ void scenes() {
       if (Button("25-752841", width / 180 + width / 11.25 + width / 450, height / 3.900, width / 11.25, height / 18.75, false, color(216, 8, 28))) {
       }
       if (Button("51-482361", width / 180 + width / 11.25 + width / 450, height / 3.157, width / 11.25, height / 18.75, false, color(252, 2, 12))) {
-        RedAlert = false;
+        RedAlert = true;
       }
       if (Button("37-589735", width / 180 + width / 11.25 + width / 450, height / 2.631, width / 11.25, height / 18.75, false, color(255, 238, 235))) {
       }
       if (Button("56-985324", width / 180 + width / 11.25 + width / 450, height / 2.272, width / 11.25, height / 18.75, false, color(219, 42, 32))) {
-        RedAlert = true;
+        RedAlert = false;
       }
       if (!theaterMode) {
         if (Button(mainText[18], width / 180, height / 1.142, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(255, 32, 15))) {
@@ -227,17 +227,17 @@ void scenes() {
       }
 
       //if (quality == 2) {
-        if (Button(mainText[15], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(255, 42, 12))) {
-          if (veiwScreen != 10) {
-            veiwScreen = 9.9;
-          } else if (veiwScreen == 10) {
-            veiwScreen = 0;
-          }
+      if (Button(mainText[15], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(255, 42, 12))) {
+        if (veiwScreen != 10) {
+          veiwScreen = 9.9;
+        } else if (veiwScreen == 10) {
+          veiwScreen = 0;
         }
+      }
       //} else if (quality != 2) {
-        //if (Button(mainText[16], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(255, 42, 19))) {
-          //fail.play();
-        //}
+      //if (Button(mainText[16], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(255, 42, 19))) {
+      //fail.play();
+      //}
       //}
     } else {
       if (Button("54-875977", width / 180, height / 3.900, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(20, 120, 200))) {
@@ -314,17 +314,17 @@ void scenes() {
       }
 
       //if (quality == 2) {
-        if (Button(mainText[15], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
-          if (veiwScreen != 10) {
-            veiwScreen = 9.9;
-            v.updateStarCount();
-          } else if (veiwScreen == 10) {
-            veiwScreen = 0;
-          }
+      if (Button(mainText[15], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
+        if (veiwScreen != 10) {
+          veiwScreen = 9.9;
+          v.updateStarCount();
+        } else if (veiwScreen == 10) {
+          veiwScreen = 0;
         }
+      }
       //} else if (quality != 2) {
-        //if (Button(mainText[16], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
-        //}
+      //if (Button(mainText[16], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
+      //}
       //}
     }
 
