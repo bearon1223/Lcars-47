@@ -44,6 +44,7 @@ void scenes() {
 
     textAlign(CENTER, CENTER);
   } else if (scene == -1) {
+    
     background(0);
     if (logoZoomin >= 10) {
       logoZoomin -= width / 1000.0;
