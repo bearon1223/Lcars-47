@@ -19,11 +19,6 @@ void exteriorViewPort() {
       }
     }
   } else {
-    //v.x = mSSP.x;
-    //v.y = mSSP.y + mSSP.h + height / 200;
-    //v.w = mSSP.w - width / 500;
-    //v.h = height - mSSP.y;
-    //v.render();
 
     ViewScreenLarge.w = mSSP.w - width / 500;
     ViewScreenLarge.h = (height - mSSP.y - height / 250);
@@ -58,6 +53,9 @@ void navigation() {
 
   if (Button(mNP.x, mNP.y + (mNP.h / mNP.pc * 0), mNP.w, mNP.h/mNP.pc)) {
     warpFactor = 8;
+    shipX = -100;
+    shipY = -100;
+    shipZ = -100;
   }
   if (Button(mNP.x, mNP.y + (mNP.h / mNP.pc * 1), mNP.w, mNP.h/mNP.pc)) {
     warpFactor = 7;
