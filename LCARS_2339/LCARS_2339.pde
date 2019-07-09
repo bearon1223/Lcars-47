@@ -141,7 +141,6 @@ void load() {
 }
 
 void draw() {
-  noCursor();
   loadLangtemp("temp");
   nonDX = width;
   nonDY = height;
@@ -188,6 +187,4 @@ void draw() {
       szd = true;
     }
   }
-  fill(255);
-  rect(mouseX, mouseY, 5, 5);
 }

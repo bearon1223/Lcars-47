@@ -68,9 +68,10 @@ boolean Button(String stringtext, float x, float y, float w, float h, boolean is
   text(stringtext, x, y, w, h);
   if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && !ggfdsakfj && mousePressed) {
     ggfdsakfj = true;
+    t = true;
   } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfj && !mousePressed) {
     ggfdsakfj = false;
-    t = true;
+    t = false;
     if (isNotMuted)
       click.play();
   }
@@ -93,9 +94,10 @@ boolean Button(String stringtext, float x, float y, float w, float h, boolean is
   text(stringtext, x, y, w, h);
   if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && !ggfdsakfj && mousePressed) {
     ggfdsakfj = true;
+    t = true;
   } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfj && !mousePressed) {
     ggfdsakfj = false;
-    t = true;
+    t = false;
     if (isNotMuted)
       s.play();
   }
@@ -120,9 +122,10 @@ boolean Button(String stringtext, float x, float y, float wp, float hp, float w,
   text(stringtext, x, y, w, h);
   if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && !ggfdsakfj && mousePressed) {
     ggfdsakfj = true;
+    t = true;
   } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfj && !mousePressed) {
     ggfdsakfj = false;
-    t = true;
+    t = false;
     if (isNotMuted)
       click.play();
   }
@@ -148,9 +151,10 @@ boolean ButtonM(String stringtext, float x, float y, float wp, float hp, float w
   text(stringtext, x, y, w, h);
   if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && !ggfdsakfj && mousePressed) {
     ggfdsakfj = true;
+    t = true;
   } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfj && !mousePressed) {
     ggfdsakfj = false;
-    t = true;
+    t = false;
   }
   stroke(0);
   return t;
@@ -160,9 +164,10 @@ boolean Button(float x, float y, float w, float h) {
   boolean t = false;
   if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && !ggfdsakfjd && mousePressed) {
     ggfdsakfjd = true;
+    t = true;
   } else if (mouseX >= x && mouseY >= y && mouseX <= x + w && mouseY <= y + h && ggfdsakfjd && !mousePressed) {
     ggfdsakfjd = false;
-    t = true;
+    t = false;
     if (isNotMuted)
       click.play();
   }
