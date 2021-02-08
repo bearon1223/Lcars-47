@@ -269,7 +269,7 @@ public class Debug extends PApplet {
     text("height / ? = MouseY: "+nonDY / nonDYM, 1, 65);
 
     textSize(15);
-    text(viewScreen, 1, 80);
+    text(veiwScreen, 1, 80);
     
     textSize(15);
     text(targetX - shipX, 1, 95);

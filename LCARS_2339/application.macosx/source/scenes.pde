@@ -1,4 +1,4 @@
-float scene = -1, viewScreen = 12, miniScreen = 0, logoZoomin = 100, fade = 250;
+float scene = -1, veiwScreen = 0, miniScreen = 0, logoZoomin = 100, fade = 250;
 
 timer exit = new timer("exit", 100, 1.1, 5, false);
 timer start = new timer("start", 100, 1.1, 5, true);
@@ -34,7 +34,7 @@ void scenes() {
     rect(width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, 10);
     fill(255);
     textAlign(CORNER, CORNER);
-    text("Credits:\nCreator: Coding Network\nSounds Provided by:\ntrekcore.com, lcarscom.net,\nBensound.com\nBased off Star Trek (c)CBS", width / 100, height / 10, width - 4, height / 1.1 - height / 20);
+    text("Credits:\nCreator: Codeing Network\nSounds Provided by:\ntrekcore.com, lcarscom.net,\nBensound.com\nBased off Star Trek (c)CBS", width / 100, height / 10, width - 4, height / 1.1 - height / 20);
 
     if (exit.timercalc()) {
       exit();
@@ -152,7 +152,7 @@ void scenes() {
       text("FPS: "+round(frameRate), width / 254.0, height / 2.0, width / 5.4, height / 5.5);
     }
     if (RedAlert) {
-      viewScreen = 0;
+      veiwScreen = 0;
       if (Button("54-875977", width / 180, height / 3.900, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(255, 10, 2))) {
       }
       if (Button("34-873976", width / 180, height / 3.157, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(214, 8, 32))) {
@@ -195,7 +195,7 @@ void scenes() {
         l.typed = "";
       }
       if (Button(mainText[11], width / 180, height / 1.449, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(255, 42, 13))) {
-        viewScreen = 0;
+        veiwScreen = 0;
         miniScreen = 0;
       }
       if (!theaterMode) {
@@ -208,17 +208,17 @@ void scenes() {
       }
       if (!theaterMode) {
         if (Button(mainText[13], width / 180 + width / 11.25 + width / 450, height / 1.229, width / 11.25, height / 18.75, false, color(252, 23, 12))) {
-          viewScreen = 1;
+          veiwScreen = 1;
         }
       } else {
         if (Button(mainText[16], width / 180 + width / 11.25 + width / 450, height / 1.229, width / 11.25, height / 18.75, false, color(252, 2, 12))) {
         }
       }
       if (Button(mainText[14], width / 180 + width / 11.25 + width / 450, height / 1.327, width / 11.25, height / 18.75, false, color(231, 1, 3))) {
-        if (viewScreen != 2) {
-          viewScreen = 2;
-        } else if (viewScreen == 2) {
-          viewScreen = 0;
+        if (veiwScreen != 2) {
+          veiwScreen = 2;
+        } else if (veiwScreen == 2) {
+          veiwScreen = 0;
         }
         if (miniScreen != 2) {
           miniScreen = 2;
@@ -229,10 +229,10 @@ void scenes() {
 
       //if (quality == 2) {
       if (Button(mainText[15], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(255, 42, 12))) {
-        if (viewScreen != 10) {
-          viewScreen = 9.9;
-        } else if (viewScreen == 10) {
-          viewScreen = 0;
+        if (veiwScreen != 10) {
+          veiwScreen = 9.9;
+        } else if (veiwScreen == 10) {
+          veiwScreen = 0;
         }
       }
       //} else if (quality != 2) {
@@ -282,7 +282,7 @@ void scenes() {
         l.typed = "";
       }
       if (Button(mainText[11], width / 180, height / 1.449, width / 1232.876, height / 750.000, width / 11.25, height / 18.75, color(9, 42, 243))) {
-        viewScreen = 0;
+        veiwScreen = 0;
         miniScreen = 0;
       }
       if (!theaterMode) {
@@ -295,17 +295,17 @@ void scenes() {
       }
       if (!theaterMode) {
         if (Button(mainText[13], width / 180 + width / 11.25 + width / 450, height / 1.229, width / 11.25, height / 18.75, false, color(252, 221, 12))) {
-          viewScreen = 1;
+          veiwScreen = 1;
         }
       } else {
         if (Button(mainText[16], width / 180 + width / 11.25 + width / 450, height / 1.229, width / 11.25, height / 18.75, false, color(252, 221, 12))) {
         }
       }
       if (Button(mainText[14], width / 180 + width / 11.25 + width / 450, height / 1.327, width / 11.25, height / 18.75, false, color(0, 238, 235))) {
-        if (viewScreen != 2) {
-          viewScreen = 2;
-        } else if (viewScreen == 2) {
-          viewScreen = 0;
+        if (veiwScreen != 2) {
+          veiwScreen = 2;
+        } else if (veiwScreen == 2) {
+          veiwScreen = 0;
         }
         if (miniScreen != 2) {
           miniScreen = 2;
@@ -316,11 +316,11 @@ void scenes() {
 
       //if (quality == 2) {
       if (Button(mainText[15], width / 180 + width / 11.25 + width / 450, height / 1.449, width / 11.25, height / 18.75, false, color(9, 42, 243))) {
-        if (viewScreen != 10) {
-          viewScreen = 9.9;
+        if (veiwScreen != 10) {
+          veiwScreen = 9.9;
           v.updateStarCount();
-        } else if (viewScreen == 10) {
-          viewScreen = 0;
+        } else if (veiwScreen == 10) {
+          veiwScreen = 0;
         }
       }
       //} else if (quality != 2) {
@@ -373,7 +373,6 @@ void scenes() {
     rect(width / 90, height / 40, width - (width / 90) * 2, height / 20, HYPOTNUCE*500);
     if (Button(mainText[29], width / 90, height / 1.08101111111, width - (width / 90) * 2, height / 20, true, color(0, 150, 255))) {
       scene = 1;
-      viewScreen = 3;
       v.x = mSSP.x;
       v.y = sSP.y;
       v.w = mSSP.w - width / 500;

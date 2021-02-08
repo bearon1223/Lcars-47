@@ -1,35 +1,17 @@
 class panel {
-  float x, y, w, h, pcx, pc;
+  float x, y, w, h, pc;
   color[] colors;
-  color[][] colors2d;
   String[] texts;
-  String[][] texts2d;
   panel(float xb, float yb, float wb, float hb, float panelcount, String[] textsb) {
     x = xb;
     y = yb;
     w = wb;
     h = hb;
-    pcx = 1;
     pc = panelcount;
     texts = textsb;
     colors = new color[int(panelcount)];
     for (int i = 0; i <= panelcount - 1; i++) {
       colors[i] = color(random(20, 70), random(100, 200), random(200, 255));
-    }
-  }
-  panel(float xb, float yb, float wb, float hb, float panelCountx, float panelcount, String[][] textsb) {
-    x = xb;
-    y = yb;
-    w = wb;
-    h = hb;
-    pcx = panelCountx;
-    pc = panelcount;
-    texts2d = textsb;
-    colors2d = new color[int(panelcount)][int(panelCountx)];
-    for (int i = 0; i <= panelcount - 1; i++) {
-      for (int j = 0; j < panelCountx; j++) {
-        colors2d[i][j] = color(random(20, 70), random(100, 200), random(200, 255));
-      }
     }
   }
   panel(float xb, float yb, float wb, float hb, float panelcount) {
@@ -38,7 +20,6 @@ class panel {
     w = wb;
     h = hb;
     pc = panelcount;
-    pcx = 1;
     texts = new String[int(panelcount)];
     colors = new color[int(panelcount)];
     for (int i = 0; i <= panelcount - 1; i++) {
@@ -46,23 +27,6 @@ class panel {
     }
     for (int i = 0; i <= panelcount - 1; i++) {
       colors[i] = color(random(20, 70), random(100, 200), random(200, 255));
-    }
-  }
-  panel(float xb, float yb, float wb, float hb, float panelCountx, float panelcount) {
-    x = xb;
-    y = yb;
-    w = wb;
-    h = hb;
-    pcx = panelCountx;
-    pc = panelcount;
-    texts = new String[int(panelcount)];
-    colors2d = new color[int(panelcount)][int(panelCountx)];
-    texts2d = new String[int(panelcount)][int(panelCountx)];
-    for (int j = 0; j <= panelCountx - 1; j++) {
-      for (int i = 0; i <= panelcount - 1; i++) {
-        texts2d[i][j] = floor(random(50, 99)) + "-" + floor(random(200000, 999999));
-        colors2d[i][j] = color(random(20, 70), random(100, 200), random(200, 255));
-      }
     }
   }
 
@@ -76,66 +40,28 @@ class panel {
         colors[i] = color(random(20, 70), random(100, 200), random(200, 255));
       }
     }
-    for (int j = 0; j <= pcx - 1; j++) {
-      for (int i = 0; i <= pc - 1; i++) {
-        textAlign(CENTER, CENTER);
-        textSize(HYPOTNUCE / 66);
-
-        if (pcx != 1) {
-          fill(colors2d[i][j]);
-        } else {
-          fill(colors[i]);
-        }
-
-        rect(x + j * (w / pcx), y + (h / pc) * i, w / pcx - (height / 250), h / pc - (height / 250));
-
-        if (pcx != 1) {
-          fill(0);
-          text(texts2d[i][j], x + j * (w / pcx), y + (h / pc) * i, w / pcx - (height / 250), h / pc - (height / 250));
-        } else {
-          fill(0);
-          text(texts[i], x + j * (w / pcx), y + (h / pc) * i, w / pcx - (height / 250), h / pc - (height / 250));
-        }
-      }
+    for (int i = 0; i <= pc - 1; i++) {
+      textAlign(CENTER, CENTER);
+      textSize(HYPOTNUCE / 66);
+      fill(colors[i]);
+      rect(x, y+((h / pc) * i), w, h / pc - (height / 250));
+      fill(0);
+      text(texts[i], x, y + (h / pc) * i, w, h / pc - (height / 250));
     }
   }
 
-
-  void InteractiveV(float[][] panelScene) {
-    for (int j = 0; j <= pcx - 1; j++) {
-      for (int i = 0; i <= pc - 1; i++) {
-        if (Button(x + j * (w / pcx), y + (h / pc) * i, w / pcx - (height / 250), h / pc - (height / 250))) {
-          viewScreen = panelScene[i][j];
-        }
-      }
-    }
-  }
-
-  void InteractiveS(float[][] panelScene) {
-    for (int j = 0; j <= pcx - 1; j++) {
-      for (int i = 0; i <= pc - 1; i++) {
-        if (Button(x + j * (w / pcx), y + (h / pc) * i, w / pcx - (height / 250), h / pc - (height / 250))) {
-          scene = panelScene[i][j];
-        }
-      }
-    }
-  }
   void InteractiveV(float[] panelScene) {
-    for (int j = 0; j <= pcx - 1; j++) {
-      for (int i = 0; i <= pc - 1; i++) {
-        if (Button(x + j * (w / pcx), y + (h / pc) * i, w / pcx - (height / 250), h / pc - (height / 250))) {
-          viewScreen = panelScene[i];
-        }
+    for (int i = 0; i <= pc - 1; i++) {
+      if (Button(x, y+((h / pc) * i), w, h / pc - (height / 250))) {
+        veiwScreen = panelScene[i];
       }
     }
   }
 
   void InteractiveS(float[] panelScene) {
-    for (int j = 0; j <= pcx - 1; j++) {
-      for (int i = 0; i <= pc - 1; i++) {
-        if (Button(x + j * (w / pcx), y + (h / pc) * i, w / pcx - (height / 250), h / pc - (height / 250))) {
-          scene = panelScene[i];
-        }
+    for (int i = 0; i <= pc - 1; i++) {
+      if (Button(x, y+((h / pc) * i), w, h / pc - (height / 250))) {
+        scene = panelScene[i];
       }
     }
   }
@@ -198,7 +124,7 @@ class panelS {
   void InteractiveV(float[] panelScene) {
     for (int i = 0; i <= pc - 1; i++) {
       if (Button(x + ((w / pc) * i), y, w / pc - (width / 500), h)) {
-        viewScreen = panelScene[i];
+        veiwScreen = panelScene[i];
       }
     }
   }

@@ -38,7 +38,7 @@ class Login {
         scene = -2;
       } else if (typed.equals("settings") && keyDetection(ENTER)) {
         scene = 1;
-        viewScreen = 1;
+        veiwScreen = 1;
         len = 0;
         if (isNotMuted) {
           accept.play();
@@ -55,7 +55,7 @@ class Login {
           powerDown.play();
         } else if (typed.equals("settings") && keyDetection(ENTER)) {
           scene = 1;
-          viewScreen = 1;
+          veiwScreen = 1;
           len = 0;
           if (isNotMuted) {
             accept.play();

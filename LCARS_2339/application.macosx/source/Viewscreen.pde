@@ -2,10 +2,9 @@ float tempquality = 0, temptimeoutTime = 0;
 float shipX = 0, shipY = 0, shipZ = 0;
 float targetX = 500, targetY = 425, targetZ = 940;
 boolean tempisNotMuted = false, temptheater = false, temptimeoutEnabled = false, dMplaying = false;
-panel navpanel = new panel(0, 0, 0, 0, 7, 5);
 
 void viewScreen() {
-  if (viewScreen == 0) {
+  if (veiwScreen == 0) {
     if (quality == 2) {
       image(standby, mSSP.x, mSSP.y+mSSP.h, mSSP.w, height - (mSSP.y+mSSP.h));
     } else {
@@ -15,7 +14,7 @@ void viewScreen() {
       text("United Federation of Planets", mSSP.x + mSSP.w/2, (mSSP.y + (height - (mSSP.y+mSSP.h)) / 2 ) + ((height - (mSSP.y+mSSP.h))/3.5)+height/250);
     }
     v.updateStarCount();
-  } else if (viewScreen == 1) {
+  } else if (veiwScreen == 1) {
     if (Button(mainText[0]+tempisNotMuted, sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250, width / 10, height / 18.75, true, color(20, 200, 255))) {
       if (tempisNotMuted) {
         tempisNotMuted = false;
@@ -54,7 +53,7 @@ void viewScreen() {
     }
 
     if (Button(mainText[7], sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 5, width / 10.0, height / 18.75, true, color(52, 124, 212))) {
-      viewScreen = 11;
+      veiwScreen = 11;
     }
     if (Button(mainText[27]+fullscreen, sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 6, width / 5.0, height / 18.75, true, color(52, 124, 212))) {
       if (!fullscreen) {
@@ -104,37 +103,30 @@ void viewScreen() {
       timeoutEnabled = temptimeoutEnabled;
       save();
     }
-  } else if (viewScreen == 2) {
+  } else if (veiwScreen == 2) {
     textAlign(CORNER, CORNER);
     fill(255);
     textSize(HYPOTNUCE / 74.5353333333);
-    text("Build b1.08.00\nThis is a recreation of the Lcars47 OS found on Star Trek. This is also a blend of all of the versions we see on the screen. Most of the Insperation for this project comes from the program Lcars47 from Lcars47.com", mSSP.x, mSSP.y + mSSP.h + width / 250, mSSP.w, sSP.h);
+    text("Build b1.07.07\nThis is a recreation of the Lcars47 OS found on Star Trek. This is also a blend of all of the versions we see on the screen. Most of the Insperation for this project comes from the program Lcars47 from Lcars47.com", mSSP.x, mSSP.y + mSSP.h + width / 250, mSSP.w, sSP.h);
     textAlign(CENTER, CENTER);
-  } else if (viewScreen == 3) {
+  } else if (veiwScreen == 3) {
     // SYS DIRECTORY
-    //if (Button(mainText[26], width - width / 10 - width / 500, sSP.y, width / 10, height / 15, false, color(70, 200, 255), accept)) {
-    //  scene = 2;
-    //  v.x = 0;
-    //  v.y = 0;
-    //  v.w = width;
-    //  v.h = height;
-    //  if (warpFactor == 0) {
-    //    v.starMult = 1;
-    //  } else {
-    //    v.starMult = 0.1;
-    //  }
-    //  v.updateStarCount();
-    //}
-    //if (Button(mainText[34], width - width / 10 - width / 500, sSP.y + height / 15 + height / 250, width / 10, height / 15, false, color(70, 100, 255), accept)) {
-    //  viewScreen = 12;
-    //}
-    float[][] panelScene = new float[][] {
-      {3, 3, 3, 3, 3, 3, 12}, 
-      {3, 3, 3, 3, 3, 3, 99}, 
-      {3, 3, 3, 3, 3, 3, 3}, 
-      {3, 3, 3, 3, 3, 3, 3}, 
-      {3, 3, 3, 3, 3, 3, 3}
-    };
+    if (Button(mainText[26], width - width / 10 - width / 500, sSP.y, width / 10, height / 15, false, color(70, 200, 255), accept)) {
+      scene = 2;
+      v.x = 0;
+      v.y = 0;
+      v.w = width;
+      v.h = height;
+      if (warpFactor == 0) {
+        v.starMult = 1;
+      } else {
+        v.starMult = 0.1;
+      }
+      v.updateStarCount();
+    }
+    if (Button(mainText[34], width - width / 10 - width / 500, sSP.y + height / 15 + height / 250, width / 10, height / 15, false, color(70, 100, 255), accept)) {
+      veiwScreen = 12;
+    }
 
     SDSP.x = mSSP.x;
     SDSP.y = mSSP.y + mSSP.h + height / 250;
@@ -142,17 +134,8 @@ void viewScreen() {
     SDSP.h = tSP.h - SDSP.y - height / 250;
     SDSP.TextSize = HYPOTNUCE / 66;
     SDSP.render();
-
-    navpanel.x = SDSP.x;
-    navpanel.y = SDSP.y + SDSP.h + height / 250;
-    navpanel.w = SDSP.w;
-    navpanel.h = height - navpanel.y;
-    navpanel.texts2d[0][6] = mainText[34];
-    navpanel.texts2d[1][6] = mainText[26];
-    navpanel.render();
-    navpanel.InteractiveV(panelScene);
-  } else if (viewScreen == 5) {
-  } else if (viewScreen == 6) {
+  } else if (veiwScreen == 5) {
+  } else if (veiwScreen == 6) {
     // COMMUNICATIONS
     cMP.x = mSSP.x + sSP.w;
     cMP.y = mSSP.y + height / 8;
@@ -172,9 +155,9 @@ void viewScreen() {
 
     cMP.render();
     cMSP.render();
-  } else if (viewScreen == 7) {
-  } else if (viewScreen == 8) {
-  } else if (viewScreen == 9) {
+  } else if (veiwScreen == 7) {
+  } else if (veiwScreen == 8) {
+  } else if (veiwScreen == 9) {
     if (Button("92-48416", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250, width / 10, height / 18.75, true, color(20, 200, 255))) {
       if (dMplaying) {
         dMusic.stop();
@@ -186,7 +169,7 @@ void viewScreen() {
         dMplaying = true;
       }
     }
-  } else if (viewScreen == 9.9) {
+  } else if (veiwScreen == 9.9) {
     v.starMult = 1;
     if (warpFactor != 0) {
       v.starMult = 0.1;
@@ -198,10 +181,10 @@ void viewScreen() {
     } else {
       v.starMult = 1;
     }
-    viewScreen = 10;
-  } else if (viewScreen == 10) {
+    veiwScreen = 10;
+  } else if (veiwScreen == 10) {
     exteriorViewPort();
-  } else if (viewScreen == 11) {
+  } else if (veiwScreen == 11) {
     if (Button("English", sSP.x + sSP.w + width / 500, mSSP.y + mSSP.h + height / 250  + (height / 18.75 + height / 250) * 1, width / 10, height / 18.75, true, color(18, 97, 196))) {
       loadLang(LANG_US);
       LANGUAGE = 0;
@@ -215,11 +198,9 @@ void viewScreen() {
       loadLang(LANG_PEW);
     }
     if (Button(mainText[9], sSP.x + sSP.w + width / 500, height - height / 18.75 - height / 250, width / 10, height / 18.75, true, color(18, 97, 196))) {
-      viewScreen = 1;
+      veiwScreen = 1;
     }
-  } else if (viewScreen == 12) {
+  } else if (veiwScreen == 12) {
     navigation();
-  } else if (viewScreen == 99){
-    scene = 2;
   }
 }
